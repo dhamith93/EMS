@@ -1,0 +1,47 @@
+
+<!-- <form> -->
+  <div class="form-row align-items-center">
+    <div class="col-sm-4 my-1">
+      <label class="sr-only" for="search-val">Name</label>
+      <input type="text" name="searchVal" class="form-control" id="search-val" placeholder="search employee">
+      <br>
+    </div>
+  </div>
+  <div class="form-row align-items-center" style="margin-left: 15px;">
+    <div class="form-check col-sm-1">
+      <input class="form-check-input searchOption" type="radio" name="searchOption" id="opt-id" value="id" checked>
+      <label class="form-check-label" for="opt-id">
+        EMP ID
+      </label>
+    </div>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input searchOption" type="radio" name="searchOption" id="opt-name" value="name">
+      <label class="form-check-label" for="opt-name">
+        Name
+      </label>
+    </div>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input searchOption" type="radio" name="searchOption" id="opt-dept" value="dept">
+      <label class="form-check-label" for="opt-dept">
+        DEPT
+      </label>
+    </div>
+  </div>
+<!-- </form> -->
+
+<br> <hr style="border-top: 2px dashed #8c8b8b;"> <br>
+
+<table class="table" id="result-table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">EMP ID</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">DEPT</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- to be filled results -->
+  </tbody>
+</table>

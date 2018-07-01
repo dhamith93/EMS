@@ -1,0 +1,24 @@
+.container {
+    margin-top: 2%;
+}
+
+.navigation {
+	width: 70%;
+	margin: auto;
+}
+
+.main {
+    width: 80%;
+    padding: 1%;
+    padding-left: 4%;    
+    padding-right: 4%; 
+    margin: auto;
+}
+
+#home {
+    display: block;
+}
+
+#addTab, #searchTab, #deptTab, #leavesTab, #attendanceTab {
+    display: none;
+}

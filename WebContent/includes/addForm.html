@@ -1,0 +1,127 @@
+<form>		
+
+<br> <h4 style="margin-bottom: 5px;">Personal Information</h4> <br>
+
+ <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" placeholder="First Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+    </div>
+  </div>		
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="nic">NIC</label>
+      <input type="text" class="form-control" id="nic" placeholder="NIC">
+    </div>
+  </div>
+
+  <p class="form-check-label" style="margin-bottom: 5px;">Date of birth</p>
+   <div class="form-row" style="margin-left: 15px;">    
+    <div class="form-group col-md-2">
+      <label for="inputDate">Date</label>
+      <input type="text" class="form-control" id="inputDate">
+    </div>    
+    <div class="form-group col-md-3">
+      <label for="inputMonth">Month</label>
+      <select id="inputMonth" class="form-control">
+        <option selected>Choose...</option>
+        <option>January</option>
+        <option>February</option>
+        <option>March</option>
+        <option>April</option>
+        <option>May</option>
+        <option>June</option>
+        <option>July</option>
+        <option>August</option>
+        <option>September</option>
+        <option>October</option>
+        <option>November</option>
+        <option>December</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputYear">Year</label>
+      <input type="text" class="form-control" id="inputYear">
+    </div>
+    
+  </div>
+  <p class="form-check-label" style="margin-bottom: 5px;">Gender</p>
+  <div class="form-row" style="margin-left: 15px;">
+	<div class="form-check form-check-inline">
+	  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male" value="male">
+	  <label class="form-check-label" for="male">Male</label>
+	</div>
+	<div class="form-check form-check-inline">
+	  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female" value="female">
+	  <label class="form-check-label" for="female">Female</label>
+	</div>
+	
+  </div>
+  <br>
+  
+  
+  <div class="form-row">  
+  	<div class="col-lg-6">
+  		<br> <h4 style="margin-bottom: 5px;">Company Information</h4> <br>
+		  <div class="form-row">
+		    <div class="form-group col-md-8">
+		      <label for="empNo">Employee No.</label>
+		      <input type="text" class="form-control" id="empNo" placeholder="Employee No.">
+		    </div>
+		  </div>  
+		  
+		  <div class="form-row">
+		    <div class="form-group col-md-8">
+		      <label for="dept">Department</label>
+		      <input type="text" class="form-control" id="dept" placeholder="">
+		    </div>
+		  </div> 
+		  
+		  <div class="form-row">
+			  <div class="form-group col-md-8">
+			    <label for="inputSalary">Salary</label>
+			    <input type="text" class="form-control" id="inputSalary" placeholder="Rs.">
+			  </div>
+		  </div>
+  	</div>
+  	
+  	<div class="col-lg-6">
+  		<br> <h4 style="margin-bottom: 5px;">Contact Information</h4> <br>
+		  <div class="form-row">
+			  <div class="form-group col-md-8">
+			    <label for="inputAddress">Address Line 1</label>
+			    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+			  </div>
+		  </div>
+		  
+		  <div class="form-row">
+			  <div class="form-group col-md-8">
+			    <label for="inputAddress2">Address Line 2</label>
+			    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+			  </div>   
+		  </div>
+		  
+		  <div class="form-row">	  
+		    <div class="form-group col-md-8">
+		      <label for="inputCity">City</label>
+		      <input type="text" class="form-control" id="inputCity">
+		    </div>
+		  </div>
+		  
+		  <div class="form-row">	  
+		    <div class="form-group col-md-8">
+		      <label for="inputTPNo">Telephone Number</label>
+		      <input type="text" class="form-control" id="inputTPNo">
+		    </div>
+		  </div>
+  	</div>
+  
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Add Employee</button>
+</form>
