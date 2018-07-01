@@ -7,6 +7,7 @@ HDSE EAD final assignment
     * Update
     * Delete
     * Add performance info
+    * ~~Search~~
 * Department
     * Add
     * Update
@@ -17,8 +18,8 @@ HDSE EAD final assignment
 * Department/Employee tasks
     * Add
     * Mark progress
+    
 ### Roles
-
 * HR
     * Add/Update/Delete Employees
     * Change managers of departments
