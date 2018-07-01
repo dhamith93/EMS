@@ -10,7 +10,10 @@
             <result name="MAN">/manager-dashboard.jsp</result>
             <result name="EMP">/employee-dashboard.jsp</result>
             <result name="error">/login.jsp</result>
-        </action>    
+        </action>   
+        <action name="AddEmployeeAction" class="com.action.AddEmployeeAction">            
+            <result name="success">/dashboard.jsp</result>
+        </action>  
     </package>
     
     <package name="json" extends="json-default">

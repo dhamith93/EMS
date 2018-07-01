@@ -24,6 +24,23 @@ public class EmployeeManager {
 		sessionFactroy.close();
 	}
 	
+	public static void save(Employee e) {
+		init();
+		session.save(e);
+		transaction.commit();
+	}
+	
+	public static void addLoginInfo(Employee e, String password) {
+		init();
+		Login login = new Login();
+		
+		login.setEmpId(e.getEmpId());
+		login.setPassword(password);
+		
+		session.save(login);
+		transaction.commit();
+	}
+	
 	public static Employee get(String empId) {
 		init();
 		String hql = "FROM Employee e WHERE e.empId LIKE :val";
@@ -76,5 +93,5 @@ public class EmployeeManager {
 		end();
 		
 		return results;
-	}
+	}	
 }

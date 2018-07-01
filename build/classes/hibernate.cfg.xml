@@ -40,6 +40,7 @@
  
         <mapping class="com.entity.Employee"/>
         <mapping class="com.entity.Department"/>
+        <mapping class="com.entity.Login"/>
  
     </session-factory>
 </hibernate-configuration>

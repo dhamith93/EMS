@@ -1,5 +1,6 @@
 let divs = document.getElementsByClassName('content-area');
 let tabs = document.getElementsByClassName('tab');
+let addEmpBtn = document.getElementById('add-emp-btn');
 
 for (let i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener('click', function(e) {
@@ -101,3 +102,8 @@ function resetTable() {
     for (let i = length; i > 0; i--)
         elements[0].removeChild(elements[0].childNodes[i]);    
 }
+
+addEmpBtn.addEventListener('click', function(e) {
+	//e.preventDefault();
+	
+});

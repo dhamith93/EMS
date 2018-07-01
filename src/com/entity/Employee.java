@@ -18,7 +18,7 @@ public class Employee implements Serializable {
 	private String empId;
 	private double salary;
 	private String joinedDate;
-	private String managedBy;	
+	private Long managedBy;	
 	private Long dept;
 	private String position;
 	
@@ -85,10 +85,10 @@ public class Employee implements Serializable {
 	public void setJoinedDate(String joinedDate) { this.joinedDate = joinedDate; }
 	
 	@Basic
-    @Column(name = "MANAGED_BY", nullable = true, length = 10)
-	public String getManagedBy() { return managedBy; }
+    @Column(name = "MANAGED_BY", nullable = true)
+	public Long getManagedBy() { return managedBy; }
 
-	public void setManagedBy(String managedBy) { this.managedBy = managedBy; }
+	public void setManagedBy(Long managedBy) { this.managedBy = managedBy; }
 	
 	@Basic
     @Column(name = "DEPARTMENT", nullable = true)

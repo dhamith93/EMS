@@ -1,63 +1,40 @@
-<form>		
+<form action="AddEmployeeAction">		
 
 <br> <h4 style="margin-bottom: 5px;">Personal Information</h4> <br>
 
  <div class="form-row">
     <div class="form-group col-md-6">
       <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" placeholder="First Name">
+      <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" required>
     </div>
     <div class="form-group col-md-6">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+      <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" required>
     </div>
   </div>		
 
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="nic">NIC</label>
-      <input type="text" class="form-control" id="nic" placeholder="NIC">
+      <input type="text" name="NIC" class="form-control" id="nic" placeholder="NIC" required>
     </div>
   </div>
 
   <p class="form-check-label" style="margin-bottom: 5px;">Date of birth</p>
-   <div class="form-row" style="margin-left: 15px;">    
+   <div class="form-row">    
     <div class="form-group col-md-2">
-      <label for="inputDate">Date</label>
-      <input type="text" class="form-control" id="inputDate">
-    </div>    
-    <div class="form-group col-md-3">
-      <label for="inputMonth">Month</label>
-      <select id="inputMonth" class="form-control">
-        <option selected>Choose...</option>
-        <option>January</option>
-        <option>February</option>
-        <option>March</option>
-        <option>April</option>
-        <option>May</option>
-        <option>June</option>
-        <option>July</option>
-        <option>August</option>
-        <option>September</option>
-        <option>October</option>
-        <option>November</option>
-        <option>December</option>
-      </select>
+      <input type="date" name="dob" class="form-control" id="inputDOB" required>
     </div>
-    <div class="form-group col-md-3">
-      <label for="inputYear">Year</label>
-      <input type="text" class="form-control" id="inputYear">
-    </div>
-    
   </div>
+  
   <p class="form-check-label" style="margin-bottom: 5px;">Gender</p>
   <div class="form-row" style="margin-left: 15px;">
 	<div class="form-check form-check-inline">
-	  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male" value="male">
+	  <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
 	  <label class="form-check-label" for="male">Male</label>
 	</div>
 	<div class="form-check form-check-inline">
-	  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female" value="female">
+	  <input class="form-check-input" type="radio" name="gender" id="female" value="female">
 	  <label class="form-check-label" for="female">Female</label>
 	</div>
 	
@@ -70,22 +47,53 @@
   		<br> <h4 style="margin-bottom: 5px;">Company Information</h4> <br>
 		  <div class="form-row">
 		    <div class="form-group col-md-8">
-		      <label for="empNo">Employee No.</label>
-		      <input type="text" class="form-control" id="empNo" placeholder="Employee No.">
+		      <label for="empNo">Employee ID</label>
+		      <input type="text" name="empId" class="form-control" id="empId" placeholder="Employee ID" required>
 		    </div>
 		  </div>  
 		  
-		  <div class="form-row">
-		    <div class="form-group col-md-8">
+		  		  
+		  <div class="form-group col-md-5" style="margin-left: -15px;">
 		      <label for="dept">Department</label>
-		      <input type="text" class="form-control" id="dept" placeholder="">
-		    </div>
-		  </div> 
+		      <select id="dept" name="dept" class="form-control">
+		      	<s:iterator value="departments">
+		      		<option value=<s:property value="id"/>><s:property value="name"/></option>
+		      	</s:iterator>
+		      </select>
+	    </div>
 		  
 		  <div class="form-row">
 			  <div class="form-group col-md-8">
+			    <label for="inputSalary">Position</label>
+			    <input type="text" name="position" class="form-control" id="inputPosition" placeholder="Position" required>
+			  </div>
+		  </div>
+
+		  <div class="form-row">
+			  <div class="form-group col-md-8">
 			    <label for="inputSalary">Salary</label>
-			    <input type="text" class="form-control" id="inputSalary" placeholder="Rs.">
+			    <input type="text" name="salary" class="form-control" id="inputSalary" placeholder="Rs." required>
+			  </div>
+		  </div>
+		  
+		  <div class="form-row">
+			  <div class="form-group col-md-4">
+			    <label for="inputJoinedDate">Joined Date</label>
+			    <input type="date" name="joinedDate" class="form-control" id="inputJoinedDate" required>
+			  </div>
+		  </div>
+
+		  <div class="form-row">
+			  <div class="form-group col-md-8">
+			    <label for="inputPassword">Password</label>
+			    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" required>
+			  </div>
+		  </div>
+
+		  <div class="form-row">
+			  <div class="form-group col-md-8">
+			    <label for="inputPassword2">Retype Password</label>
+			    <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="password again" required>
 			  </div>
 		  </div>
   	</div>
@@ -95,33 +103,33 @@
 		  <div class="form-row">
 			  <div class="form-group col-md-8">
 			    <label for="inputAddress">Address Line 1</label>
-			    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+			    <input type="text" name="addressLine1" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
 			  </div>
 		  </div>
 		  
 		  <div class="form-row">
 			  <div class="form-group col-md-8">
 			    <label for="inputAddress2">Address Line 2</label>
-			    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+			    <input type="text" name="addressLine2" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
 			  </div>   
 		  </div>
 		  
 		  <div class="form-row">	  
 		    <div class="form-group col-md-8">
 		      <label for="inputCity">City</label>
-		      <input type="text" class="form-control" id="inputCity">
+		      <input type="text" name="city" class="form-control" id="inputCity" required>
 		    </div>
 		  </div>
 		  
 		  <div class="form-row">	  
 		    <div class="form-group col-md-8">
 		      <label for="inputTPNo">Telephone Number</label>
-		      <input type="text" class="form-control" id="inputTPNo">
+		      <input type="text" name="telephoneNo" class="form-control" id="inputTPNo" required>
 		    </div>
 		  </div>
   	</div>
   
   </div>
   
-  <button type="submit" class="btn btn-primary">Add Employee</button>
+  <button type="submit" id="add-emp-btn" class="btn btn-primary">Add Employee</button>
 </form>
