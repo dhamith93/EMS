@@ -3,7 +3,7 @@ HDSE EAD final assignment
 
 ## TODO
 * Employee
-    * Addition
+    * ~~Addition~~
     * Update
     * Delete
     * Add performance info
@@ -18,6 +18,7 @@ HDSE EAD final assignment
 * Department/Employee tasks
     * Add
     * Mark progress
+* Validation
     
 ### Roles
 * HR
