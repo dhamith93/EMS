@@ -2,4 +2,4 @@
 HDSE EAD final assignment
 
 ## TODO
-[x] Search
+[ ] Search
