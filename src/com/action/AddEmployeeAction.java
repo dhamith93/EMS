@@ -24,6 +24,8 @@ public class AddEmployeeAction extends ActionSupport {
 	private String city;
 	private String telephoneNo;
 	
+	private String status;
+	
 	public String execute() {
 		Employee e = new Employee();
 		e.setFirstName(firstName);
@@ -44,10 +46,15 @@ public class AddEmployeeAction extends ActionSupport {
 		
 
 		if (password.equals(password2)) {
-			EmployeeManager.save(e);
-			EmployeeManager.addLoginInfo(e, password);
+			try {
+				EmployeeManager.save(e);
+				EmployeeManager.addLoginInfo(e, password);
+				status = "{\"status\": \"OK\"}";
+			} catch (Exception ex) {
+				status = "{\"status\": \"ERROR\"}";
+			}
 		} else {
-			// error
+			status = "{\"status\": \"passwords-no-match\"}";
 		}		
 		
 		return SUCCESS;
@@ -116,6 +123,10 @@ public class AddEmployeeAction extends ActionSupport {
 	public String getTelephoneNo() { return telephoneNo; }
 
 	public void setTelephoneNo(String telephoneNo) { this.telephoneNo = telephoneNo; }
+	
+	public String getStatus() { return status; }
+
+	public void setStatus(String status) { this.status = status; }
 	
 	
 }

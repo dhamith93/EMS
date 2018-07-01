@@ -103,7 +103,24 @@ function resetTable() {
         elements[0].removeChild(elements[0].childNodes[i]);    
 }
 
-addEmpBtn.addEventListener('click', function(e) {
-	//e.preventDefault();
-	
+$("#addEmpForm").submit(function(e) {
+
+    $.ajax({
+           type: 'POST',
+           url: 'AddEmployeeAction.action',
+           data: $('#addEmpForm').serialize(),
+           success: function(data) {
+               let result = JSON.parse(data);
+               if (result['status'] === 'OK') {
+            	   alert('Employee Added!');
+            	   document.getElementById('addEmpForm').reset();
+               } else if (result['status'] === 'passwords-no-match') {
+            	   alert('Passwords don\'t match!');
+               } else { 
+            	   alert('Encountered an error! Please check your data and try again later...');
+               }
+           }
+         });
+
+    e.preventDefault();
 });

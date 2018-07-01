@@ -1,3 +1,8 @@
+DROP DATABASE IF EXISTS `EMS`;
+CREATE DATABASE `EMS`;
+USE `EMS`;
+
+
 -- phpMyAdmin SQL Dump
 -- version 4.7.3
 -- https://www.phpmyadmin.net/
@@ -50,7 +55,7 @@ CREATE TABLE `EMPLOYEE` (
   `GENDER` varchar(6) DEFAULT NULL,
   `NIC` varchar(13) DEFAULT NULL,
   `EMP_ID` varchar(10) DEFAULT NULL,
-  `SALARY` decimal(9,4) DEFAULT NULL,
+  `SALARY` decimal(15,2) DEFAULT NULL,
   `JOINED_DATE` date DEFAULT NULL,
   `MANAGED_BY` int(11) DEFAULT NULL,
   `DEPARTMENT` int(11) DEFAULT NULL,

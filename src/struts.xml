@@ -10,10 +10,7 @@
             <result name="MAN">/manager-dashboard.jsp</result>
             <result name="EMP">/employee-dashboard.jsp</result>
             <result name="error">/login.jsp</result>
-        </action>   
-        <action name="AddEmployeeAction" class="com.action.AddEmployeeAction">            
-            <result name="success">/dashboard.jsp</result>
-        </action>  
+        </action>
     </package>
     
     <package name="json" extends="json-default">
@@ -24,5 +21,12 @@
 		        <param name="root">jsonString</param>
 		    </result>
 		</action>   
+		<action name="AddEmployeeAction" class="com.action.AddEmployeeAction">            
+            <result type="json">
+				<param name="noCache">true</param>
+		        <param name="excludeNullProperties">true</param>
+		        <param name="root">status</param>
+			</result>
+        </action> 
 	</package>
 </struts>
