@@ -31,13 +31,19 @@ public class LoginAction extends ActionSupport {
 		if (login != null) {
 			if (BCrypt.checkpw(password, login.getPassword())) {
 				switch (loginOption) {
-				case "hr":
-					departments = DepartmentManager.getAll();
-					return "HR";
+				case "hr":					
+					if (employee.getDeptName().equals("HR")) {
+						departments = DepartmentManager.getAll();
+						return "HR";						
+					}		
 				case "man":
-					return "MAN";
+					Long deptManId = DepartmentManager.getManager(employee.getDept());
+					if (deptManId == employee.getId())
+						return "MAN";
 				case "emp":
 					return "EMP";
+				default:
+					return ERROR;
 				}				
 			}
 		}		

@@ -7,7 +7,7 @@ USE `EMS`;
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 02, 2018 at 04:57 AM
+-- Generation Time: Jul 02, 2018 at 05:13 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.22
 
@@ -77,7 +77,7 @@ INSERT INTO `EMPLOYEE` (`ID`, `FIRST_NAME`, `LAST_NAME`, `DOB`, `GENDER`, `NIC`,
 (5, 'ROBERT', 'SOLE', '1959-01-01', 'MALE', '0123456789V', 'E545', '99999.99', '2018-01-01', NULL, 2, NULL, '111, SOME STREET', 'SOME ANOTHER STREET', 'FUCK CITY', '0123456789'),
 (6, 'Test', 'Tester', '2018-07-19', 'male', '123123v', 'E666', '999999.99', '2018-07-20', 3, 4, 'Auditor', '117/3, Rahula road', 'Sugathi Mawatha', 'Angoda', '+94773630792'),
 (7, 'New', 'Test', '2018-07-20', 'male', '123123', 'E888', '123121323.00', '2018-07-18', 5, 2, 'HR', '117/3, Rahula road', 'Sugathi Mawatha', 'Angoda', '+94773630792'),
-(8, 'Login', 'Test', '2018-05-11', 'male', '1213', 'E555', '123123.00', '2018-06-07', 4, 3, 'Sales', '117/3, Rahula road', 'Sugathi Mawatha', 'Angoda', '+94773630792');
+(8, 'Login', 'Test', '2018-05-11', 'male', '1213', 'E555', '123123.00', '2018-06-07', 5, 2, 'Sales', '117/3, Rahula road', 'Sugathi Mawatha', 'Angoda', '+94773630792');
 
 -- --------------------------------------------------------
 
