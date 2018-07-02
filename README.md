@@ -1,6 +1,8 @@
 # EMS
 HDSE EAD final assignment
 
+**To login to the system use: username: E555 password: test **
+
 ## TODO
 * Employee
     * ~~Addition~~

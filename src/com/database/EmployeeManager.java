@@ -41,6 +41,16 @@ public class EmployeeManager {
 		transaction.commit();
 	}
 	
+	public static Login getLoginInfo(Employee e) {
+		init();
+		String hql = "FROM Login l WHERE l.empId LIKE :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", e.getEmpId());
+		Login login = (Login) query.getResultList().get(0);
+		
+		return login;
+	}
+	
 	public static Employee get(String empId) {
 		init();
 		String hql = "FROM Employee e WHERE e.empId LIKE :val";

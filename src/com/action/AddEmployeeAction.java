@@ -1,6 +1,7 @@
 package com.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.mindrot.jbcrypt.BCrypt;
 import com.entity.*;
 import com.database.*;
 
@@ -48,6 +49,7 @@ public class AddEmployeeAction extends ActionSupport {
 		if (password.equals(password2)) {
 			try {
 				EmployeeManager.save(e);
+				password = BCrypt.hashpw(password, BCrypt.gensalt());
 				EmployeeManager.addLoginInfo(e, password);
 				status = "{\"status\": \"OK\"}";
 			} catch (Exception ex) {

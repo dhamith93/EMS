@@ -2,6 +2,7 @@ package com.action;
 
 
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 import com.entity.*;
 import com.database.*;
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,26 +17,30 @@ public class LoginAction extends ActionSupport {
 	
 	public String execute() {
 		
+		Login login;
+		
 		try {
 			employee = EmployeeManager.get(userName);
+			login = EmployeeManager.getLoginInfo(employee);			
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return ERROR;
 		}
 		
-		System.out.println(employee.getFirstName());
 		
-		switch (loginOption) {
-			case "hr":
-				departments = DepartmentManager.getAll();
-				for (Department d : departments) {
-					System.out.println(d.getName());
-				}
-				return "HR";
-			case "man":
-				return "MAN";
-			case "emp":
-				return "EMP";
-		}
+		if (login != null) {
+			if (BCrypt.checkpw(password, login.getPassword())) {
+				switch (loginOption) {
+				case "hr":
+					departments = DepartmentManager.getAll();
+					return "HR";
+				case "man":
+					return "MAN";
+				case "emp":
+					return "EMP";
+				}				
+			}
+		}		
 		
 		return ERROR;
 	}
