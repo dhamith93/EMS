@@ -104,4 +104,10 @@ public class EmployeeManager {
 		
 		return results;
 	}	
+	
+	public static void requestLeave(Leave leave) {
+		init();
+		session.save(leave);
+		transaction.commit();
+	}
 }

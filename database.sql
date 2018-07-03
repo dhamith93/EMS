@@ -3,13 +3,13 @@ CREATE DATABASE `EMS`;
 USE `EMS`;
 
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jul 02, 2018 at 05:13 AM
--- Server version: 5.6.35
--- PHP Version: 7.0.22
+-- Host: localhost
+-- Generation Time: Jul 03, 2018 at 05:49 PM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -88,11 +88,23 @@ INSERT INTO `EMPLOYEE` (`ID`, `FIRST_NAME`, `LAST_NAME`, `DOB`, `GENDER`, `NIC`,
 CREATE TABLE `LEAVES` (
   `ID` int(11) NOT NULL,
   `EMP_ID` varchar(10) DEFAULT NULL,
-  `REASON` varchar(25) DEFAULT NULL,
-  `START_ON` date DEFAULT NULL,
-  `END_ON` date DEFAULT NULL,
-  `IS_APPROVED` smallint(6) DEFAULT NULL
+  `MANAGER` int(11) NOT NULL,
+  `REASON` varchar(100) DEFAULT NULL,
+  `TYPE` varchar(25) NOT NULL,
+  `START_ON_DATE` date DEFAULT NULL,
+  `END_ON_DATE` date DEFAULT NULL,
+  `START_ON_TIME` varchar(8) NOT NULL,
+  `END_ON_TIME` varchar(8) NOT NULL,
+  `IS_APPROVED` smallint(6) DEFAULT NULL,
+  `IS_CONFIRMED` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `LEAVES`
+--
+
+INSERT INTO `LEAVES` (`ID`, `EMP_ID`, `MANAGER`, `REASON`, `TYPE`, `START_ON_DATE`, `END_ON_DATE`, `START_ON_TIME`, `END_ON_TIME`, `IS_APPROVED`, `IS_CONFIRMED`) VALUES
+(2, 'E555', 5, '', 'casual', '2018-07-04', '2018-07-05', '01:00', '01:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -183,7 +195,8 @@ ALTER TABLE `EMPLOYEE`
 --
 ALTER TABLE `LEAVES`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `EMP_ID` (`EMP_ID`);
+  ADD KEY `EMP_ID` (`EMP_ID`),
+  ADD KEY `leaves_ibfk_2` (`MANAGER`);
 
 --
 -- Indexes for table `LOGIN`
@@ -224,36 +237,43 @@ ALTER TABLE `TASK_ASSIGNMENT`
 --
 ALTER TABLE `DEPARTMENT`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `EMPLOYEE`
 --
 ALTER TABLE `EMPLOYEE`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `LEAVES`
 --
 ALTER TABLE `LEAVES`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `LOGIN`
 --
 ALTER TABLE `LOGIN`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `TASKS`
 --
 ALTER TABLE `TASKS`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `TASK_ASSESSMENT`
 --
 ALTER TABLE `TASK_ASSESSMENT`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `TASK_ASSIGNMENT`
 --
 ALTER TABLE `TASK_ASSIGNMENT`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
@@ -275,7 +295,8 @@ ALTER TABLE `EMPLOYEE`
 -- Constraints for table `LEAVES`
 --
 ALTER TABLE `LEAVES`
-  ADD CONSTRAINT `leaves_ibfk_1` FOREIGN KEY (`EMP_ID`) REFERENCES `EMPLOYEE` (`EMP_ID`);
+  ADD CONSTRAINT `leaves_ibfk_1` FOREIGN KEY (`EMP_ID`) REFERENCES `EMPLOYEE` (`EMP_ID`),
+  ADD CONSTRAINT `leaves_ibfk_2` FOREIGN KEY (`MANAGER`) REFERENCES `EMPLOYEE` (`ID`);
 
 --
 -- Constraints for table `LOGIN`
@@ -302,3 +323,4 @@ ALTER TABLE `TASK_ASSESSMENT`
 ALTER TABLE `TASK_ASSIGNMENT`
   ADD CONSTRAINT `task_assignment_ibfk_1` FOREIGN KEY (`TASK_ID`) REFERENCES `TASKS` (`ID`),
   ADD CONSTRAINT `task_assignment_ibfk_2` FOREIGN KEY (`EMP_ID`) REFERENCES `EMPLOYEE` (`EMP_ID`);
+

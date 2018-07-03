@@ -32,3 +32,22 @@ function navigationHandler(tab, div) {
     tab.classList.add('active');
 }
 
+$("#reqLeaveForm").submit(function(e) {
+
+    $.ajax({
+           type: 'POST',
+           url: 'RequestLeaveAction.action',
+           data: $('#reqLeaveForm').serialize(),
+           success: function(data) {
+               let result = JSON.parse(data);
+               if (result['status'] === 'OK') {
+            	   alert('Leave request successful!');
+            	   document.getElementById('reqLeaveForm').reset();
+               } else { 
+            	   alert('Encountered an error! Please check your data and try again later...');
+               }
+           }
+         });
+
+    e.preventDefault();
+});

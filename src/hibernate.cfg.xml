@@ -41,6 +41,7 @@
         <mapping class="com.entity.Employee"/>
         <mapping class="com.entity.Department"/>
         <mapping class="com.entity.Login"/>
+        <mapping class="com.entity.Leave"/>
  
     </session-factory>
 </hibernate-configuration>
