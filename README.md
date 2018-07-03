@@ -1,26 +1,26 @@
 # EMS
 HDSE EAD final assignment
 
-**To login to the system use: username: E555 password: test **
+**To login to the system use: username: E555 password: test**
 
 ## TODO
-* Employee
-    * ~~Addition~~
-    * Update
-    * Delete
-    * Add performance info
-    * ~~Search~~
-* Department
-    * Add
-    * Update
-    * Add Managers
-* Leave Management
-    * Request
-    * Approve/Disapprove
-* Department/Employee tasks
-    * Add
-    * Mark progress
-* Validation
+- [ ] Employee
+    - [x] Addition
+    - [ ] Update
+    - [ ] Delete
+    - [ ] Add performance info
+    - [ ] Search
+- [ ] Department
+    - [ ] Add
+    - [ ] Update
+    - [ ] Add Managers
+- [ ] Leave Management
+    - [ ] Request
+    - [ ] Approve/Disapprove
+- [ ] Department/Employee tasks
+    - [ ] Add
+    - [ ] Mark progress
+- [ ] Validation
     
 ### Roles
 * HR
