@@ -41,6 +41,10 @@
             </div>
         </div>
     </div>
+	
+	<%@ include file="includes/employee-modal.html" %>	
+	<%@ include file="includes/leaves-modal.html" %>	
+	<%@ include file="includes/performance-modal.html" %>	
 
 	<%@ include file="includes/footer.html" %>
 	<script src="resources/scripts/dashboard.js"></script>

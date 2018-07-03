@@ -1,0 +1,160 @@
+<div class="modal fade bd-example-modal-lg" id="emp-modal" tabindex="-1" role="dialog" aria-labelledby="emp-modalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="update-emp-modalCenterTitle">Employee INFO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- START EMP INFO -->
+        
+        <form id="update-updateEmpForm" method="post" action="UpdateEmployeeAction">	
+        		
+		 <div class="form-row">
+		    <div class="form-group col-md-6">
+		      <label for="update-firstName">First Name</label>
+		      <input type="text" name="firstName" class="form-control" id="update-firstName" placeholder="First Name" required>
+		    </div>
+		    <div class="form-group col-md-6">
+		      <label for="update-lastName">Last Name</label>
+		      <input type="text" name="lastName" class="form-control" id="update-lastName" placeholder="Last Name" required>
+		    </div>
+		  </div>		
+		
+		  <div class="form-row">
+		    <div class="form-group col-md-4">
+		      <label for="update-nic">NIC</label>
+		      <input type="text" name="NIC" class="form-control" id="update-nic" placeholder="NIC" required>
+		    </div>
+		  </div>
+		
+		  <p class="form-check-label" style="margin-bottom: 5px;">Date of birth</p>
+		   <div class="form-row">    
+		    <div class="form-group col-md-2">
+		      <input type="date" name="dob" class="form-control" id="update-DOB" disabled>
+		    </div>
+		  </div>
+		  
+		  <p class="form-check-label" style="margin-bottom: 5px;">Gender</p>
+		  <div class="form-row" style="margin-left: 15px;">
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="gender" id="update-male" value="male">
+			  <label class="form-check-label" for="update-male">Male</label>
+			</div>
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="gender" id="update-female" value="female">
+			  <label class="form-check-label" for="update-update-female">Female</label>
+			</div>
+			
+		  </div>
+		  <br>
+		  
+		  
+		  <div class="form-row">  
+		  	<div class="col-lg-6">
+				  <div class="form-row">
+				    <div class="form-group col-md-8">
+				      <label for="update-empNo">Employee ID</label>
+				      <input type="text" class="form-control disabled" id="update-empId" disabled>
+				    </div>
+				  </div>  
+				  
+				  		  
+				  <div class="form-group col-md-5" style="margin-left: -15px;">
+				      <label for="update-dept">Department</label>
+				      <select id="update-dept" name="dept" class="form-control">
+				      	<!-- don't fix this error! -->
+				      	<s:iterator value="departments">
+				      		<option value=<s:property value="id"/>><s:property value="name"/></option>
+				      	</s:iterator>
+				      </select>
+			    </div>
+				  
+				  <div class="form-row">
+					  <div class="form-group col-md-8">
+					    <label for="update-Salary">Position</label>
+					    <input type="text" name="position" class="form-control" id="update-Position" placeholder="Position" required>
+					  </div>
+				  </div>
+		
+				  <div class="form-row">
+					  <div class="form-group col-md-8">
+					    <label for="update-Salary">Salary</label>
+					    <input type="text" name="salary" class="form-control" id="update-Salary" placeholder="Rs." required>
+					  </div>
+				  </div>
+				  
+				  <div class="form-row">
+					  <div class="form-group col-md-4">
+					    <label for="update-JoinedDate">Joined Date</label>
+					    <input type="date" class="form-control disabled" id="update-JoinedDate" disabled>
+					  </div>
+				  </div>
+		
+				  <div class="form-row">
+					  <div class="form-group col-md-8">
+					    <label for="update-Password">Password</label>
+					    <input type="password" name="password" class="form-control" id="update-Password" placeholder="password">
+					  </div>
+				  </div>
+		
+				  <div class="form-row">
+					  <div class="form-group col-md-8">
+					    <label for="update-Password2">Retype Password</label>
+					    <input type="password" name="password2" class="form-control" id="update-Password2" placeholder="password again">
+					  </div>
+				  </div>
+		  	</div>
+		  	
+		  	<div class="col-lg-6">
+				  <div class="form-row">
+					  <div class="form-group col-md-8">
+					    <label for="update-Address">Address Line 1</label>
+					    <input type="text" name="addressLine1" class="form-control" id="update-Address" placeholder="1234 Main St" required>
+					  </div>
+				  </div>
+				  
+				  <div class="form-row">
+					  <div class="form-group col-md-8">
+					    <label for="update-Address2">Address Line 2</label>
+					    <input type="text" name="addressLine2" class="form-control" id="update-Address2" placeholder="Apartment, studio, or floor">
+					  </div>   
+				  </div>
+				  
+				  <div class="form-row">	  
+				    <div class="form-group col-md-8">
+				      <label for="update-City">City</label>
+				      <input type="text" name="city" class="form-control" id="update-City" required>
+				    </div>
+				  </div>
+				  
+				  <div class="form-row">	  
+				    <div class="form-group col-md-8">
+				      <label for="update-TPNo">Telephone Number</label>
+				      <input type="text" name="telephoneNo" class="form-control" id="update-TPNo" required>
+				    </div>
+				  </div>
+		  	</div>
+		  
+		  </div>
+		  
+		  <button type="submit" id="update-update-emp-btn" class="btn btn-primary">UPDATE</button>
+		</form>
+        
+        
+        
+      	<!-- END EMP INFO -->
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -31,7 +31,7 @@
                     <%@ include file="includes/emp-info.html" %>	
                 </div>
                 <div id="leavesTab" class="content-area">
-                	<h1>Request Leaves</h1>
+                	<%@ include file="includes/req-leaves.html" %>
                 </div>
                 <div id="attendanceTab" class="content-area">
                     <h1>Attendance</h1>

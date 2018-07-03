@@ -22,3 +22,12 @@
 #addTab, #searchTab, #deptTab, #leavesTab, #attendanceTab {
     display: none;
 }
+
+#emp-modal {
+	display: none;
+}
+
+.modal-dialog {
+	max-width: unset;
+    width: 80% !important;
+}

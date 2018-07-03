@@ -8,6 +8,8 @@ for (let i = 0; i < tabs.length; i++) {
     });
 }
 
+let employees;
+
 function processClickOnTab(tab) {
     let div;
     switch (tab.id) {
@@ -60,6 +62,7 @@ function search() {
 }
 
 function fillTable(data) {	
+	employees = data;
 	resetTable();
 	if (data.length > 0) {
 		let tBody=document.getElementsByTagName("tbody").item(0);
@@ -70,8 +73,22 @@ function fillTable(data) {
 	        let dept = data[i]['deptName'];
 
 	        let link = document.createElement('a');
-	        link.href = 'employee/'+id;
-	        link.innerHTML = 'More Info...';
+	        link.href = '#';
+	        link.innerHTML = 'More Info';
+	        link.classList.add('prof-link');
+	        link.id = id;
+	        
+	        let link2 = document.createElement('a');
+	        link2.href = '#';
+	        link2.innerHTML = 'Leaves';
+	        link2.classList.add('leaves-link');
+	        link2.id = id;
+	        
+	        let link3 = document.createElement('a');
+	        link3.href = '#';
+	        link3.innerHTML = 'Tasks';
+	        link3.classList.add('task-link');
+	        link3.id = id;
 
 	        let tr = document.createElement('tr');
 	        let cell1 = document.createElement('td');
@@ -79,18 +96,24 @@ function fillTable(data) {
 	        let cell3 = document.createElement('td');
 	        let cell4 = document.createElement('td');   
 	        let cell5 = document.createElement('td'); 
+	        let cell6 = document.createElement('td'); 
+	        let cell7 = document.createElement('td'); 
 	        
 	        cell1.appendChild(document.createTextNode(id));
 	        cell2.appendChild(document.createTextNode(firstName));
 	        cell3.appendChild(document.createTextNode(lastName));
 	        cell4.appendChild(document.createTextNode(dept));
 	        cell5.appendChild(link);
+	        cell6.appendChild(link2);
+	        cell7.appendChild(link3);
 	        
 	        tr.appendChild(cell1);        
 	        tr.appendChild(cell2);       
 	        tr.appendChild(cell3);   
 	        tr.appendChild(cell4);    
 	        tr.appendChild(cell5);  
+	        tr.appendChild(cell6);  
+	        tr.appendChild(cell7);  
 	        tBody.appendChild(tr);
 	    }
 	}	
@@ -123,4 +146,56 @@ $("#addEmpForm").submit(function(e) {
          });
 
     e.preventDefault();
+});
+
+$(document).on('click', '.prof-link', function(e) {
+	e.preventDefault();
+	let id = this.id;
+	let emp = employees.find(function(e) {
+	    return e.empId === id;
+	});	
+	
+	$('#update-firstName').val(emp.firstName);
+	$('#update-lastName').val(emp.lastName);
+	$('#update-nic').val(emp.NIC);
+	$('#update-DOB').val(emp.dob);
+	$("#update-female").prop("checked", false);
+	$("#update-male").prop("checked", false);
+	
+	if (emp.gender === 'MALE') {
+		$("#update-male").prop("checked", true);
+	} else {
+		$("#update-female").prop("checked", true);
+	}
+	
+	$('#update-empId').val(emp.empId);
+	
+	$("#update-dept option").each(function() {
+        if ($(this).val() == emp.dept) {
+            $(this).attr("selected","selected");    
+        }
+    });
+	
+
+	$('#update-Position').val(emp.position);
+	$('#update-Salary').val(emp.salary);
+	$('#update-JoinedDate').val(emp.joinedDate);
+	$('#update-Address').val(emp.addressLine1);
+	$('#update-Address2').val(emp.addressLine2);
+	$('#update-City').val(emp.city);
+	$('#update-TPNo').val(emp.telephoneNo);
+	
+	$('#emp-modal').modal('show');
+});
+
+$(document).on('click', '.leaves-link', function(e) {
+	e.preventDefault();
+	// fetch info
+	$('#leaves-modal').modal('show');
+});
+
+$(document).on('click', '.task-link', function(e) {
+	e.preventDefault();
+	// fetch info
+	$('#task-modal').modal('show');
 });
