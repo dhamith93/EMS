@@ -16,6 +16,9 @@ function processClickOnTab(tab) {
         case 'leaves-btn':
             div = document.getElementById('leavesTab');
             break;
+        case 'short-leaves-btn':
+            div = document.getElementById('shortLeavesTab');
+            break;
         case 'attendance-btn':
             div = document.getElementById('attendanceTab');            
             break;
@@ -43,6 +46,28 @@ $("#reqLeaveForm").submit(function(e) {
                if (result['status'] === 'OK') {
             	   alert('Leave request successful!');
             	   document.getElementById('reqLeaveForm').reset();
+               } else if (result['status'] === 'OUT_OF_LEAVES') {
+            	   alert('You are out of leaves!');
+               } else { 
+            	   alert('Encountered an error! Please check your data and try again later...');
+               }
+           }
+         });
+
+    e.preventDefault();
+});
+
+$("#reqShortLeaveForm").submit(function(e) {
+
+    $.ajax({
+           type: 'POST',
+           url: 'RequestLeaveAction.action',
+           data: $('#reqShortLeaveForm').serialize(),
+           success: function(data) {
+               let result = JSON.parse(data);
+               if (result['status'] === 'OK') {
+            	   alert('Leave request successful!');
+            	   document.getElementById('reqShortLeaveForm').reset();
                } else if (result['status'] === 'OUT_OF_LEAVES') {
             	   alert('You are out of leaves!');
                } else { 

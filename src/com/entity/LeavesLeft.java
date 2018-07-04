@@ -10,7 +10,7 @@ public class LeavesLeft implements Serializable {
 	private String empId;
 	private double annual;
 	private double casual;
-	private int shortL;
+	private double shortL;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +38,9 @@ public class LeavesLeft implements Serializable {
 
 	@Basic
     @Column(name = "SHORT", nullable = true)
-	public int getShortL() { return shortL; }
+	public double getShortL() { return shortL; }
 
-	public void setShortL(int shortL) { this.shortL = shortL; }
+	public void setShortL(double shortL) { this.shortL = shortL; }
 	
 	
 }

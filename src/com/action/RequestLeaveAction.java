@@ -43,22 +43,26 @@ public class RequestLeaveAction extends ActionSupport {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar startCal;  
 	    Calendar endCal; 
+	    
+	    System.out.println(type);
 		
 		try {
-			from = format.parse(dateFrom);
-			to = format.parse(dateTo);
-			startCal = Calendar.getInstance();  
-		    startCal.setTime(from); 
-		    endCal = Calendar.getInstance();
-		    endCal.setTime(to); 
-		    
-		    do {
-		          startCal.add(Calendar.DAY_OF_MONTH, 1);
-		          if (startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
-		          && startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
-		              ++daysReq;
-		          }
-		    } while (startCal.getTimeInMillis() < endCal.getTimeInMillis());
+			if (!type.equals("short")) {
+				from = format.parse(dateFrom);
+				to = format.parse(dateTo);
+				startCal = Calendar.getInstance();  
+				startCal.setTime(from); 
+				endCal = Calendar.getInstance();
+				endCal.setTime(to); 
+				
+				do {
+					startCal.add(Calendar.DAY_OF_MONTH, 1);
+					if (startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
+							&& startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+						++daysReq;
+					}
+				} while (startCal.getTimeInMillis() < endCal.getTimeInMillis());				
+			}
 		    
 		} catch (ParseException e) {
 			System.out.println("parsing error...");
@@ -80,7 +84,11 @@ public class RequestLeaveAction extends ActionSupport {
 			}
 		}
 		if (type.equals("short")) {
-			
+			leave.setDateTo(dateFrom);
+			if (daysReq > leavesLeft.getShortL()) {
+				status = "{\"status\": \"OUT_OF_LEAVES\"}";
+				return SUCCESS;
+			}
 		}
 		
 		try {

@@ -142,11 +142,11 @@ public class EmployeeManager {
 				break;
 			case "casual":
 				days = leavesLeft.getCasual() - daysReq;
-				hql = "UPDATE LeavesLeft l SET l.annual = :days WHERE l.empId = :id";
+				hql = "UPDATE LeavesLeft l SET l.casual = :days WHERE l.empId = :id";
 				break;
 			case "short":
 				days = leavesLeft.getShortL() - daysReq;
-				hql = "UPDATE LeavesLeft l SET l.annual = :days WHERE l.empId = :id";
+				hql = "UPDATE LeavesLeft l SET l.shortL = :days WHERE l.empId = :id";
 				break;
 		}
 		Query query = session.createQuery(hql);

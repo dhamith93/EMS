@@ -19,7 +19,7 @@
     display: block;
 }
 
-#addTab, #searchTab, #deptTab, #leavesTab, #attendanceTab {
+#addTab, #searchTab, #deptTab, #leavesTab, #shortLeavesTab, #attendanceTab {
     display: none;
 }
 
