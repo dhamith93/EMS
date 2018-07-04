@@ -119,10 +119,21 @@ public class EmployeeManager {
         session.save(leave);
         transaction.commit();
     }
+    
+    public static List<Leave> getLeaves(Employee emp) {
+        init();
+        String hql = "FROM Leave l WHERE l.empId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getEmpId());
+
+        List<Leave> leaves = query.getResultList();
+        
+        return leaves;
+    }
 
     public static LeavesLeft getLeavesLeft(Employee emp) {
         init();
-        String hql = "FROM LeavesLeft l WHERE l.empId LIKE :id";
+        String hql = "FROM LeavesLeft l WHERE l.empId = :id";
         Query query = session.createQuery(hql);
         query.setParameter("id", emp.getEmpId());
 

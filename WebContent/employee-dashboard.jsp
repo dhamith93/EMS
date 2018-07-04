@@ -5,12 +5,8 @@
 <link rel="stylesheet" href="resources/styles/dashboard.css">
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
-  	  <a class="navbar-brand" href="#">
-		    <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-		    Bootstrap
-	  </a>
-	</nav>
+	
+	<%@ include file="includes/navbar.html" %>
 	
 	<ul class="nav justify-content-center nav-tabs">
 	  <li class="nav-item">

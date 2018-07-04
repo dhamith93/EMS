@@ -11,6 +11,8 @@ public class LoginAction extends ActionSupport {
     private String password;
     private String loginOption;
     private Employee employee;
+    private List<Leave> leaves;
+    private LeavesLeft leavesLeft;
     private List<Department> departments;
 
     public String execute() {
@@ -38,6 +40,9 @@ public class LoginAction extends ActionSupport {
                     if (deptManId == employee.getId())
                         return "MAN";
                 case "emp":
+                    setLeaves(EmployeeManager.getLeaves(employee));
+                    leavesLeft = EmployeeManager.getLeavesLeft(employee);
+                    System.out.println(leavesLeft.getAnnual());
                     return "EMP";
                 default:
                     return ERROR;
@@ -86,6 +91,22 @@ public class LoginAction extends ActionSupport {
 
     public void setDepartments(List<Department> departments) {
         this.departments = departments;
+    }
+
+    public List<Leave> getLeaves() {
+        return leaves;
+    }
+
+    public void setLeaves(List<Leave> leaves) {
+        this.leaves = leaves;
+    }
+    
+    public LeavesLeft getLeavesLeft() {
+        return leavesLeft;
+    }
+
+    public void setLeavesLeft(LeavesLeft leavesLeft) {
+        this.leavesLeft = leavesLeft;
     }
 
 }
