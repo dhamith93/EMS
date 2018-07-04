@@ -26,7 +26,16 @@ public class EmployeeManager {
 	
 	public static void save(Employee e) {
 		init();
-		session.save(e);
+		session.save(e);		
+		transaction.commit();
+		
+		LeavesLeft l = new LeavesLeft();
+		l.setEmpId(e.getEmpId());
+		l.setAnnual(10.00);
+		l.setCasual(7.00);
+		l.setShortL(2);
+		
+		session.save(l);		
 		transaction.commit();
 	}
 	
@@ -108,6 +117,42 @@ public class EmployeeManager {
 	public static void requestLeave(Leave leave) {
 		init();
 		session.save(leave);
+		transaction.commit();
+	}
+	
+	public static LeavesLeft getLeavesLeft(Employee emp) {
+		init();
+		String hql = "FROM LeavesLeft l WHERE l.empId LIKE :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", emp.getEmpId());
+		
+		LeavesLeft leavesLeft = (LeavesLeft) query.getSingleResult();
+		
+		return leavesLeft;
+	}
+
+	public static void reduceLeaves(Employee emp, Leave leave, LeavesLeft leavesLeft, double daysReq) {
+		init();
+		String hql = "";
+		double days = 0.00;
+		switch(leave.getType()) {
+			case "annual":
+				days = leavesLeft.getAnnual() - daysReq;
+				hql = "UPDATE LeavesLeft l SET l.annual = :days WHERE l.empId = :id";
+				break;
+			case "casual":
+				days = leavesLeft.getCasual() - daysReq;
+				hql = "UPDATE LeavesLeft l SET l.annual = :days WHERE l.empId = :id";
+				break;
+			case "short":
+				days = leavesLeft.getShortL() - daysReq;
+				hql = "UPDATE LeavesLeft l SET l.annual = :days WHERE l.empId = :id";
+				break;
+		}
+		Query query = session.createQuery(hql);
+		query.setParameter("id", emp.getEmpId());
+		query.setParameter("days", days);
+		query.executeUpdate();
 		transaction.commit();
 	}
 }

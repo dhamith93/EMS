@@ -7,7 +7,7 @@ USE `EMS`;
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 03, 2018 at 05:49 PM
+-- Generation Time: Jul 04, 2018 at 03:02 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -104,7 +104,28 @@ CREATE TABLE `LEAVES` (
 --
 
 INSERT INTO `LEAVES` (`ID`, `EMP_ID`, `MANAGER`, `REASON`, `TYPE`, `START_ON_DATE`, `END_ON_DATE`, `START_ON_TIME`, `END_ON_TIME`, `IS_APPROVED`, `IS_CONFIRMED`) VALUES
-(2, 'E555', 5, '', 'casual', '2018-07-04', '2018-07-05', '01:00', '01:00', 0, 0);
+(1, 'E555', 5, 'test', 'annual', '2018-07-05', '2018-07-12', '01:00', '01:00', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LEAVES_LEFT`
+--
+
+CREATE TABLE `LEAVES_LEFT` (
+  `ID` int(11) NOT NULL,
+  `EMP_ID` varchar(10) NOT NULL,
+  `ANNUAL` decimal(10,0) NOT NULL,
+  `CASUAL` decimal(10,0) NOT NULL,
+  `SHORT` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `LEAVES_LEFT`
+--
+
+INSERT INTO `LEAVES_LEFT` (`ID`, `EMP_ID`, `ANNUAL`, `CASUAL`, `SHORT`) VALUES
+(1, 'E555', '4', '7', 2);
 
 -- --------------------------------------------------------
 
@@ -199,6 +220,13 @@ ALTER TABLE `LEAVES`
   ADD KEY `leaves_ibfk_2` (`MANAGER`);
 
 --
+-- Indexes for table `LEAVES_LEFT`
+--
+ALTER TABLE `LEAVES_LEFT`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `leaves_fk_emp_id` (`EMP_ID`);
+
+--
 -- Indexes for table `LOGIN`
 --
 ALTER TABLE `LOGIN`
@@ -248,7 +276,13 @@ ALTER TABLE `EMPLOYEE`
 -- AUTO_INCREMENT for table `LEAVES`
 --
 ALTER TABLE `LEAVES`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `LEAVES_LEFT`
+--
+ALTER TABLE `LEAVES_LEFT`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `LOGIN`
@@ -297,6 +331,12 @@ ALTER TABLE `EMPLOYEE`
 ALTER TABLE `LEAVES`
   ADD CONSTRAINT `leaves_ibfk_1` FOREIGN KEY (`EMP_ID`) REFERENCES `EMPLOYEE` (`EMP_ID`),
   ADD CONSTRAINT `leaves_ibfk_2` FOREIGN KEY (`MANAGER`) REFERENCES `EMPLOYEE` (`ID`);
+
+--
+-- Constraints for table `LEAVES_LEFT`
+--
+ALTER TABLE `LEAVES_LEFT`
+  ADD CONSTRAINT `leaves_fk_emp_id` FOREIGN KEY (`EMP_ID`) REFERENCES `EMPLOYEE` (`EMP_ID`);
 
 --
 -- Constraints for table `LOGIN`

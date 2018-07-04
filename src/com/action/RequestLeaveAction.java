@@ -1,5 +1,9 @@
 package com.action;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import com.database.*;
 import com.entity.*;
 import com.opensymphony.xwork2.ActionSupport;
@@ -30,10 +34,61 @@ public class RequestLeaveAction extends ActionSupport {
 		leave.setIsApproved(0);
 		leave.setIsConfirmed(0);
 		
+		Employee emp = EmployeeManager.get(empId);
+		LeavesLeft leavesLeft = EmployeeManager.getLeavesLeft(emp);
+		
+		double daysReq = 1.00;
+		Date from;
+		Date to;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar startCal;  
+	    Calendar endCal; 
+		
+		try {
+			from = format.parse(dateFrom);
+			to = format.parse(dateTo);
+			startCal = Calendar.getInstance();  
+		    startCal.setTime(from); 
+		    endCal = Calendar.getInstance();
+		    endCal.setTime(to); 
+		    
+		    do {
+		          startCal.add(Calendar.DAY_OF_MONTH, 1);
+		          if (startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
+		          && startCal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+		              ++daysReq;
+		          }
+		    } while (startCal.getTimeInMillis() < endCal.getTimeInMillis());
+		    
+		} catch (ParseException e) {
+			System.out.println("parsing error...");
+			System.out.println(e.getMessage());
+			status = "{\"status\": \"CANT_PARSE_DATE\"}";
+			return SUCCESS;
+		}	
+		
+		if (type.equals("annual")) {
+			if (daysReq > leavesLeft.getAnnual()) {
+				status = "{\"status\": \"OUT_OF_LEAVES\"}";
+				return SUCCESS;
+			}
+		}
+		if (type.equals("casual")) {
+			if (daysReq > leavesLeft.getCasual()) {
+				status = "{\"status\": \"OUT_OF_LEAVES\"}";
+				return SUCCESS;
+			}
+		}
+		if (type.equals("short")) {
+			
+		}
+		
 		try {
 			EmployeeManager.requestLeave(leave);
+			EmployeeManager.reduceLeaves(emp, leave, leavesLeft, daysReq);
 			status = "{\"status\": \"OK\"}";
 		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
 			status = "{\"status\": \"ERROR\"}";
 		}
 		

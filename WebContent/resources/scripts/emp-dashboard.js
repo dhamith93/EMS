@@ -43,6 +43,8 @@ $("#reqLeaveForm").submit(function(e) {
                if (result['status'] === 'OK') {
             	   alert('Leave request successful!');
             	   document.getElementById('reqLeaveForm').reset();
+               } else if (result['status'] === 'OUT_OF_LEAVES') {
+            	   alert('You are out of leaves!');
                } else { 
             	   alert('Encountered an error! Please check your data and try again later...');
                }
