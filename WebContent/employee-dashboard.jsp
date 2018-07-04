@@ -19,6 +19,9 @@
 	    <a id="short-leaves-btn" class="tab nav-link" href="#">Short Leaves</a>
 	  </li>
 	  <li class="nav-item">
+        <a id="leave-details-btn" class="tab nav-link" href="#">Leave details</a>
+      </li>
+	  <li class="nav-item">
 	    <a id="attendance-btn" class="tab nav-link" href="#">Attendance</a>
 	  </li>
 	</ul>
@@ -34,6 +37,9 @@
                 </div>
                 <div id="shortLeavesTab" class="content-area">
                 	<%@ include file="includes/req-short-leaves.html" %>
+                </div>
+                <div id="leaveDetailsTab" class="content-area">
+                    <%@ include file="includes/leaves-list.html" %>
                 </div>
                 <div id="attendanceTab" class="content-area">
                     <h1>Attendance</h1>

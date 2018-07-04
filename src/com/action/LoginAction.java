@@ -40,9 +40,8 @@ public class LoginAction extends ActionSupport {
                     if (deptManId == employee.getId())
                         return "MAN";
                 case "emp":
-                    setLeaves(EmployeeManager.getLeaves(employee));
+                    leaves = EmployeeManager.getLeaves(employee);
                     leavesLeft = EmployeeManager.getLeavesLeft(employee);
-                    System.out.println(leavesLeft.getAnnual());
                     return "EMP";
                 default:
                     return ERROR;

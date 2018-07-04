@@ -19,6 +19,9 @@ function processClickOnTab(tab) {
         case 'short-leaves-btn':
             div = document.getElementById('shortLeavesTab');
             break;
+        case 'leave-details-btn':
+            div = document.getElementById('leaveDetailsTab');            
+            break;
         case 'attendance-btn':
             div = document.getElementById('attendanceTab');            
             break;
