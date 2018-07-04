@@ -15,7 +15,7 @@ HDSE EAD final assignment
     - [ ] Update
     - [ ] Add Managers
 - [ ] Leave Management
-    - [ ] Request
+    - [x] Request
     - [ ] Approve/Disapprove
 - [ ] Department/Employee tasks
     - [ ] Add
