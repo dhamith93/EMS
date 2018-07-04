@@ -6,129 +6,195 @@ import com.entity.*;
 import com.database.*;
 
 public class AddEmployeeAction extends ActionSupport {
-	private String firstName;
-	private String lastName;
-	private String dob;
-	private String gender;
-	private String NIC;
-	
-	private String empId;
-	private Long dept;
-	private String position;
-	private double salary;
-	private String joinedDate;
-	private String password;
-	private String password2;
-	
-	private String addressLine1;
-	private String addressLine2;
-	private String city;
-	private String telephoneNo;
-	
-	private String status;
-	
-	public String execute() {
-		Employee e = new Employee();
-		e.setFirstName(firstName);
-		e.setLastName(lastName);
-		e.setAddressLine1(addressLine1);
-		e.setAddressLine2(addressLine2);
-		e.setCity(city);
-		e.setTelephoneNo(telephoneNo);
-		e.setDept(dept);
-		e.setDob(dob);
-		e.setEmpId(empId);
-		e.setGender(gender);
-		e.setJoinedDate(joinedDate);
-		e.setManagedBy(DepartmentManager.getManager(dept));
-		e.setNIC(NIC);
-		e.setPosition(position);
-		e.setSalary(salary);
-		
+    private String firstName;
+    private String lastName;
+    private String dob;
+    private String gender;
+    private String NIC;
 
-		if (password.equals(password2)) {
-			try {
-				EmployeeManager.save(e);
-				password = BCrypt.hashpw(password, BCrypt.gensalt());
-				EmployeeManager.addLoginInfo(e, password);
-				status = "{\"status\": \"OK\"}";
-			} catch (Exception ex) {
-				status = "{\"status\": \"ERROR\"}";
-			}
-		} else {
-			status = "{\"status\": \"passwords-no-match\"}";
-		}		
-		
-		return SUCCESS;
-	}
+    private String empId;
+    private Long dept;
+    private String position;
+    private double salary;
+    private String joinedDate;
+    private String password;
+    private String password2;
 
-	public String getFirstName() { return firstName; }
+    private String addressLine1;
+    private String addressLine2;
+    private String city;
+    private String telephoneNo;
 
-	public void setFirstName(String firstName) { this.firstName = firstName; }
+    private String status;
 
-	public String getLastName() { return lastName; }
+    public String execute() {
+        Employee e = new Employee();
+        e.setFirstName(firstName);
+        e.setLastName(lastName);
+        e.setAddressLine1(addressLine1);
+        e.setAddressLine2(addressLine2);
+        e.setCity(city);
+        e.setTelephoneNo(telephoneNo);
+        e.setDept(dept);
+        e.setDob(dob);
+        e.setEmpId(empId);
+        e.setGender(gender);
+        e.setJoinedDate(joinedDate);
+        e.setManagedBy(DepartmentManager.getManager(dept));
+        e.setNIC(NIC);
+        e.setPosition(position);
+        e.setSalary(salary);
 
-	public void setLastName(String lastName) { this.lastName = lastName; }
+        if (password.equals(password2)) {
+            try {
+                EmployeeManager.save(e);
+                password = BCrypt.hashpw(password, BCrypt.gensalt());
+                EmployeeManager.addLoginInfo(e, password);
+                status = "{\"status\": \"OK\"}";
+            } catch (Exception ex) {
+                status = "{\"status\": \"ERROR\"}";
+            }
+        } else {
+            status = "{\"status\": \"passwords-no-match\"}";
+        }
 
-	public String getDob() { return dob; }
+        return SUCCESS;
+    }
 
-	public void setDob(String dob) { this.dob = dob; }
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getGender() { return gender; }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setGender(String gender) { this.gender = gender; }
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getNIC() { return NIC; }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setNIC(String nIC) { NIC = nIC; }
+    public String getDob() {
+        return dob;
+    }
 
-	public String getEmpId() { return empId; }
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
-	public void setEmpId(String empId) { this.empId = empId; }
+    public String getGender() {
+        return gender;
+    }
 
-	public Long getDept() { return dept; }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public void setDept(Long dept) { this.dept = dept; }
+    public String getNIC() {
+        return NIC;
+    }
 
-	public String getPosition() { return position; }
+    public void setNIC(String nIC) {
+        NIC = nIC;
+    }
 
-	public void setPosition(String position) { this.position = position; }
+    public String getEmpId() {
+        return empId;
+    }
 
-	public double getSalary() { return salary; }
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
 
-	public void setSalary(double salary) { this.salary = salary; }
+    public Long getDept() {
+        return dept;
+    }
 
-	public String getJoinedDate() { return joinedDate; }
+    public void setDept(Long dept) {
+        this.dept = dept;
+    }
 
-	public void setJoinedDate(String joinedDate) { this.joinedDate = joinedDate; }
+    public String getPosition() {
+        return position;
+    }
 
-	public String getPassword() { return password; }
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
-	public void setPassword(String password) { this.password = password; }
+    public double getSalary() {
+        return salary;
+    }
 
-	public String getPassword2() { return password2; }
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
 
-	public void setPassword2(String password2) { this.password2 = password2; }
+    public String getJoinedDate() {
+        return joinedDate;
+    }
 
-	public String getAddressLine1() { return addressLine1; }
+    public void setJoinedDate(String joinedDate) {
+        this.joinedDate = joinedDate;
+    }
 
-	public void setAddressLine1(String addressLine1) { this.addressLine1 = addressLine1; }
+    public String getPassword() {
+        return password;
+    }
 
-	public String getAddressLine2() { return addressLine2; }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setAddressLine2(String addressLine2) { this.addressLine2 = addressLine2; }
+    public String getPassword2() {
+        return password2;
+    }
 
-	public String getCity() { return city; }
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
 
-	public void setCity(String city) { this.city = city; }
+    public String getAddressLine1() {
+        return addressLine1;
+    }
 
-	public String getTelephoneNo() { return telephoneNo; }
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
 
-	public void setTelephoneNo(String telephoneNo) { this.telephoneNo = telephoneNo; }
-	
-	public String getStatus() { return status; }
+    public String getAddressLine2() {
+        return addressLine2;
+    }
 
-	public void setStatus(String status) { this.status = status; }
-	
-	
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getTelephoneNo() {
+        return telephoneNo;
+    }
+
+    public void setTelephoneNo(String telephoneNo) {
+        this.telephoneNo = telephoneNo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

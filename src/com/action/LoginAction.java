@@ -1,6 +1,5 @@
 package com.action;
 
-
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 import com.entity.*;
@@ -8,67 +7,85 @@ import com.database.*;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
-	private String userName;
-	private String password;
-	private String loginOption;
-	private Employee employee;
-	private List<Department> departments;
-	
-	
-	public String execute() {
-		
-		Login login;
-		
-		try {
-			employee = EmployeeManager.get(userName);
-			login = EmployeeManager.getLoginInfo(employee);			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			return ERROR;
-		}
-		
-		
-		if (login != null) {
-			if (BCrypt.checkpw(password, login.getPassword())) {
-				switch (loginOption) {
-				case "hr":					
-					if (employee.getDeptName().equals("HR")) {
-						departments = DepartmentManager.getAll();
-						return "HR";						
-					}		
-				case "man":
-					Long deptManId = DepartmentManager.getManager(employee.getDept());
-					if (deptManId == employee.getId())
-						return "MAN";
-				case "emp":
-					return "EMP";
-				default:
-					return ERROR;
-				}				
-			}
-		}		
-		
-		return ERROR;
-	}
+    private String userName;
+    private String password;
+    private String loginOption;
+    private Employee employee;
+    private List<Department> departments;
 
-	public String getUserName() { return userName; }
+    public String execute() {
 
-	public void setUserName(String userName) { this.userName = userName; }
+        Login login;
 
-	public String getPassword() { return password; }
+        try {
+            employee = EmployeeManager.get(userName);
+            login = EmployeeManager.getLoginInfo(employee);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return ERROR;
+        }
 
-	public void setPassword(String password) { this.password = password; }
-	
-	public String getLoginOption() { return loginOption; }
+        if (login != null) {
+            if (BCrypt.checkpw(password, login.getPassword())) {
+                switch (loginOption) {
+                case "hr":
+                    if (employee.getDeptName().equals("HR")) {
+                        departments = DepartmentManager.getAll();
+                        return "HR";
+                    }
+                case "man":
+                    Long deptManId = DepartmentManager.getManager(employee.getDept());
+                    if (deptManId == employee.getId())
+                        return "MAN";
+                case "emp":
+                    return "EMP";
+                default:
+                    return ERROR;
+                }
+            }
+        }
 
-	public void setLoginOption(String loginOption) { this.loginOption = loginOption; }
+        return ERROR;
+    }
 
-	public Employee getEmployee() { return employee; }
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setEmployee(Employee employee) { this.employee = employee; }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public List<Department> getDepartments() { return departments; }
+    public String getPassword() {
+        return password;
+    }
 
-	public void setDepartments(List<Department> departments) { this.departments = departments; }
-	
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getLoginOption() {
+        return loginOption;
+    }
+
+    public void setLoginOption(String loginOption) {
+        this.loginOption = loginOption;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
+
 }

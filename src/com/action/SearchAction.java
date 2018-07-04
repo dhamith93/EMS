@@ -7,34 +7,34 @@ import com.entity.*;
 import com.database.*;
 
 public class SearchAction extends ActionSupport {
-	private String searchValue;
-	private String searchOption;
-	private String jsonString;
-	
-	public String execute() {
-		Gson gson = new Gson();
-		List<Employee> result = EmployeeManager.search(searchValue, searchOption);		
-		jsonString = gson.toJson(result);
-		return SUCCESS;
-	}
+    private String searchValue;
+    private String searchOption;
+    private String jsonString;
 
-	public String getSearchValue() {
-		return searchValue;
-	}
+    public String execute() {
+        Gson gson = new Gson();
+        List<Employee> result = EmployeeManager.search(searchValue, searchOption);
+        jsonString = gson.toJson(result);
+        return SUCCESS;
+    }
 
-	public void setSearchValue(String searchValue) {
-		this.searchValue = searchValue;
-	}
+    public String getSearchValue() {
+        return searchValue;
+    }
 
-	public String getSearchOption() {
-		return searchOption;
-	}
+    public void setSearchValue(String searchValue) {
+        this.searchValue = searchValue;
+    }
 
-	public void setSearchOption(String searchOption) {
-		this.searchOption = searchOption;
-	}
-	
-	public String getJsonString() {
+    public String getSearchOption() {
+        return searchOption;
+    }
+
+    public void setSearchOption(String searchOption) {
+        this.searchOption = searchOption;
+    }
+
+    public String getJsonString() {
         return jsonString;
     }
 
