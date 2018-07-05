@@ -63,7 +63,7 @@ function search() {
 
 function fillTable(data) {	
 	employees = data;
-	resetTable();
+	resetTable('result-table');
 	if (data.length > 0) {
 		let tBody=document.getElementsByTagName("tbody").item(0);
 	    for (let i = 0; i < data.length; i++) {
@@ -119,8 +119,59 @@ function fillTable(data) {
 	}	
 }
 
-function resetTable() {
-	let elements = document.getElementById('result-table').getElementsByTagName('tbody');
+function fillLeavesTable(data) {	
+	employees = data;
+	resetTable('leaves-table');
+	if (data.length > 0) {
+		let tBody=document.getElementsByTagName("tbody").item(1);
+	    for (let i = 0; i < data.length; i++) {
+	        let id = data[i]['empId'];
+	        let type = data[i]['type'];
+	        let dateFrom = data[i]['dateFrom'];
+	        let dateTo = data[i]['dateTo'];
+	        let timeFrom = data[i]['timeFrom'];
+	        let timeTo = data[i]['timeTo'];
+	        let reason = data[i]['reason'];
+	        let approved = (data[i]['isApproved'] === 0) ? 'NO' : 'YES';
+	        let confirmed = (data[i]['isConfirmed'] === 0) ? 'NO' : 'YES';
+
+	        let tr = document.createElement('tr');
+	        let cell1 = document.createElement('td');
+	        let cell2 = document.createElement('td');
+	        let cell3 = document.createElement('td');
+	        let cell4 = document.createElement('td');   
+	        let cell5 = document.createElement('td'); 
+	        let cell6 = document.createElement('td'); 
+	        let cell7 = document.createElement('td'); 
+	        let cell8 = document.createElement('td'); 
+	        let cell9 = document.createElement('td');
+	        
+	        cell1.appendChild(document.createTextNode(id));
+	        cell2.appendChild(document.createTextNode(type));
+	        cell3.appendChild(document.createTextNode(dateFrom));
+	        cell4.appendChild(document.createTextNode(dateTo));
+	        cell5.appendChild(document.createTextNode(timeFrom));
+	        cell6.appendChild(document.createTextNode(timeTo));
+	        cell7.appendChild(document.createTextNode(reason));
+	        cell8.appendChild(document.createTextNode(approved));
+	        cell9.appendChild(document.createTextNode(confirmed));
+	        
+	        tr.appendChild(cell1);        
+	        tr.appendChild(cell2);       
+	        tr.appendChild(cell3);   
+	        tr.appendChild(cell4);    
+	        tr.appendChild(cell5);  
+	        tr.appendChild(cell6);  
+	        tr.appendChild(cell7);  
+	        tr.appendChild(cell8);  
+	        tr.appendChild(cell9); 
+	        tBody.appendChild(tr);
+	    }
+	}	
+}
+
+function resetTable(id) {
+	let elements = document.getElementById(id).getElementsByTagName('tbody');
     let length = elements[0].childNodes.length - 1;
     for (let i = length; i > 0; i--)
         elements[0].removeChild(elements[0].childNodes[i]);    
@@ -190,7 +241,16 @@ $(document).on('click', '.prof-link', function(e) {
 
 $(document).on('click', '.leaves-link', function(e) {
 	e.preventDefault();
-	// fetch info
+	$.ajax({
+       type: 'GET',
+       url:'GetLeavesAction.action?empId='+ this.id,
+       dataType: 'json',
+       error: function() {
+    	   console.log('error getting a response from SearchAction...');
+       },
+       success: function(data){    	   
+           fillLeavesTable(JSON.parse(data.replace('//', '')));
+    }});
 	$('#leaves-modal').modal('show');
 });
 
