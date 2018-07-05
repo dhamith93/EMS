@@ -120,7 +120,6 @@ function fillTable(data) {
 }
 
 function fillLeavesTable(data) {	
-	employees = data;
 	resetTable('leaves-table');
 	if (data.length > 0) {
 		let tBody=document.getElementsByTagName("tbody").item(1);

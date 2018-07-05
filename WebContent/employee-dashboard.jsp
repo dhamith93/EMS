@@ -22,7 +22,7 @@
         <a id="leave-details-btn" class="tab nav-link" href="#">Leave details</a>
       </li>
 	  <li class="nav-item">
-	    <a id="attendance-btn" class="tab nav-link" href="#">Attendance</a>
+	    <a id="tasks-btn" class="tab nav-link" href="#">Tasks</a>
 	  </li>
 	</ul>
 	
@@ -41,8 +41,8 @@
                 <div id="leaveDetailsTab" class="content-area">
                     <%@ include file="includes/leaves-list.html" %>
                 </div>
-                <div id="attendanceTab" class="content-area">
-                    <h1>Attendance</h1>
+                <div id="tasksTab" class="content-area">
+                    <h1>Tasks</h1>
                 </div>
             </div>
         </div>

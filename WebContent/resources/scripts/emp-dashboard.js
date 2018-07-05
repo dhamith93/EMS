@@ -22,8 +22,8 @@ function processClickOnTab(tab) {
         case 'leave-details-btn':
             div = document.getElementById('leaveDetailsTab');            
             break;
-        case 'attendance-btn':
-            div = document.getElementById('attendanceTab');            
+        case 'tasks-btn':
+            div = document.getElementById('tasksTab');            
             break;
     }
     navigationHandler(tab, div);
