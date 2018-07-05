@@ -44,8 +44,6 @@ public class RequestLeaveAction extends ActionSupport {
         Calendar startCal;
         Calendar endCal;
 
-        System.out.println(type);
-
         try {
             if (!type.equals("short")) {
                 from = format.parse(dateFrom);
@@ -93,7 +91,6 @@ public class RequestLeaveAction extends ActionSupport {
 
         try {
             EmployeeManager.requestLeave(leave);
-            EmployeeManager.reduceLeaves(emp, leave, leavesLeft, daysReq);
             status = "{\"status\": \"OK\"}";
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
