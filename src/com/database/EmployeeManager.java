@@ -6,24 +6,7 @@ import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import com.entity.*;
 
-public class EmployeeManager {
-    private static Configuration config;
-    private static SessionFactory sessionFactroy;
-    private static Session session;
-    private static Transaction transaction;
-
-    private static void init() {
-        config = new Configuration().configure();
-        sessionFactroy = config.buildSessionFactory();
-        session = sessionFactroy.getCurrentSession();
-        transaction = session.beginTransaction();
-    }
-
-    private static void end() {
-        session.close();
-        sessionFactroy.close();
-    }
-
+public class EmployeeManager extends Manager {
     public static void save(Employee e) {
         init();
         session.save(e);
