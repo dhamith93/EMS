@@ -131,6 +131,15 @@ public class EmployeeManager {
         return leaves;
     }
 
+    public static Leave getLeave(String leaveId) {
+        init();
+        String hql = "FROM Leave l WHERE l.id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", Long.parseLong(leaveId));
+        Leave leave = (Leave) query.getSingleResult();
+        return leave;
+    }
+
     public static LeavesLeft getLeavesLeft(Employee emp) {
         init();
         String hql = "FROM LeavesLeft l WHERE l.empId = :id";
@@ -166,4 +175,14 @@ public class EmployeeManager {
         query.executeUpdate();
         transaction.commit();
     }
+
+    public static void confirmLeave(Leave leave) {
+        init();
+        String hql = "UPDATE Leave l SET l.isConfirmed = 1 WHERE l.id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", leave.getId());
+        query.executeUpdate();
+        transaction.commit();
+    }
+
 }

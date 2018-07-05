@@ -81,3 +81,27 @@ $("#reqShortLeaveForm").submit(function(e) {
 
     e.preventDefault();
 });
+
+$('.confirm-link').click(function(e) {	
+	let element = this;
+	$.ajax({
+        type: 'POST',
+        url: 'ConfirmLeaveAction.action',
+        data: { 
+            'leaveId': this.id
+        },
+        success: function(data) {
+            let result = JSON.parse(data);
+            if (result['status'] === 'OK') {
+         	   alert('Leave confirmed!');
+         	   element.replaceWith('YES');
+            } else if (result['status'] === 'NOT_APPROVED') {
+         	   alert('Your leave is not yet approved.');
+            } else { 
+         	   alert('Encountered an error! Please check your data and try again later...');
+            }
+        }
+      });
+
+	e.preventDefault();
+});
