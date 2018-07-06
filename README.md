@@ -9,7 +9,7 @@ HDSE EAD final assignment
     - [ ] Update
     - [ ] Delete
     - [ ] Add performance info
-    - [ ] Search
+    - [x] Search
 - [ ] Department
     - [ ] Add
     - [ ] Update
@@ -19,7 +19,7 @@ HDSE EAD final assignment
     - [ ] Approve/Disapprove
 - [ ] Department/Employee tasks
     - [ ] Add
-    - [ ] Mark progress
+    - [x] Mark progress
 - [ ] Validation
     
 ### Roles
