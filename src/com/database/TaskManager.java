@@ -48,12 +48,22 @@ public class TaskManager extends Manager {
     
     public static void setProgress(String taskId, double prog) {
         init();
-        String hql = "UPDATE TaskAssignment t SET t.progress = :prog WHERE t.id = :id";
+        String hql = "UPDATE TaskAssignment t SET t.progress = :prog WHERE t.taskId = :id";
         Query query = session.createQuery(hql);
         query.setParameter("id", Long.parseLong(taskId));
         query.setParameter("prog", prog);
         query.executeUpdate();
         transaction.commit();
+    }
+    
+    public static List<TaskAssignment> getAssignments(Employee emp) {
+        init();
+        String hql = "FROM TaskAssignment t WHERE t.empId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getEmpId());
+
+        List<TaskAssignment> taskAssignments = query.getResultList();
+        return taskAssignments;
     }
     
     public static void assess(TaskAssessment ta) {

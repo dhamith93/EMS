@@ -31,3 +31,8 @@
 	max-width: unset;
     width: 80% !important;
 }
+
+.progInput {
+	width: 60px;
+	text-align: right;
+}

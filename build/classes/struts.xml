@@ -48,6 +48,13 @@
                 <param name="excludeNullProperties">true</param>
                 <param name="root">jsonString</param>
             </result>
-        </action>   
+        </action> 
+        <action name="SetTaskProgressAction" class="com.action.SetTaskProgressAction">
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">jsonString</param>
+            </result>
+        </action>    
 	</package>
 </struts>

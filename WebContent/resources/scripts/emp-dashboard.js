@@ -105,3 +105,35 @@ $('.confirm-link').click(function(e) {
 
 	e.preventDefault();
 });
+
+$('.progress-link').click(function(e) {	
+	let element = this;
+	let inputs = document.getElementsByClassName('progInput');
+	let progress;
+	for (let i = 0; i < inputs.length; i++) {
+		if (inputs[i].id === this.id)
+			progress = inputs[i].value;
+	}
+	if (parseFloat(progress) > 100 || parseFloat(progress) < 0) {
+		alert('Progress must be 0 --> 100!');
+		return;
+	}
+	$.ajax({
+        type: 'POST',
+        url: 'SetTaskProgressAction.action',
+        data: { 
+            'taskId': this.id,
+            'progress': progress
+        },
+        success: function(data) {
+            let result = JSON.parse(data);
+            if (result['status'] === 'OK') {
+         	   alert('Progress is set!');
+            } else { 
+         	   alert('Encountered an error! Please check your data and try again later...');
+            }
+        }
+      });
+
+	e.preventDefault();
+});

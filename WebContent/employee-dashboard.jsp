@@ -42,7 +42,7 @@
                     <%@ include file="includes/leaves-list.html" %>
                 </div>
                 <div id="tasksTab" class="content-area">
-                    <h1>Tasks</h1>
+                    <%@ include file="includes/task-list.html" %>
                 </div>
             </div>
         </div>

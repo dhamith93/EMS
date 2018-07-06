@@ -14,6 +14,8 @@ public class LoginAction extends ActionSupport {
     private List<Leave> leaves;
     private LeavesLeft leavesLeft;
     private List<Department> departments;
+    private List<Task> tasks;
+    private List<TaskAssignment> taskAssignments;
 
     public String execute() {
 
@@ -42,6 +44,8 @@ public class LoginAction extends ActionSupport {
                 case "emp":
                     leaves = EmployeeManager.getLeaves(employee);
                     leavesLeft = EmployeeManager.getLeavesLeft(employee);
+                    tasks = TaskManager.getTasks(employee);
+                    taskAssignments = TaskManager.getAssignments(employee);
                     return "EMP";
                 default:
                     return ERROR;
@@ -106,6 +110,22 @@ public class LoginAction extends ActionSupport {
 
     public void setLeavesLeft(LeavesLeft leavesLeft) {
         this.leavesLeft = leavesLeft;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public List<TaskAssignment> getTaskAssignments() {
+        return taskAssignments;
+    }
+
+    public void setTaskAssignments(List<TaskAssignment> taskAssignments) {
+        this.taskAssignments = taskAssignments;
     }
 
 }
