@@ -36,6 +36,33 @@ public class TaskManager extends Manager {
         return tasks;
     }
     
+    public static List<Task> getTasksForHR(Employee emp) {
+        init();
+        String hql = "FROM TaskAssignment t WHERE t.empId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getEmpId());
+
+        List<TaskAssignment> taskAssignments = query.getResultList();
+        List<Task> tasks = new ArrayList();
+        for (TaskAssignment taskAssignment : taskAssignments) {
+            hql = "FROM Task t WHERE t.id = :id";
+            query = session.createQuery(hql);
+            query.setParameter("id", taskAssignment.getTaskId());
+            Task task = (Task) query.getSingleResult();
+            if (task.getIsCompleted() != 0) {
+                hql = "FROM TaskAssessment t WHERE t.taskId = :id";
+                query = session.createQuery(hql);
+                query.setParameter("id", task.getId());
+                TaskAssessment taskAssessment = (TaskAssessment) query.getSingleResult();
+                task.setPerformance(taskAssessment.getPerformance());
+                task.setNotes(taskAssessment.getNotes());
+                tasks.add(task);
+            }
+        }
+        
+        return tasks;
+    }
+    
     public static List<Task> getTasks(Department dept) {
         init();
         String hql = "FROM Task t WHERE t.deptId = :id";
@@ -63,6 +90,16 @@ public class TaskManager extends Manager {
         query.setParameter("id", emp.getEmpId());
 
         List<TaskAssignment> taskAssignments = query.getResultList();
+        return taskAssignments;
+    }
+    
+    public static List<TaskAssessment> getAssessments(Employee emp) {
+        init();
+        String hql = "FROM TaskAssessment t WHERE t.empId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getEmpId());
+
+        List<TaskAssessment> taskAssignments = query.getResultList();
         return taskAssignments;
     }
     

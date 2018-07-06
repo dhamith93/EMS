@@ -169,6 +169,44 @@ function fillLeavesTable(data) {
 	}	
 }
 
+function fillTasksTable(data) {	
+	resetTable('tasks-table');
+	if (data.length > 0) {
+		let tBody=document.getElementsByTagName("tbody").item(2);
+	    for (let i = 0; i < data.length; i++) {
+	        let task = data[i]['name'];
+	        let desc = data[i]['desc'];
+	        let from = data[i]['startOn'];
+	        let to = data[i]['endOn'];
+	        let performance = data[i]['performance'];
+	        let notes = data[i]['notes'];
+
+	        let tr = document.createElement('tr');
+	        let cell1 = document.createElement('td');
+	        let cell2 = document.createElement('td');
+	        let cell3 = document.createElement('td');
+	        let cell4 = document.createElement('td');   
+	        let cell5 = document.createElement('td'); 
+	        let cell6 = document.createElement('td'); 
+	        
+	        cell1.appendChild(document.createTextNode(task));
+	        cell2.appendChild(document.createTextNode(desc));
+	        cell3.appendChild(document.createTextNode(from));
+	        cell4.appendChild(document.createTextNode(to));
+	        cell5.appendChild(document.createTextNode(performance));
+	        cell6.appendChild(document.createTextNode(notes));
+	        
+	        tr.appendChild(cell1);        
+	        tr.appendChild(cell2);       
+	        tr.appendChild(cell3);   
+	        tr.appendChild(cell4);    
+	        tr.appendChild(cell5);  
+	        tr.appendChild(cell6);
+	        tBody.appendChild(tr);
+	    }
+	}	
+}
+
 function resetTable(id) {
 	let elements = document.getElementById(id).getElementsByTagName('tbody');
     let length = elements[0].childNodes.length - 1;
@@ -255,6 +293,15 @@ $(document).on('click', '.leaves-link', function(e) {
 
 $(document).on('click', '.task-link', function(e) {
 	e.preventDefault();
-	// fetch info
+	$.ajax({
+       type: 'GET',
+       url:'GetEmployeeTasksAction.action?empId='+ this.id,
+       dataType: 'json',
+       error: function() {
+    	   console.log('error getting a response from SearchAction...');
+       },
+       success: function(data){    	   
+           fillTasksTable(JSON.parse(data.replace('//', '')));
+    }});
 	$('#task-modal').modal('show');
 });

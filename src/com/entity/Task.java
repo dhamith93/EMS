@@ -14,6 +14,9 @@ public class Task implements Serializable {
     private String endOn;
     private int isCompleted;
     
+    private double performance; // transient property
+    private String notes;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
@@ -76,5 +79,21 @@ public class Task implements Serializable {
     }
     public void setIsCompleted(int isCompleted) {
         this.isCompleted = isCompleted;
+    }
+
+    @Transient
+    public double getPerformance() {
+        return performance;
+    }
+    public void setPerformance(double performance) {
+        this.performance = performance;
+    }
+
+    @Transient
+    public String getNotes() {
+        return notes;
+    }
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
