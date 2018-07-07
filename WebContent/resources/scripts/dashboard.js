@@ -283,7 +283,7 @@ $(document).on('click', '.prof-link', function(e) {
 	$("#update-female").prop("checked", false);
 	$("#update-male").prop("checked", false);
 	
-	if (emp.gender === 'MALE') {
+	if (emp.gender === 'male') {
 		$("#update-male").prop("checked", true);
 	} else {
 		$("#update-female").prop("checked", true);

@@ -10,7 +10,6 @@ public class EmployeeManager extends Manager {
     public static void save(Employee e) {
         init();
         session.save(e);
-        transaction.commit();
 
         LeavesLeft l = new LeavesLeft();
         l.setEmpId(e.getEmpId());
@@ -56,12 +55,11 @@ public class EmployeeManager extends Manager {
     }
 
     public static void addLoginInfo(Employee e, String password) {
+        end();
         init();
         Login login = new Login();
-
         login.setEmpId(e.getEmpId());
         login.setPassword(password);
-
         session.save(login);
         transaction.commit();
     }
@@ -131,8 +129,6 @@ public class EmployeeManager extends Manager {
             Department department = (Department) query.getResultList().get(0);
             e.setDeptName(department.getName());
         }
-
-        end();
 
         return results;
     }
