@@ -177,6 +177,14 @@ public class EmployeeManager extends Manager {
         
         return null;
     }
+    
+    public static Long getApprovedLeaveCount(Employee emp) {
+        String hql = "SELECT COUNT(*) FROM Leave l WHERE l.empId = :id AND l.isApproved = 1 AND l.isConfirmed = 0";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getEmpId());
+        Long count = (Long) query.uniqueResult();        
+        return count;
+    }
 
     public static void reduceLeaves(Employee emp, Leave leave, LeavesLeft leavesLeft, double daysReq) {
         init();

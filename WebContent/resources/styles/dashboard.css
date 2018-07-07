@@ -36,3 +36,8 @@
 	width: 60px;
 	text-align: right;
 }
+
+.badge {
+	position: relative; 
+	top: -10px;
+}

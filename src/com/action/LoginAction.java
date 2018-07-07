@@ -16,6 +16,7 @@ public class LoginAction extends ActionSupport {
     private List<Department> departments;
     private List<Task> tasks;
     private List<TaskAssignment> taskAssignments;
+    private Long approvedLeaveCount;
 
     public String execute() {
 
@@ -46,6 +47,7 @@ public class LoginAction extends ActionSupport {
                     leavesLeft = EmployeeManager.getLeavesLeft(employee);
                     tasks = TaskManager.getTasks(employee);
                     taskAssignments = TaskManager.getAssignments(employee);
+                    approvedLeaveCount = EmployeeManager.getApprovedLeaveCount(employee);
                     return "EMP";
                 default:
                     return ERROR;
@@ -126,6 +128,14 @@ public class LoginAction extends ActionSupport {
 
     public void setTaskAssignments(List<TaskAssignment> taskAssignments) {
         this.taskAssignments = taskAssignments;
+    }
+
+    public Long getApprovedLeaveCount() {
+        return approvedLeaveCount;
+    }
+
+    public void setApprovedLeaveCount(Long approvedLeaveCount) {
+        this.approvedLeaveCount = approvedLeaveCount;
     }
 
 }
