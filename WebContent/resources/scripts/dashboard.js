@@ -89,6 +89,13 @@ function fillTable(data) {
 	        link3.innerHTML = 'Tasks';
 	        link3.classList.add('task-link');
 	        link3.id = id;
+	        
+	        let deleteBtn = document.createElement('button');
+	        deleteBtn.id = id;
+	        deleteBtn.innerHTML = 'DELETE';
+	        deleteBtn.classList.add('btn');
+	        deleteBtn.classList.add('btn-danger');
+	        deleteBtn.classList.add('delete-btn');	 
 
 	        let tr = document.createElement('tr');
 	        let cell1 = document.createElement('td');
@@ -98,6 +105,7 @@ function fillTable(data) {
 	        let cell5 = document.createElement('td'); 
 	        let cell6 = document.createElement('td'); 
 	        let cell7 = document.createElement('td'); 
+	        let cell8 = document.createElement('td'); 
 	        
 	        cell1.appendChild(document.createTextNode(id));
 	        cell2.appendChild(document.createTextNode(firstName));
@@ -106,6 +114,7 @@ function fillTable(data) {
 	        cell5.appendChild(link);
 	        cell6.appendChild(link2);
 	        cell7.appendChild(link3);
+	        cell8.appendChild(deleteBtn);
 	        
 	        tr.appendChild(cell1);        
 	        tr.appendChild(cell2);       
@@ -114,6 +123,7 @@ function fillTable(data) {
 	        tr.appendChild(cell5);  
 	        tr.appendChild(cell6);  
 	        tr.appendChild(cell7);  
+	        tr.appendChild(cell8); 
 	        tBody.appendChild(tr);
 	    }
 	}	
@@ -306,7 +316,7 @@ $(document).on('click', '.leaves-link', function(e) {
        url:'GetLeavesAction.action?empId='+ this.id,
        dataType: 'json',
        error: function() {
-    	   console.log('error getting a response from SearchAction...');
+    	   console.log('error getting a response from GetLeavesAction...');
        },
        success: function(data){    	   
            fillLeavesTable(JSON.parse(data.replace('//', '')));
@@ -321,10 +331,33 @@ $(document).on('click', '.task-link', function(e) {
        url:'GetEmployeeTasksAction.action?empId='+ this.id,
        dataType: 'json',
        error: function() {
-    	   console.log('error getting a response from SearchAction...');
+    	   console.log('error getting a response from GetEmployeeTasksAction...');
        },
        success: function(data){    	   
            fillTasksTable(JSON.parse(data.replace('//', '')));
     }});
 	$('#task-modal').modal('show');
+});
+
+$(document).on('click', '.delete-btn', function(e) {
+	e.preventDefault();
+	let id = this.id;
+	if (confirm('Do you want to delete employee: ' + id)) {
+		$.ajax({
+	       type: 'GET',
+	       url:'DeleteEmployeeAction.action?empId='+ id,
+	       dataType: 'json',
+	       error: function() {
+	    	   console.log('error getting a response from DeleteEmployeeAction...');
+	       },
+	       success: function(data){    	   
+	    	   let result = JSON.parse(data);
+	           if (result['status'] === 'OK') {
+	        	   alert('Employee' + id + ' deleted!');
+	        	   search();
+	           } else {
+	        	   alert('Encountered an error! Please check your data and try again later...');
+	           }
+	    }});
+	}
 });

@@ -28,6 +28,32 @@ public class EmployeeManager extends Manager {
         session.saveOrUpdate(employee);
         transaction.commit();
     }
+    
+    public static void delete(Employee e) {
+        init();
+        String hql = "DELETE FROM Leave l WHERE l.empId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM LeavesLeft l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM TaskAssessment l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM TaskAssignment l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM Login l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        session.delete(e);
+        transaction.commit();
+    }
 
     public static void addLoginInfo(Employee e, String password) {
         init();

@@ -35,6 +35,13 @@
                 <param name="root">status</param>
             </result>
         </action> 
+        <action name="DeleteEmployeeAction" class="com.action.DeleteEmployeeAction">            
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action> 
         <action name="RequestLeaveAction" class="com.action.RequestLeaveAction">            
             <result type="json">
 				<param name="noCache">true</param>

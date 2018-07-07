@@ -6,8 +6,8 @@ HDSE EAD final assignment
 ## TODO
 - [ ] Employee
     - [x] Addition
-    - [ ] Update
-    - [ ] Delete
+    - [x] Update
+    - [x] Delete
     - [ ] Add performance info
     - [x] Search
 - [ ] Department
