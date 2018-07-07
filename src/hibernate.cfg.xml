@@ -45,6 +45,9 @@
         <mapping class="com.entity.Login"/>
         <mapping class="com.entity.Leave"/>
         <mapping class="com.entity.LeavesLeft"/>
+        <mapping class="com.entity.Task"/>
+        <mapping class="com.entity.TaskAssignment"/>
+        <mapping class="com.entity.TaskAssessment"/>
  	
     </session-factory>
 </hibernate-configuration>

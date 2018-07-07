@@ -8,7 +8,7 @@
       <th scope="col">Time To</th>      
       <th scope="col">Reason</th>
       <th scope="col">Approved</th>
-      <th scope="col">Confirm</th>
+      <th scope="col">Confirmed</th>
     </tr>
   </thead>
   <tbody>
@@ -41,12 +41,15 @@
 	     </s:else>	     
          <s:if test="#leave.isConfirmed == 0">
             <s:if test="#leave.isApproved == 1">
-               <td><a href="#" id="%{reason}" class="confirm-link badge badge-primary">Confirm</a></td>
+               <td><a href="#" id=<s:property value="%{id}"/> class="confirm-link badge badge-primary">Confirm</a></td>
             </s:if>
             <s:else>
 	           <td>NO</td>
 	        </s:else>
-         </s:if>                    
+         </s:if>         
+         <s:else>
+           <td>YES</td>
+         </s:else>           
      </tr>
     
     </s:iterator>

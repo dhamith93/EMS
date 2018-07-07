@@ -9,6 +9,7 @@
 .project
 .metadata
 bin/**
+build/classes/
 tmp/**
 tmp/**/*
 *.tmp

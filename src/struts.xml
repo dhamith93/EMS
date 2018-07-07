@@ -28,6 +28,20 @@
 		        <param name="root">status</param>
 			</result>
         </action> 
+        <action name="UpdateEmployeeAction" class="com.action.UpdateEmployeeAction">            
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action> 
+        <action name="DeleteEmployeeAction" class="com.action.DeleteEmployeeAction">            
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action> 
         <action name="RequestLeaveAction" class="com.action.RequestLeaveAction">            
             <result type="json">
 				<param name="noCache">true</param>
@@ -35,5 +49,33 @@
 		        <param name="root">status</param>
 			</result>
         </action> 
+        <action name="ConfirmLeaveAction" class="com.action.ConfirmLeaveAction">            
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action>
+        <action name="GetLeavesAction" class="com.action.GetLeavesAction">
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">jsonString</param>
+            </result>
+        </action> 
+        <action name="SetTaskProgressAction" class="com.action.SetTaskProgressAction">
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">jsonString</param>
+            </result>
+        </action>   
+        <action name="GetEmployeeTasksAction" class="com.action.GetEmployeeTasksAction">
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">jsonString</param>
+            </result>
+        </action>   
 	</package>
 </struts>

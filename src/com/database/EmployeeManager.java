@@ -6,24 +6,7 @@ import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import com.entity.*;
 
-public class EmployeeManager {
-    private static Configuration config;
-    private static SessionFactory sessionFactroy;
-    private static Session session;
-    private static Transaction transaction;
-
-    private static void init() {
-        config = new Configuration().configure();
-        sessionFactroy = config.buildSessionFactory();
-        session = sessionFactroy.getCurrentSession();
-        transaction = session.beginTransaction();
-    }
-
-    private static void end() {
-        session.close();
-        sessionFactroy.close();
-    }
-
+public class EmployeeManager extends Manager {
     public static void save(Employee e) {
         init();
         session.save(e);
@@ -38,6 +21,39 @@ public class EmployeeManager {
         session.save(l);
         transaction.commit();
     }
+    
+    public static void update(Employee e) {
+        init();
+        Employee employee = (Employee) session.merge(e);
+        session.saveOrUpdate(employee);
+        transaction.commit();
+    }
+    
+    public static void delete(Employee e) {
+        init();
+        String hql = "DELETE FROM Leave l WHERE l.empId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM LeavesLeft l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM TaskAssessment l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM TaskAssignment l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        hql = "DELETE FROM Login l WHERE l.empId = :id";
+        query = session.createQuery(hql);
+        query.setParameter("id", e.getEmpId());
+        query.executeUpdate();
+        session.delete(e);
+        transaction.commit();
+    }
 
     public static void addLoginInfo(Employee e, String password) {
         init();
@@ -47,6 +63,13 @@ public class EmployeeManager {
         login.setPassword(password);
 
         session.save(login);
+        transaction.commit();
+    }
+    
+    public static void updateLoginInfo(Login login) {
+        init();
+        Login merged = (Login) session.merge(login);
+        session.saveOrUpdate(merged);
         transaction.commit();
     }
 
@@ -131,15 +154,28 @@ public class EmployeeManager {
         return leaves;
     }
 
+    public static Leave getLeave(String leaveId) {
+        init();
+        String hql = "FROM Leave l WHERE l.id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", Long.parseLong(leaveId));
+        Leave leave = (Leave) query.getSingleResult();
+        return leave;
+    }
+
     public static LeavesLeft getLeavesLeft(Employee emp) {
         init();
         String hql = "FROM LeavesLeft l WHERE l.empId = :id";
         Query query = session.createQuery(hql);
         query.setParameter("id", emp.getEmpId());
-
-        LeavesLeft leavesLeft = (LeavesLeft) query.getSingleResult();
-
-        return leavesLeft;
+        try {
+            LeavesLeft leavesLeft = (LeavesLeft) query.getSingleResult();
+            return leavesLeft;
+        } catch (Exception ex) {
+            // empty result
+        }
+        
+        return null;
     }
 
     public static void reduceLeaves(Employee emp, Leave leave, LeavesLeft leavesLeft, double daysReq) {
@@ -166,4 +202,14 @@ public class EmployeeManager {
         query.executeUpdate();
         transaction.commit();
     }
+
+    public static void confirmLeave(Leave leave) {
+        init();
+        String hql = "UPDATE Leave l SET l.isConfirmed = 1 WHERE l.id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", leave.getId());
+        query.executeUpdate();
+        transaction.commit();
+    }
+
 }

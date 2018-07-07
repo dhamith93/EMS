@@ -5,24 +5,7 @@ import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import com.entity.*;
 
-public class DepartmentManager {
-    private static Configuration config;
-    private static SessionFactory sessionFactroy;
-    private static Session session;
-    private static Transaction transaction;
-
-    private static void init() {
-        config = new Configuration().configure();
-        sessionFactroy = config.buildSessionFactory();
-        session = sessionFactroy.getCurrentSession();
-        transaction = session.beginTransaction();
-    }
-
-    private static void end() {
-        session.close();
-        sessionFactroy.close();
-    }
-
+public class DepartmentManager extends Manager {
     public static List<Department> getAll() {
         init();
         String hql = "FROM Department";

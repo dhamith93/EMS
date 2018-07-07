@@ -1,0 +1,45 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>      
+      <th scope="col">Completed</th>
+      <th scope="col">Progress</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <s:iterator value="tasks" var="task">
+        <tr>
+         <td>
+             <s:property value="%{startOn}"/>
+         </td>
+         <td>
+             <s:property value="%{endOn}"/>
+         </td> 
+         <td>
+             <s:property value="%{name}"/>
+         </td> 
+         <td>
+             <s:property value="%{desc}"/>
+         </td> 
+         <s:if test="#task.isCompleted == 0">
+             <td>NO</td>
+             <s:iterator value="taskAssignments" var="taskAssignment">
+	            <s:if test="#task.id == #taskAssignment.taskId">
+	                 <td><input type="number" class="progInput" id=<s:property value="%{taskId}"/> value="<s:property value="%{progress}"/>">%</td>
+	                 <td><a href="#" id=<s:property value="%{taskId}"/> class="progress-link badge badge-primary">Mark Progress</a></td>
+	             </s:if>
+	          </s:iterator>
+         </s:if>
+         <s:else>
+          <td>YES</td>          
+         </s:else>
+     </tr>
+    
+    </s:iterator>
+
+  </tbody>
+</table>
