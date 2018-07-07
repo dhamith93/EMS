@@ -236,6 +236,29 @@ $("#addEmpForm").submit(function(e) {
     e.preventDefault();
 });
 
+$("#updateEmpForm").submit(function(e) {
+
+    $.ajax({
+       type: 'POST',
+       url: 'UpdateEmployeeAction.action',
+       data: $('#updateEmpForm').serialize(),
+       success: function(data) {
+           let result = JSON.parse(data);
+           if (result['status'] === 'OK') {
+        	   alert('Employee updated!');
+           } else if (result['status'] === 'passwords-no-match') {
+        	   alert('Passwords don\'t match!');
+           } else if (result['status'] === 'ERROR_PASSWORD') {
+        	   alert('Employee updated!\nError with saving the password. Please try again.');
+           } else { 
+        	   alert('Encountered an error! Please check your data and try again later...');
+           }
+       }
+     });
+
+    e.preventDefault();
+});
+
 $(document).on('click', '.prof-link', function(e) {
 	e.preventDefault();
 	let id = this.id;

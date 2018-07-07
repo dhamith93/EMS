@@ -10,7 +10,7 @@
       <div class="modal-body">
         <!-- START EMP INFO -->
         
-        <form id="update-updateEmpForm" method="post" action="UpdateEmployeeAction">	
+        <form id="updateEmpForm" method="post" action="UpdateEmployeeAction">	
         		
 		 <div class="form-row">
 		    <div class="form-group col-md-6">
@@ -33,7 +33,7 @@
 		  <p class="form-check-label" style="margin-bottom: 5px;">Date of birth</p>
 		   <div class="form-row">    
 		    <div class="form-group col-md-2">
-		      <input type="date" name="dob" class="form-control" id="update-DOB" disabled>
+		      <input type="date" name="dob" class="form-control" id="update-DOB" readonly="readonly">
 		    </div>
 		  </div>
 		  
@@ -57,7 +57,7 @@
 				  <div class="form-row">
 				    <div class="form-group col-md-8">
 				      <label for="update-empNo">Employee ID</label>
-				      <input type="text" class="form-control disabled" id="update-empId" disabled>
+				      <input type="text" class="form-control disabled" name="empId" id="update-empId" readonly="readonly">
 				    </div>
 				  </div>  
 				  
@@ -89,7 +89,7 @@
 				  <div class="form-row">
 					  <div class="form-group col-md-4">
 					    <label for="update-JoinedDate">Joined Date</label>
-					    <input type="date" class="form-control disabled" id="update-JoinedDate" disabled>
+					    <input type="date" name="joinedDate" class="form-control disabled" id="update-JoinedDate" readonly="readonly">
 					  </div>
 				  </div>
 		

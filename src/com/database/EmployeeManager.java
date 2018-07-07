@@ -21,6 +21,13 @@ public class EmployeeManager extends Manager {
         session.save(l);
         transaction.commit();
     }
+    
+    public static void update(Employee e) {
+        init();
+        Employee employee = (Employee) session.merge(e);
+        session.saveOrUpdate(employee);
+        transaction.commit();
+    }
 
     public static void addLoginInfo(Employee e, String password) {
         init();
@@ -30,6 +37,13 @@ public class EmployeeManager extends Manager {
         login.setPassword(password);
 
         session.save(login);
+        transaction.commit();
+    }
+    
+    public static void updateLoginInfo(Login login) {
+        init();
+        Login merged = (Login) session.merge(login);
+        session.saveOrUpdate(merged);
         transaction.commit();
     }
 
@@ -128,10 +142,14 @@ public class EmployeeManager extends Manager {
         String hql = "FROM LeavesLeft l WHERE l.empId = :id";
         Query query = session.createQuery(hql);
         query.setParameter("id", emp.getEmpId());
-
-        LeavesLeft leavesLeft = (LeavesLeft) query.getSingleResult();
-
-        return leavesLeft;
+        try {
+            LeavesLeft leavesLeft = (LeavesLeft) query.getSingleResult();
+            return leavesLeft;
+        } catch (Exception ex) {
+            // empty result
+        }
+        
+        return null;
     }
 
     public static void reduceLeaves(Employee emp, Leave leave, LeavesLeft leavesLeft, double daysReq) {
