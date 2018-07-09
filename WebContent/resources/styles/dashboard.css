@@ -225,7 +225,7 @@ button:active {
     display: none;
 }
 
-#emp-info-tab, #emp-tab, #leaves-tab, #short-leaves-tab {
+#emp-info-tab, #emp-tab, #leaves-tab, #short-leaves-tab, #leave-details-tab, #tasks-tab {
     display: none;
     width: 900px;
     margin: auto;
