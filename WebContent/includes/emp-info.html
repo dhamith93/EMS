@@ -1,114 +1,69 @@
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Personal Info
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-      
-      	<div class="table-responsive">
-	       	<table class="table table-borderless table-hover" style="width: 100%;">		  
-			  <tbody>
-			    <tr>
-			      <td style="width: 15%;"><strong>First Name </strong></td>
-			      <td><s:property value="%{employee.firstName}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>Last Name </strong></td>
-			      <td><s:property value="%{employee.lastName}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>DOB </strong></td>
-			      <td><s:property value="%{employee.dob}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>Gender </strong></td>
-			      <td><s:property value="%{employee.gender}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>NIC </strong></td>
-			      <td><s:property value="%{employee.NIC}"/></td>
-			    </tr>
-			  </tbody>
-			</table>		  
-		</div>
-		
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Employment Info
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-             	
-       	<div class="table-responsive">
-	       	<table class="table table-borderless table-hover" style="width: 100%;">		  
-			  <tbody>
-			    <tr>
-			      <td style="width: 15%;"><strong>Position </strong></td>
-			      <td><s:property value="%{employee.position}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>Department </strong></td>
-			      <td><s:property value="%{employee.deptName}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>Joined date </strong></td>
-			      <td><s:property value="%{employee.joinedDate}"/></td>
-			    </tr>			    
-			  </tbody>
-			</table>		  
-		</div>
-			
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Contact Info
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-       	
-       	<div class="table-responsive">
-	       	<table class="table table-borderless table-hover" style="width: 100%;">		  
-			  <tbody>
-			    <tr>
-			      <td style="width: 15%;"><strong>Address Line 1 </strong></td>
-			      <td><s:property value="%{employee.addressLine1}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>Address Line 2 </strong></td>
-			      <td><s:property value="%{employee.addressLine2}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>City </strong></td>
-			      <td><s:property value="%{employee.city}"/></td>
-			    </tr>
-			    <tr>
-			      <td><strong>Telephone </strong></td>
-			      <td><s:property value="%{employee.telephoneNo}"/></td>
-			    </tr>
-			  </tbody>
-			</table>		  
-		</div>
-		
-      </div>
-    </div>
-  </div>
+<div class="personal-info-sec">
+    <h3>Personal Information</h3>
+    <table class="table stripped-table emp-info-table">       
+        <tbody>
+            <tr>
+            <td class="bold-td"><strong>First Name </strong></td>
+            <td><s:property value="%{employee.firstName}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>Last Name </strong></td>
+            <td><s:property value="%{employee.lastName}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>DOB </strong></td>
+            <td><s:property value="%{employee.dob}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>Gender </strong></td>
+            <td><s:property value="%{employee.gender}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>NIC </strong></td>
+            <td><s:property value="%{employee.NIC}"/></td>
+            </tr>
+        </tbody>
+    </table>          
+</div>
+<div class="contact-info-sec">
+    <h3>Contact Information</h3>
+    <table class="table stripped-table contact-info-table">
+        <tbody>
+            <tr>
+            <td class="bold-td"><strong>Line 1 </strong></td>
+            <td><s:property value="%{employee.addressLine1}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>Line 2 </strong></td>
+            <td><s:property value="%{employee.addressLine2}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>City </strong></td>
+            <td><s:property value="%{employee.city}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>Telephone </strong></td>
+            <td><s:property value="%{employee.telephoneNo}"/></td>
+            </tr>
+        </tbody>
+    </table>        
+</div>
+<div class="company-info">
+    <h3>Company Information</h3>
+    <table class="table stripped-table company-info-table">       
+        <tbody>
+            <tr>
+            <td class="bold-td"><strong>Position </strong></td>
+            <td><s:property value="%{employee.position}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>Department </strong></td>
+            <td><s:property value="%{employee.deptName}"/></td>
+            </tr>
+            <tr>
+            <td class="bold-td"><strong>Joined date </strong></td>
+            <td><s:property value="%{employee.joinedDate}"/></td>
+            </tr>               
+        </tbody>
+    </table>
 </div>

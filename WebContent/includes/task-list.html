@@ -1,12 +1,13 @@
 <table class="table">
-  <thead>
+  <thead class="thead-dark">
     <tr>
-      <th scope="col">From</th>
-      <th scope="col">To</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>      
+      <th scope="col">From</th>
+      <th scope="col">To</th>
       <th scope="col">Completed</th>
       <th scope="col">Progress</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -14,16 +15,16 @@
     <s:iterator value="tasks" var="task">
         <tr>
          <td>
-             <s:property value="%{startOn}"/>
-         </td>
-         <td>
-             <s:property value="%{endOn}"/>
-         </td> 
-         <td>
              <s:property value="%{name}"/>
          </td> 
          <td>
              <s:property value="%{desc}"/>
+         </td> 
+         <td>
+             <s:property value="%{startOn}"/>
+         </td>
+         <td>
+             <s:property value="%{endOn}"/>
          </td> 
          <s:if test="#task.isCompleted == 0">
              <td>NO</td>
@@ -35,7 +36,9 @@
 	          </s:iterator>
          </s:if>
          <s:else>
-          <td>YES</td>          
+          <td>YES</td>
+          <td></td>
+          <td></td>          
          </s:else>
      </tr>
     

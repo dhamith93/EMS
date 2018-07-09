@@ -1,57 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ include file="includes/header.html" %>
-<link rel="stylesheet" href="resources/styles/dashboard.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="resources/styles/dashboard.css">
+    <title>Dashboard</title>
 </head>
 <body>
-	<script>
-	   var approvedLeaveCount = <s:property value="%{approvedLeaveCount}"/>;
-	   console.log(approvedLeaveCount);
-	</script>
-	<%@ include file="includes/navbar.html" %>
-	
-	<ul class="nav justify-content-center nav-tabs">
-	  <li class="nav-item">
-	    <a id="info-btn" class="tab nav-link active" href="#">Your Info</a>
-	  </li>
-	  <li class="nav-item">
-	    <a id="leaves-btn" class="tab nav-link" href="#">Leaves</a>
-	  </li>
-	  <li class="nav-item">
-	    <a id="short-leaves-btn" class="tab nav-link" href="#">Short Leaves</a>
-	  </li>
-	  <li class="nav-item">
-        <a id="leave-details-btn" class="tab nav-link" href="#">Leave Details</a>
-      </li>
-	  <li class="nav-item">
-	    <a id="tasks-btn" class="tab nav-link" href="#">Tasks</a>
-	  </li>
-	</ul>
-	
-	<div class="container-fluid">		
-        <div class="row">
-            <div class="main">
-                <div id="infoTab" class="content-area">
-                    <%@ include file="includes/emp-info.html" %>	
+    <script>
+        var approvedLeaveCount = <s:property value="%{approvedLeaveCount}"/>;
+        console.log(approvedLeaveCount);
+    </script>
+    <div class="container">
+        <div class="row main">
+            <div class="side-nav">
+                <div class="logo">
+                    <img src="" alt="">
+                    <h3>Curo EMS</h3>
                 </div>
-                <div id="leavesTab" class="content-area">
-                	<%@ include file="includes/req-leaves.html" %>
+                <hr>
+                <nav>
+                    <ul>
+                        <li id="personal-nav" class="nav-item">
+                            YOUR INFO   
+                            <div id="personal-link" class="active border"></div>                         
+                        </li>
+                        <li id="leaves-nav" class="nav-item">
+                            LEAVES
+                            <div id="leaves-link" class="border"></div>
+                        </li>
+                        <li id="short-leaves-nav" class="nav-item">
+                            SHORT LEAVES
+                            <div id="short-leaves-link" class="border"></div>
+                        </li>
+                        <li id="leave-details-nav" class="nav-item">
+                            LEAVE DETAILS
+                            <span id="leave-notification" class="notification"></span>
+                            <div id="leave-details-link" class="border"></div>
+                        </li>
+                        <li id="tasks-nav" class="nav-item">
+                            TASKS
+                            <div id="tasks-link" class="border"></div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="content">
+                <div id="personal-tab" class="tab">
+                    <%@ include file="includes/emp-info.html" %>
                 </div>
-                <div id="shortLeavesTab" class="content-area">
-                	<%@ include file="includes/req-short-leaves.html" %>
+                
+                <div id="leaves-tab" class="tab">
+                    <%@ include file="includes/req-leaves.html" %>
                 </div>
-                <div id="leaveDetailsTab" class="content-area">
+                
+                <div id="short-leaves-tab" class="tab">
+                    <%@ include file="includes/req-short-leaves.html" %>
+                </div>
+
+                <div id="leave-details-tab" class="tab">
                     <%@ include file="includes/leaves-list.html" %>
                 </div>
-                <div id="tasksTab" class="content-area">
+
+                <div id="tasks-tab" class="tab">
                     <%@ include file="includes/task-list.html" %>
                 </div>
             </div>
         </div>
-    </div>
-	
-	<%@ include file="includes/footer.html" %>
-	<script src="resources/scripts/emp-dashboard.js"></script>
+    </div>    
+
+    <script src="resources/scripts/jquery/jquery-3.3.1.min.js"></script>
+    <script src="resources/scripts/emp.js"></script>
+    <script src="resources/scripts/navigation-emp.js"></script>
+
 </body>
 </html>
