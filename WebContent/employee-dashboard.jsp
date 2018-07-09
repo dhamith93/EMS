@@ -5,7 +5,10 @@
 <link rel="stylesheet" href="resources/styles/dashboard.css">
 </head>
 <body>
-	
+	<script>
+	   var approvedLeaveCount = <s:property value="%{approvedLeaveCount}"/>;
+	   console.log(approvedLeaveCount);
+	</script>
 	<%@ include file="includes/navbar.html" %>
 	
 	<ul class="nav justify-content-center nav-tabs">
@@ -19,7 +22,7 @@
 	    <a id="short-leaves-btn" class="tab nav-link" href="#">Short Leaves</a>
 	  </li>
 	  <li class="nav-item">
-        <a id="leave-details-btn" class="tab nav-link" href="#">Leave details</a>
+        <a id="leave-details-btn" class="tab nav-link" href="#">Leave Details</a>
       </li>
 	  <li class="nav-item">
 	    <a id="tasks-btn" class="tab nav-link" href="#">Tasks</a>

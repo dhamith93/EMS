@@ -10,7 +10,6 @@ public class EmployeeManager extends Manager {
     public static void save(Employee e) {
         init();
         session.save(e);
-        transaction.commit();
 
         LeavesLeft l = new LeavesLeft();
         l.setEmpId(e.getEmpId());
@@ -56,12 +55,11 @@ public class EmployeeManager extends Manager {
     }
 
     public static void addLoginInfo(Employee e, String password) {
+        end();
         init();
         Login login = new Login();
-
         login.setEmpId(e.getEmpId());
         login.setPassword(password);
-
         session.save(login);
         transaction.commit();
     }
@@ -132,8 +130,6 @@ public class EmployeeManager extends Manager {
             e.setDeptName(department.getName());
         }
 
-        end();
-
         return results;
     }
 
@@ -176,6 +172,14 @@ public class EmployeeManager extends Manager {
         }
         
         return null;
+    }
+    
+    public static Long getApprovedLeaveCount(Employee emp) {
+        String hql = "SELECT COUNT(*) FROM Leave l WHERE l.empId = :id AND l.isApproved = 1 AND l.isConfirmed = 0";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getEmpId());
+        Long count = (Long) query.uniqueResult();        
+        return count;
     }
 
     public static void reduceLeaves(Employee emp, Leave leave, LeavesLeft leavesLeft, double daysReq) {

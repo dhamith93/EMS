@@ -1,3 +1,16 @@
+$(window).on('load', function() {
+	setNotification();
+});
+
+function setNotification() {
+	let btn = document.getElementById('leave-details-btn');
+	if (approvedLeaveCount > 0) {
+		btn.innerHTML = 'Leave Details <span class="badge badge-danger">'+ approvedLeaveCount +'</span>️';
+	} else {
+		btn.innerHTML = 'Leave Details';
+	}
+}
+
 let divs = document.getElementsByClassName('content-area');
 let tabs = document.getElementsByClassName('tab');
 
@@ -20,7 +33,7 @@ function processClickOnTab(tab) {
             div = document.getElementById('shortLeavesTab');
             break;
         case 'leave-details-btn':
-            div = document.getElementById('leaveDetailsTab');            
+            div = document.getElementById('leaveDetailsTab'); 
             break;
         case 'tasks-btn':
             div = document.getElementById('tasksTab');            
@@ -95,6 +108,8 @@ $('.confirm-link').click(function(e) {
             if (result['status'] === 'OK') {
          	   alert('Leave confirmed!');
          	   element.replaceWith('YES');
+         	   approvedLeaveCount -= 1;
+         	   setNotification()
             } else if (result['status'] === 'NOT_APPROVED') {
          	   alert('Your leave is not yet approved.');
             } else { 
