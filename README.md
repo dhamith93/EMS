@@ -10,7 +10,7 @@ HDSE EAD final assignment
     - [x] Delete
     - [ ] Add performance info
     - [x] Search
-- [ ] Department
+- [x] Department
     - [x] Add
     - [x] Update
     - [x] Add Managers
