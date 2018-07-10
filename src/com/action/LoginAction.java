@@ -33,7 +33,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
     }
 
     public String execute() {
-        System.out.println(password);
         Login login;
 
         try {
