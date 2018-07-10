@@ -6,12 +6,34 @@ import org.hibernate.cfg.Configuration;
 import com.entity.*;
 
 public class DepartmentManager extends Manager {
+    
+    public static void save(Department d) {
+        init();
+        session.save(d);
+        transaction.commit();
+    }
+    
+    public static void update(Department d) {
+        init();
+        Department department = (Department) session.merge(d);
+        session.saveOrUpdate(department);
+        transaction.commit();
+    }
+    
     public static List<Department> getAll() {
         init();
         String hql = "FROM Department";
         Query query = session.createQuery(hql);
         List<Department> departments = query.getResultList();
         return departments;
+    }
+    
+    public static Department get(String name) {
+        init();
+        String hql = "FROM Department d WHERE d.name = :val";
+        Query query = session.createQuery(hql); 
+        query.setParameter("val", name);
+        return (Department) query.getSingleResult();
     }
 
     public static Long getManager(Long deptId) {

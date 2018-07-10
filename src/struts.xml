@@ -76,6 +76,22 @@
                 <param name="root">status</param>
             </result>
         </action> 
+        <action name="AddDepartmentAction" class="com.action.AddDepartmentAction">      
+            <interceptor-ref name="newStack"/>     
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action> 
+        <action name="UpdateDepartmentAction" class="com.action.UpdateDepartmentAction">            
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action> 
         <action name="RequestLeaveAction" class="com.action.RequestLeaveAction">            
             <interceptor-ref name="newStack"/>
             <result type="json">

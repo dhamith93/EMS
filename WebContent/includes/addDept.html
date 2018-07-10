@@ -13,9 +13,9 @@
     <form action="" id="update-dept-form" method="post">
         <label for="update-dept-name">Name</label>
         <select id="update-dept-name" name="name" class="select">
-            <option>IT</option>
-            <option>HR</option>
-            <option>Sales</option>
+            <s:iterator value="departments">
+               <option value=<s:property value="name"/>><s:property value="name"/></option>
+            </s:iterator>
         </select>
         <label for="update-manager-id">Manager ID</label>
         <input type="text" id="update-manager-id" name="manager">

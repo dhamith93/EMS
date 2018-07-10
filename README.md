@@ -11,9 +11,9 @@ HDSE EAD final assignment
     - [ ] Add performance info
     - [x] Search
 - [ ] Department
-    - [ ] Add
-    - [ ] Update
-    - [ ] Add Managers
+    - [x] Add
+    - [x] Update
+    - [x] Add Managers
 - [ ] Leave Management
     - [x] Request
     - [ ] Approve/Disapprove

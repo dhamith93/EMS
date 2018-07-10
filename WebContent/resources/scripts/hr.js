@@ -232,8 +232,7 @@ $("#addEmpForm").submit(function(e) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
                 alert('Employee Added!');
-                document.getElementById('addEmpForm')
-                        .reset();
+                document.getElementById('addEmpForm').reset();
             } else if (result['status'] === 'passwords-no-match') {
                 alert('Passwords don\'t match!');
             } else {
@@ -274,12 +273,10 @@ $(document).on('click', '.delete-btn', function(e) {
     if (confirm('Do you want to delete employee: ' + id)) {
         $.ajax({
             type : 'GET',
-            url : 'DeleteEmployeeAction.action?empId='
-                    + id,
+            url : 'DeleteEmployeeAction.action?empId='+ id,
             dataType : 'json',
             error : function() {
-                console
-                        .log('error getting a response from DeleteEmployeeAction...');
+                console.log('error getting a response from DeleteEmployeeAction...');
             },
             success : function(data) {
                 let result = JSON.parse(data);
@@ -292,4 +289,43 @@ $(document).on('click', '.delete-btn', function(e) {
             }
         });
     }
+});
+
+$("#add-dept-form").submit(function(e) {
+
+    $.ajax({
+        type : 'POST',
+        url : 'AddDepartmentAction.action',
+        data : $('#add-dept-form').serialize(),
+        success : function(data) {
+            let result = JSON.parse(data);
+            if (result['status'] === 'OK') {
+                alert('Department Added!');
+                document.getElementById('addEmpForm').reset();
+            } else {
+                alert('Encountered an error! Please check your data and try again later...');
+            }
+        }
+    });
+
+    e.preventDefault();
+});
+
+$("#update-dept-form").submit(function(e) {
+
+    $.ajax({
+        type : 'POST',
+        url : 'UpdateDepartmentAction.action',
+        data : $('#update-dept-form').serialize(),
+        success : function(data) {
+            let result = JSON.parse(data);
+            if (result['status'] === 'OK') {
+                alert('Department updated!');
+            } else {
+                alert('Encountered an error! Please check your data and try again later...');
+            }
+        }
+    });
+
+    e.preventDefault();
 });
