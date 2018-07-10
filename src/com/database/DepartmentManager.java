@@ -13,9 +13,11 @@ public class DepartmentManager extends Manager {
         transaction.commit();
     }
     
-    public static void update(Department d) {
+    public static void update(Department d, String manager) {
         init();
+        d = get(d.getName());
         Department department = (Department) session.merge(d);
+        department.setManagerId(manager);
         session.saveOrUpdate(department);
         transaction.commit();
     }

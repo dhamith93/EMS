@@ -13,8 +13,7 @@ public class UpdateDepartmentAction extends ActionSupport {
         try {
             Department d = new Department();
             d.setName(name);
-            d.setManagerId(manager);
-            DepartmentManager.update(d);;
+            DepartmentManager.update(d, manager);
             status = "{\"status\": \"OK\"}";
         } catch(Exception ex) {
             ex.printStackTrace();
