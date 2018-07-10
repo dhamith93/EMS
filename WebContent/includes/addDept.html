@@ -1,0 +1,24 @@
+<div id="add-dept">
+    <h3>Add Department</h3>
+    <form action="" id="add-dept-form" method="post">
+        <label for="add-dept-name">Name</label>
+        <input type="text" id="add-dept-name" name="name">
+        <label for="add-manager-id">Manager ID</label>
+        <input type="text" id="add-manager-id" name="manager">
+        <button type="submit">Add</button>
+    </form>
+</div>
+<div id="update-dept">
+    <h3>Update Department</h3>
+    <form action="" id="update-dept-form" method="post">
+        <label for="update-dept-name">Name</label>
+        <select id="update-dept-name" name="name" class="select">
+            <s:iterator value="departments">
+               <option value=<s:property value="name"/>><s:property value="name"/></option>
+            </s:iterator>
+        </select>
+        <label for="update-manager-id">Manager ID</label>
+        <input type="text" id="update-manager-id" name="manager">
+        <button type="submit">Update</button>
+    </form>
+</div>

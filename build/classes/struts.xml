@@ -4,24 +4,56 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    
     <package name="default" extends="struts-default">
+    
+	    <interceptors>
+	        <interceptor name="login" class="com.action.LoginInterceptor"/>
+	        <interceptor-stack name="newStack">
+	            <interceptor-ref name="login"/>
+	            <interceptor-ref name="defaultStack" />
+	        </interceptor-stack>
+	    </interceptors>
+	
+	    <global-results>
+	        <result name="loginRedirect" type="redirect">/index.jsp</result>
+	    </global-results>
+    
+        <action name="LogoutAction" class="com.action.LogoutAction">
+            <result name="success">/index.jsp</result>
+        </action>
+    
         <action name="LoginAction" class="com.action.LoginAction">
             <result name="HR">/dashboard.jsp</result>
             <result name="MAN">/manager-dashboard.jsp</result>
             <result name="EMP">/employee-dashboard.jsp</result>
-            <result name="error">/login.jsp</result>
+            <result name="error">/index.jsp</result>
+            <interceptor-ref name="newStack"/>
         </action>
     </package>
     
     <package name="json" extends="json-default">
+        <interceptors>
+            <interceptor name="login" class="com.action.LoginInterceptor"/>
+            <interceptor-stack name="newStack">
+                <interceptor-ref name="login"/>
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+    
+        <global-results>
+            <result name="loginRedirect" type="redirect">/index.jsp</result>
+        </global-results>
 	    <action name="SearchAction" class="com.action.SearchAction">
+	       <interceptor-ref name="newStack"/>
 		    <result type="json">
 		        <param name="noCache">true</param>
 		        <param name="excludeNullProperties">true</param>
 		        <param name="root">jsonString</param>
 		    </result>
 		</action>   
-		<action name="AddEmployeeAction" class="com.action.AddEmployeeAction">            
+		<action name="AddEmployeeAction" class="com.action.AddEmployeeAction">      
+		    <interceptor-ref name="newStack"/>     
             <result type="json">
 				<param name="noCache">true</param>
 		        <param name="excludeNullProperties">true</param>
@@ -29,6 +61,7 @@
 			</result>
         </action> 
         <action name="UpdateEmployeeAction" class="com.action.UpdateEmployeeAction">            
+            <interceptor-ref name="newStack"/>
             <result type="json">
                 <param name="noCache">true</param>
                 <param name="excludeNullProperties">true</param>
@@ -36,6 +69,23 @@
             </result>
         </action> 
         <action name="DeleteEmployeeAction" class="com.action.DeleteEmployeeAction">            
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action> 
+        <action name="AddDepartmentAction" class="com.action.AddDepartmentAction">      
+            <interceptor-ref name="newStack"/>     
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action> 
+        <action name="UpdateDepartmentAction" class="com.action.UpdateDepartmentAction">            
+            <interceptor-ref name="newStack"/>
             <result type="json">
                 <param name="noCache">true</param>
                 <param name="excludeNullProperties">true</param>
@@ -43,6 +93,7 @@
             </result>
         </action> 
         <action name="RequestLeaveAction" class="com.action.RequestLeaveAction">            
+            <interceptor-ref name="newStack"/>
             <result type="json">
 				<param name="noCache">true</param>
 		        <param name="excludeNullProperties">true</param>
@@ -50,6 +101,7 @@
 			</result>
         </action> 
         <action name="ConfirmLeaveAction" class="com.action.ConfirmLeaveAction">            
+            <interceptor-ref name="newStack"/>
             <result type="json">
                 <param name="noCache">true</param>
                 <param name="excludeNullProperties">true</param>
@@ -57,6 +109,7 @@
             </result>
         </action>
         <action name="GetLeavesAction" class="com.action.GetLeavesAction">
+            <interceptor-ref name="newStack"/>
             <result type="json">
                 <param name="noCache">true</param>
                 <param name="excludeNullProperties">true</param>
@@ -64,6 +117,7 @@
             </result>
         </action> 
         <action name="SetTaskProgressAction" class="com.action.SetTaskProgressAction">
+            <interceptor-ref name="newStack"/>
             <result type="json">
                 <param name="noCache">true</param>
                 <param name="excludeNullProperties">true</param>
@@ -71,6 +125,7 @@
             </result>
         </action>   
         <action name="GetEmployeeTasksAction" class="com.action.GetEmployeeTasksAction">
+            <interceptor-ref name="newStack"/>
             <result type="json">
                 <param name="noCache">true</param>
                 <param name="excludeNullProperties">true</param>

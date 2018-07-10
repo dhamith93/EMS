@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="includes/header.html" %>
+<%
+    String userId = (String) session.getAttribute("empId");
+
+    if (userId == null || userId.trim().equals("")) {
+        response.sendRedirect("index.jsp");
+    }
+%>
 <link rel="stylesheet" href="resources/styles/dashboard.css">
 </head>
 <body>

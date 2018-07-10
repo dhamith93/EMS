@@ -1,135 +1,67 @@
-<form id="addEmpForm" method="post" action="AddEmployeeAction">		
-
-<br> <h4 style="margin-bottom: 5px;">Personal Information</h4> <br>
-
- <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="firstName">First Name</label>
-      <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name" required>
+<h2>Add Employee</h2>
+<form id="addEmpForm" action="" method="post">
+    <div class="personal-info">
+        <div class="names">
+            <div class="name">
+                <label for="add-firstName">First Name</label>
+                <input type="text" id="add-firstName" name="firstName">
+            </div>
+            <div class="name">
+                <label for="add-lastName">Last Name</label>
+                <input type="text" id="add-lastName" name="lastName">
+            </div>
+        </div>
+        <div class="other-opts">
+            <div class="other-opt">
+                <label for="add-dob">DOB</label>
+                <input type="date" id="add-dob" name="dob">
+            </div>
+            <div class="other-opt">
+                <label for="add-nic">NIC</label>
+                <input type="text" id="add-nic" name="NIC">
+            </div>
+        </div>
+        <label for="add-gender">Gender</label>
+        <div class="radio" id="add-gender">
+            <input type="radio" name="gender" value="male" id="add-male" checked>
+            <label for="add-male">Male</label>
+            <input type="radio" name="gender" value="female" id="add-female">
+            <label for="add-female">Female</label>
+        </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="lastName">Last Name</label>
-      <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name" required>
+    <br> <br>
+    <div class="contact-info">
+        <label for="add-addressLine1">Address Line 1</label>
+        <input type="text" id="add-addressLine1" name="addressLine1">
+        <label for="add-addressLine2">Address Line 2</label>
+        <input type="text" id="add-addressLine2" name="addressLine2">
+        <label for="add-city">City</label>
+        <input type="text" id="add-city" name="city">
+        <label for="add-telephoneNo">Telephone No.</label>
+        <input type="tel" id="add-telephoneNo" name="telephoneNo">
     </div>
-  </div>		
-
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="nic">NIC</label>
-      <input type="text" name="NIC" class="form-control" id="nic" placeholder="NIC" required>
+    <div class="emp-info">
+        <label for="add-empId">EMP ID</label>
+        <input type="text" id="add-empId" name="empId">
+        <label for="add-joinedDate">Date joined</label>
+        <input type="date" id="add-joinedDate" name="joinedDate">
+        <label for="add-dept">Department</label>
+        <select id="add-dept" name="dept" class="select">
+            <s:iterator value="departments">
+               <option value=<s:property value="id"/>><s:property value="name"/></option>
+            </s:iterator>
+        </select>
+        <label for="add-position">Position</label>
+        <input type="text" id="add-position" name="position">
+        <label for="add-salary">Salary</label>
+        <input type="number" id="add-salary" name="salary" step="0.01">
+        <label for="add-password">Password</label>
+        <input type="password" id="add-password" name="password">
+        <label for="add-password2">Password again</label>
+        <input type="password" id="add-password2" name="password2">
+        <div class="submit">
+            <button type="submit">Add</button>
+        </div>
     </div>
-  </div>
-
-  <p class="form-check-label" style="margin-bottom: 5px;">Date of birth</p>
-   <div class="form-row">    
-    <div class="form-group col-md-2">
-      <input type="date" name="dob" class="form-control" id="inputDOB" required>
-    </div>
-  </div>
-  
-  <p class="form-check-label" style="margin-bottom: 5px;">Gender</p>
-  <div class="form-row" style="margin-left: 15px;">
-	<div class="form-check form-check-inline">
-	  <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
-	  <label class="form-check-label" for="male">Male</label>
-	</div>
-	<div class="form-check form-check-inline">
-	  <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-	  <label class="form-check-label" for="female">Female</label>
-	</div>
-	
-  </div>
-  <br>
-  
-  
-  <div class="form-row">  
-  	<div class="col-lg-6">
-  		<br> <h4 style="margin-bottom: 5px;">Company Information</h4> <br>
-		  <div class="form-row">
-		    <div class="form-group col-md-8">
-		      <label for="empNo">Employee ID</label>
-		      <input type="text" name="empId" class="form-control" id="empId" placeholder="Employee ID" required>
-		    </div>
-		  </div>  
-		  
-		  		  
-		  <div class="form-group col-md-5" style="margin-left: -15px;">
-		      <label for="dept">Department</label>
-		      <select id="dept" name="dept" class="form-control">
-		      	<s:iterator value="departments">
-		      		<option value=<s:property value="id"/>><s:property value="name"/></option>
-		      	</s:iterator>
-		      </select>
-	    </div>
-		  
-		  <div class="form-row">
-			  <div class="form-group col-md-8">
-			    <label for="inputSalary">Position</label>
-			    <input type="text" name="position" class="form-control" id="inputPosition" placeholder="Position" required>
-			  </div>
-		  </div>
-
-		  <div class="form-row">
-			  <div class="form-group col-md-8">
-			    <label for="inputSalary">Salary</label>
-			    <input type="text" name="salary" class="form-control" id="inputSalary" placeholder="Rs." required>
-			  </div>
-		  </div>
-		  
-		  <div class="form-row">
-			  <div class="form-group col-md-4">
-			    <label for="inputJoinedDate">Joined Date</label>
-			    <input type="date" name="joinedDate" class="form-control" id="inputJoinedDate" required>
-			  </div>
-		  </div>
-
-		  <div class="form-row">
-			  <div class="form-group col-md-8">
-			    <label for="inputPassword">Password</label>
-			    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="password" required>
-			  </div>
-		  </div>
-
-		  <div class="form-row">
-			  <div class="form-group col-md-8">
-			    <label for="inputPassword2">Retype Password</label>
-			    <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="password again" required>
-			  </div>
-		  </div>
-  	</div>
-  	
-  	<div class="col-lg-6">
-  		<br> <h4 style="margin-bottom: 5px;">Contact Information</h4> <br>
-		  <div class="form-row">
-			  <div class="form-group col-md-8">
-			    <label for="inputAddress">Address Line 1</label>
-			    <input type="text" name="addressLine1" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
-			  </div>
-		  </div>
-		  
-		  <div class="form-row">
-			  <div class="form-group col-md-8">
-			    <label for="inputAddress2">Address Line 2</label>
-			    <input type="text" name="addressLine2" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-			  </div>   
-		  </div>
-		  
-		  <div class="form-row">	  
-		    <div class="form-group col-md-8">
-		      <label for="inputCity">City</label>
-		      <input type="text" name="city" class="form-control" id="inputCity" required>
-		    </div>
-		  </div>
-		  
-		  <div class="form-row">	  
-		    <div class="form-group col-md-8">
-		      <label for="inputTPNo">Telephone Number</label>
-		      <input type="text" name="telephoneNo" class="form-control" id="inputTPNo" required>
-		    </div>
-		  </div>
-  	</div>
-  
-  </div>
-  
-  <button type="submit" id="add-emp-btn" class="btn btn-primary">Add Employee</button>
+    <br> <br>
 </form>

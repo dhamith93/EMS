@@ -1,12 +1,15 @@
 package com.action;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 import org.mindrot.jbcrypt.BCrypt;
 import com.entity.*;
 import com.database.*;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends ActionSupport implements SessionAware {
     private String userName;
     private String password;
     private String loginOption;
@@ -17,9 +20,19 @@ public class LoginAction extends ActionSupport {
     private List<Task> tasks;
     private List<TaskAssignment> taskAssignments;
     private Long approvedLeaveCount;
+    
+    private Map session;
+
+    public Map getSession() {
+        return session;
+    }
+    
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;        
+    }
 
     public String execute() {
-
         Login login;
 
         try {
@@ -27,11 +40,13 @@ public class LoginAction extends ActionSupport {
             login = EmployeeManager.getLoginInfo(employee);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            e.printStackTrace();
             return ERROR;
         }
 
         if (login != null) {
             if (BCrypt.checkpw(password, login.getPassword())) {
+                session.put("empId", employee.getEmpId());
                 switch (loginOption) {
                 case "hr":
                     if (employee.getDeptName().equals("HR")) {
@@ -137,5 +152,4 @@ public class LoginAction extends ActionSupport {
     public void setApprovedLeaveCount(Long approvedLeaveCount) {
         this.approvedLeaveCount = approvedLeaveCount;
     }
-
 }

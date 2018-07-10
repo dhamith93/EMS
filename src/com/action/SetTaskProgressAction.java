@@ -3,7 +3,7 @@ package com.action;
 import com.database.*;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SetTaskProgressAction extends ActionSupport {
+public class SetTaskProgressAction extends ActionSupport implements LoginRequired {
     private String taskId;
     private double progress;
     private String jsonString;

@@ -4,7 +4,7 @@ import com.database.*;
 import com.entity.*;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DeleteEmployeeAction extends ActionSupport {
+public class DeleteEmployeeAction extends ActionSupport implements LoginRequired {
     private String empId;
     private String status;
     

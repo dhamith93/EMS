@@ -1,58 +1,58 @@
 <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Type</th>
-      <th scope="col">Date From</th>
-      <th scope="col">Date To</th>
-      <th scope="col">Time From</th>
-      <th scope="col">Time To</th>      
-      <th scope="col">Reason</th>
-      <th scope="col">Approved</th>
-      <th scope="col">Confirmed</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-    <s:iterator value="leaves" var="leave">
+    <thead class="thead-dark">
         <tr>
-         <td>
-             <s:property value="%{type}"/>
-         </td>
-         <td>
-             <s:property value="%{dateFrom}"/>
-         </td> 
-         <td>
-             <s:property value="%{dateTo}"/>
-         </td> 
-         <td>
-             <s:property value="%{timeFrom}"/>
-         </td> 
-         <td>
-             <s:property value="%{timeTo}"/>
-         </td> 
-         <td>
-             <s:property value="%{reason}"/>
-         </td>
-         <s:if test="#leave.isApproved == 0">
-             <td>NO</td>
-         </s:if>
-         <s:else>
-	      <td>YES</td>
-	     </s:else>	     
-         <s:if test="#leave.isConfirmed == 0">
-            <s:if test="#leave.isApproved == 1">
-               <td><a href="#" id=<s:property value="%{id}"/> class="confirm-link badge badge-primary">Confirm</a></td>
+        <th scope="col">Type</th>
+        <th scope="col">Date From</th>
+        <th scope="col">Date To</th>
+        <th scope="col">Time From</th>
+        <th scope="col">Time To</th>      
+        <th scope="col">Reason</th>
+        <th scope="col">Approved</th>
+        <th scope="col">Confirmed</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        <s:iterator value="leaves" var="leave">
+            <tr>
+            <td>
+                <s:property value="%{type}"/>
+            </td>
+            <td>
+                <s:property value="%{dateFrom}"/>
+            </td> 
+            <td>
+                <s:property value="%{dateTo}"/>
+            </td> 
+            <td>
+                <s:property value="%{timeFrom}"/>
+            </td> 
+            <td>
+                <s:property value="%{timeTo}"/>
+            </td> 
+            <td>
+                <s:property value="%{reason}"/>
+            </td>
+            <s:if test="#leave.isApproved == 0">
+                <td>NO</td>
             </s:if>
             <s:else>
-	           <td>NO</td>
-	        </s:else>
-         </s:if>         
-         <s:else>
-           <td>YES</td>
-         </s:else>           
-     </tr>
+            <td>YES</td>
+            </s:else>        
+            <s:if test="#leave.isConfirmed == 0">
+                <s:if test="#leave.isApproved == 1">
+                    <td><a href="#" id=<s:property value="%{id}"/> class="confirm-link">Confirm</a></td>
+                </s:if>
+                <s:else>
+                    <td>NO</td>
+                </s:else>
+            </s:if>         
+            <s:else>
+                <td>YES</td>
+            </s:else>           
+        </tr>
+        
+        </s:iterator>
     
-    </s:iterator>
-
-  </tbody>
+    </tbody>
 </table>
