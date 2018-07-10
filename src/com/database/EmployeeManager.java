@@ -19,6 +19,7 @@ public class EmployeeManager extends Manager {
 
         session.save(l);
         transaction.commit();
+        session.close();
     }
     
     public static void update(Employee e) {
@@ -26,6 +27,7 @@ public class EmployeeManager extends Manager {
         Employee employee = (Employee) session.merge(e);
         session.saveOrUpdate(employee);
         transaction.commit();
+        session.close();
     }
     
     public static void delete(Employee e) {
@@ -52,6 +54,7 @@ public class EmployeeManager extends Manager {
         query.executeUpdate();
         session.delete(e);
         transaction.commit();
+        session.close();
     }
 
     public static void addLoginInfo(Employee e, String password) {
@@ -62,6 +65,7 @@ public class EmployeeManager extends Manager {
         login.setPassword(password);
         session.save(login);
         transaction.commit();
+        session.close();
     }
     
     public static void updateLoginInfo(Login login) {
@@ -69,6 +73,7 @@ public class EmployeeManager extends Manager {
         Login merged = (Login) session.merge(login);
         session.saveOrUpdate(merged);
         transaction.commit();
+        session.close();
     }
 
     public static Login getLoginInfo(Employee e) {
@@ -77,7 +82,7 @@ public class EmployeeManager extends Manager {
         Query query = session.createQuery(hql);
         query.setParameter("id", e.getEmpId());
         Login login = (Login) query.getResultList().get(0);
-
+        session.close();
         return login;
     }
 
@@ -94,7 +99,8 @@ public class EmployeeManager extends Manager {
         query.setParameter("id", employee.getDept());
         Department department = (Department) query.getResultList().get(0);
         employee.setDeptName(department.getName());
-
+        
+        session.close();
         return employee;
     }
 
@@ -129,7 +135,8 @@ public class EmployeeManager extends Manager {
             Department department = (Department) query.getResultList().get(0);
             e.setDeptName(department.getName());
         }
-
+        
+        session.close();
         return results;
     }
 
@@ -137,6 +144,7 @@ public class EmployeeManager extends Manager {
         init();
         session.save(leave);
         transaction.commit();
+        session.close();
     }
     
     public static List<Leave> getLeaves(Employee emp) {
@@ -147,6 +155,7 @@ public class EmployeeManager extends Manager {
 
         List<Leave> leaves = query.getResultList();
         
+        session.close();
         return leaves;
     }
 
@@ -156,6 +165,8 @@ public class EmployeeManager extends Manager {
         Query query = session.createQuery(hql);
         query.setParameter("id", Long.parseLong(leaveId));
         Leave leave = (Leave) query.getSingleResult();
+        
+        session.close();
         return leave;
     }
 
@@ -166,19 +177,24 @@ public class EmployeeManager extends Manager {
         query.setParameter("id", emp.getEmpId());
         try {
             LeavesLeft leavesLeft = (LeavesLeft) query.getSingleResult();
+            session.close();
             return leavesLeft;
         } catch (Exception ex) {
             // empty result
         }
         
+        session.close();
         return null;
     }
     
     public static Long getApprovedLeaveCount(Employee emp) {
+        init();
         String hql = "SELECT COUNT(*) FROM Leave l WHERE l.empId = :id AND l.isApproved = 1 AND l.isConfirmed = 0";
         Query query = session.createQuery(hql);
         query.setParameter("id", emp.getEmpId());
-        Long count = (Long) query.uniqueResult();        
+        Long count = (Long) query.uniqueResult();      
+        
+        session.close();
         return count;
     }
 
@@ -205,6 +221,7 @@ public class EmployeeManager extends Manager {
         query.setParameter("days", days);
         query.executeUpdate();
         transaction.commit();
+        session.close();
     }
 
     public static void confirmLeave(Leave leave) {
@@ -214,6 +231,7 @@ public class EmployeeManager extends Manager {
         query.setParameter("id", leave.getId());
         query.executeUpdate();
         transaction.commit();
+        session.close();
     }
 
 }

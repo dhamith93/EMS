@@ -211,14 +211,12 @@ button:active {
     outline: none;
 }
 
-.close {
-    font-weight: bolder;     
-    font-size: 20px;
+.close {     
+    font-size: 16px;
     line-height: 25px;
     height:30px; 
-    width: 30px; 
-    border-radius: 50%;
-    float: right;
+    width: 100px; 
+    float: left !important;
 }
 
 #dept-tab, #emp-leaves-tab, #emp-tasks-tab  {

@@ -1,4 +1,4 @@
-<button class="danger close" id="emp-info-close">𝖷</button>
+<button class="danger close" id="emp-info-close">&#x2190; Back</button>
 <form id="updateEmpForm" action="" method="post">
     <div class="personal-info">
         <div class="names">
@@ -14,7 +14,7 @@
         <div class="other-opts">
             <div class="other-opt">
                 <label for="dob">DOB</label>
-                <input type="date" id="dob" name="dob">
+                <input type="date" id="dob" name="dob" readonly>
             </div>
             <div class="other-opt">
                 <label for="nic">NIC</label>
@@ -42,9 +42,9 @@
     </div>
     <div class="emp-info">
         <label for="empId">EMP ID</label>
-        <input type="text" id="empId" name="empId">
+        <input type="text" id="empId" name="empId" readonly>
         <label for="joinedDate">Date joined</label>
-        <input type="date" id="joinedDate" name="joinedDate">
+        <input type="date" id="joinedDate" name="joinedDate" readonly>
         <label for="dept-name">Department</label>
         <select id="dept-name" name="dept" class="select">
             <s:iterator value="departments">
@@ -54,7 +54,7 @@
         <label for="position">Position</label>
         <input type="text" id="position" name="position">
         <label for="salary">Salary</label>
-        <input type="number" id="salary" name="salary">
+        <input type="number" id="salary" name="salary" step="0.01">
         <label for="password">Password</label>
         <input type="password" name="password">
         <label for="password2">Password again</label>

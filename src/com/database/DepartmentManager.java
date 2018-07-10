@@ -20,6 +20,7 @@ public class DepartmentManager extends Manager {
         department.setManagerId(manager);
         session.saveOrUpdate(department);
         transaction.commit();
+        session.close();
     }
     
     public static List<Department> getAll() {
@@ -27,6 +28,8 @@ public class DepartmentManager extends Manager {
         String hql = "FROM Department";
         Query query = session.createQuery(hql);
         List<Department> departments = query.getResultList();
+        
+        session.close();
         return departments;
     }
     
@@ -35,7 +38,10 @@ public class DepartmentManager extends Manager {
         String hql = "FROM Department d WHERE d.name = :val";
         Query query = session.createQuery(hql); 
         query.setParameter("val", name);
-        return (Department) query.getSingleResult();
+        Department d = (Department) query.getSingleResult();
+        
+        session.close();
+        return d;
     }
 
     public static Long getManager(Long deptId) {
@@ -48,6 +54,8 @@ public class DepartmentManager extends Manager {
         query = session.createQuery(hql);
         query.setParameter("id", d.getManagerId());
         Employee e = (Employee) query.getResultList().get(0);
+        
+        session.close();
         return e.getId();
     }
 

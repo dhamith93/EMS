@@ -15,7 +15,8 @@ public class TaskManager extends Manager {
         transaction.commit();
         ta.setTaskId(id);
         session.save(ta);
-        transaction.commit();        
+        transaction.commit(); 
+        session.close();
     }
     
     public static List<Task> getTasks(Employee emp) {
@@ -33,6 +34,7 @@ public class TaskManager extends Manager {
             tasks.add((Task) query.getSingleResult());
         }
         
+        session.close();
         return tasks;
     }
     
@@ -60,6 +62,7 @@ public class TaskManager extends Manager {
             }
         }
         
+        session.close();
         return tasks;
     }
     
@@ -70,6 +73,7 @@ public class TaskManager extends Manager {
         query.setParameter("id", dept.getId());
         List<Task> tasks = query.getResultList();
         
+        session.close();
         return tasks;
     }
     
@@ -81,6 +85,7 @@ public class TaskManager extends Manager {
         query.setParameter("prog", prog);
         query.executeUpdate();
         transaction.commit();
+        session.close();
     }
     
     public static List<TaskAssignment> getAssignments(Employee emp) {
@@ -90,6 +95,8 @@ public class TaskManager extends Manager {
         query.setParameter("id", emp.getEmpId());
 
         List<TaskAssignment> taskAssignments = query.getResultList();
+        
+        session.close();
         return taskAssignments;
     }
     
@@ -100,6 +107,8 @@ public class TaskManager extends Manager {
         query.setParameter("id", emp.getEmpId());
 
         List<TaskAssessment> taskAssignments = query.getResultList();
+        
+        session.close();
         return taskAssignments;
     }
     
@@ -107,5 +116,6 @@ public class TaskManager extends Manager {
         init();
         session.save(ta);
         transaction.commit();
+        session.close();
     }
 }

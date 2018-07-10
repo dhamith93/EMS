@@ -14,7 +14,6 @@ public class ConfirmLeaveAction extends ActionSupport implements LoginRequired {
     private String status;
     
     public String execute() {
-        System.out.println(leaveId);
         try {
             Leave leave = EmployeeManager.getLeave(leaveId);
             if (leave.getIsApproved() == 1) {
