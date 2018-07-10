@@ -5,7 +5,7 @@ import com.entity.*;
 import org.mindrot.jbcrypt.BCrypt;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class UpdateEmployeeAction extends ActionSupport {
+public class UpdateEmployeeAction extends ActionSupport implements LoginRequired {
     private String firstName;
     private String lastName;
     private String dob;

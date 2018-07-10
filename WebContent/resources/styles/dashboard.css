@@ -231,6 +231,10 @@ button:active {
     margin: auto;
 }
 
+#leave-details-tab, #tasks-tab {
+	width: unset;
+}
+
 #emp-info-tab form, #emp-tab form {
     margin-top: 50px;
 }

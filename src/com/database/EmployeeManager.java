@@ -83,7 +83,7 @@ public class EmployeeManager extends Manager {
 
     public static Employee get(String empId) {
         init();
-        String hql = "FROM Employee e WHERE e.empId LIKE :val";
+        String hql = "FROM Employee e WHERE e.empId = :val";
         Query query = session.createQuery(hql);
         query.setParameter("val", empId);
 

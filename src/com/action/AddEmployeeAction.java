@@ -5,7 +5,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import com.entity.*;
 import com.database.*;
 
-public class AddEmployeeAction extends ActionSupport {
+public class AddEmployeeAction extends ActionSupport implements LoginRequired {
     private String firstName;
     private String lastName;
     private String dob;

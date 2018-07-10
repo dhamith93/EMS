@@ -25,6 +25,9 @@ function navigationHandler(id) {
         case 'tasks-nav':
             changeTab('tasks-link', 'tasks-tab');
             break;
+        case 'logout':
+            window.location.replace('LogoutAction');
+            break;
         default:
 
     }

@@ -6,7 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.entity.*;
 import com.database.*;
 
-public class SearchAction extends ActionSupport {
+public class SearchAction extends ActionSupport implements LoginRequired {
     private String searchValue;
     private String searchOption;
     private String jsonString;

@@ -6,7 +6,7 @@ import com.entity.*;
 import com.google.gson.Gson;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class GetLeavesAction extends ActionSupport {
+public class GetLeavesAction extends ActionSupport implements LoginRequired {
     private String empId;
     private List<Leave> leaves;
     private String jsonString;

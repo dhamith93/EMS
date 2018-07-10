@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
+<%
+    String userId = (String) session.getAttribute("empId");
+
+    if (userId == null || userId.trim().equals("")) {
+        response.sendRedirect("index.jsp");
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,8 +43,8 @@
                             DEPARTMENT
                             <div id="dept-link" class="border"></div>
                         </li>
-                        <li id="" class="nav-item">
-                            PAYROLL
+                        <li id="logout" class="nav-item">
+                            LOGOUT
                             <div id="" class="border"></div>
                         </li>
                     </ul>

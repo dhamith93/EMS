@@ -8,7 +8,7 @@ import com.database.*;
 import com.entity.*;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class RequestLeaveAction extends ActionSupport {
+public class RequestLeaveAction extends ActionSupport implements LoginRequired {
     private String empId;
     private Long managedBy;
     private String reason;

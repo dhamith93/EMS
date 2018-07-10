@@ -38,6 +38,9 @@ function navigationHandler(id) {
     case 'dept-nav':
         changeTab('dept-link', 'dept-tab');
         break;
+    case 'logout':
+        window.location.replace('LogoutAction');
+        break;
     default:
 
     }
