@@ -8,7 +8,7 @@ import java.time.format.*;
 import java.text.SimpleDateFormat;  
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ClockOutAction  extends ActionSupport implements LoginRequired {
+public class ClockOutAction extends ActionSupport implements LoginRequired {
     private String empId;
     private String status;
     

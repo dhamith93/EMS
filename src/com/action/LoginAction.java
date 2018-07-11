@@ -66,7 +66,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
                     approvedLeaveCount = EmployeeManager.getApprovedLeaveCount(employee);
                     Attendance attendance = EmployeeManager.getLastAttendance(employee.getEmpId());
                     isClockedIn = (attendance != null && attendance.getIsClockedOut() == 0);
-                    System.out.println(isClockedIn);
                     return "EMP";
                 default:
                     return ERROR;

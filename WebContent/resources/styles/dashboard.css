@@ -235,13 +235,13 @@ button:active {
     display: none;
 }
 
-#emp-info-tab, #emp-tab, #leaves-tab, #short-leaves-tab, #leave-details-tab, #tasks-tab {
+#emp-info-tab, #emp-tab, #leaves-tab, #short-leaves-tab, #leave-details-tab, #tasks-tab, #attendance-tab, #emp-attendance-modal {
     display: none;
     width: 900px;
     margin: auto;
 }
 
-#leave-details-tab, #tasks-tab {
+#leave-details-tab, #tasks-tab, #attendance-tab {
 	width: unset;
 }
 
@@ -380,6 +380,20 @@ button:active {
     width: 70px;
     height: 100%;
     margin: auto;
+}
+
+.date-input {
+	display: flex;
+    width: 550px;
+    margin: auto;
+}
+
+.date-input div {
+	margin: 20px;
+}
+
+.date-input div button {
+    margin-top: 25px;
 }
 
 .notification {

@@ -116,41 +116,92 @@ $('.progress-link').click(function(e) {
 });
 
 function markAttendance() {
+    let url = 'ClockInAction.action';
+    let message = 'Clocked in!';
+    let html = 'CLOCK OUT';
+    
     if (isClockedIn) {
-        $.ajax({
-            type: 'POST',
-            url: 'ClockOutAction.action',
-            data: { 
-                'empId': empId
-            },
-            success: function(data) {
-                let result = JSON.parse(data);
-                if (result['status'] === 'OK') {
-                   alert('Clocked out!');
-                   isClockedIn = false;
-                   document.getElementById('markAttendance').innerHTML = 'CLOCK IN';
-                } else { 
-                   alert('Encountered an error! Please check your data and try again later...');
-                }
+        url = 'ClockOutAction.action';
+        message = 'Clocked out!';
+        html = 'CLOCK IN';
+    }
+    
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: { 
+            'empId': empId
+        },
+        success: function(data) {
+            let result = JSON.parse(data);
+            if (result['status'] === 'OK') {
+               alert(message);
+               isClockedIn = false;
+               document.getElementById('markAttendance').innerHTML = html;
+            } else { 
+               alert('Encountered an error! Please check your data and try again later...');
             }
-      });
-    } else {
-        $.ajax({
-            type: 'POST',
-            url: 'ClockInAction.action',
-            data: { 
-                'empId': empId
-            },
-            success: function(data) {
-                let result = JSON.parse(data);
-                if (result['status'] === 'OK') {
-                   alert('Clocked In!');
-                   isClockedIn = true;
-                   document.getElementById('markAttendance').innerHTML = 'CLOCK OUT';
-                } else { 
-                   alert('Encountered an error! Please check your data and try again later...');
-                }
-            }
-      });
+        }
+    });
+}
+
+function getAttendance(from, to) {
+    $.ajax({
+        type: 'POST',
+        url: 'GetAttendanceAction.action',
+        data: { 
+            'empId': empId,
+            'from': from,
+            'to': to
+        },
+        success: function(data) {
+            let result = JSON.parse(data);
+            fillTable(result);            
+        }
+    });
+} 
+
+function resetTable(id) {
+    let elements = document.getElementById(id).getElementsByTagName('tbody');
+    let length = elements[0].childNodes.length - 1;
+    for (let i = length; i > 0; i--)
+        elements[0].removeChild(elements[0].childNodes[i]);
+}
+
+function fillTable(data) {
+    resetTable('attendance-table');
+    if (data.length > 0) {
+        let tBody = document.getElementsByTagName("tbody").item(7);
+        for (let i = 0; i < data.length; i++) {
+            let dateFrom = data[i]['dateIn'];
+            let dateTo = data[i]['dateOut'];
+            let timeFrom = data[i]['clockIn'];
+            let timeTo = data[i]['clockOut'];
+            let hours = data[i]['hours'];
+            let ot = data[i]['ot'];
+
+            let tr = document.createElement('tr');
+            let cell1 = document.createElement('td');
+            let cell2 = document.createElement('td');
+            let cell3 = document.createElement('td');
+            let cell4 = document.createElement('td');
+            let cell5 = document.createElement('td');
+            let cell6 = document.createElement('td');
+
+            cell1.appendChild(document.createTextNode(dateFrom));
+            cell2.appendChild(document.createTextNode(dateTo));
+            cell3.appendChild(document.createTextNode(timeFrom));
+            cell4.appendChild(document.createTextNode(timeTo));
+            cell5.appendChild(document.createTextNode(hours));
+            cell6.appendChild(document.createTextNode(ot));
+
+            tr.appendChild(cell1);
+            tr.appendChild(cell2);
+            tr.appendChild(cell3);
+            tr.appendChild(cell4);
+            tr.appendChild(cell5);
+            tr.appendChild(cell6);
+            tBody.appendChild(tr);
+        }
     }
 }

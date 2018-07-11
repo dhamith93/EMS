@@ -255,7 +255,9 @@ public class EmployeeManager extends Manager {
         String hql = "FROM Attendance a WHERE a.empId = :id AND a.isClockedOut = 0";
         Query query = session.createQuery(hql);
         query.setParameter("id", empId);
-        return (Attendance) query.getSingleResult();
+        Attendance a = (Attendance) query.getSingleResult();
+        session.close();
+        return a;
     }
     
     public static Attendance getLastAttendance(String empId) {
@@ -267,7 +269,20 @@ public class EmployeeManager extends Manager {
         if (attendanceList.size() == 0) {
             return null;
         }        
+        session.close();
         return attendanceList.get(0);
+    }
+    
+    public static List<Attendance> getAttendanceOf(Employee employee, String from, String to) {
+        init();
+        String hql = "FROM Attendance a WHERE a.empId = :id And (a.dateIn BETWEEN :from AND :to)";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", employee.getEmpId());
+        query.setParameter("from", from);
+        query.setParameter("to", to);
+        List<Attendance> attendanceList = query.getResultList();
+        session.close();
+        return attendanceList;
     }
 
 }

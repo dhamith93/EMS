@@ -53,6 +53,10 @@
                             TASKS
                             <div id="tasks-link" class="border"></div>
                         </li>
+                        <li id="attendance-nav" class="nav-item">
+                            ATTENDANCE
+                            <div id="attendance-link" class="border"></div>
+                        </li>
                         <li id="markAttendance" class="nav-item">
                             <s:if test="isClockedIn">
                                 CLOCK OUT
@@ -89,6 +93,9 @@
 
                 <div id="tasks-tab" class="tab">
                     <%@ include file="includes/task-list.html" %>
+                </div>
+                <div id="attendance-tab" class="tab">
+                    <%@ include file="includes/attendance-table.html" %>
                 </div>
             </div>
         </div>

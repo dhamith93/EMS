@@ -148,5 +148,13 @@
                 <param name="root">jsonString</param>
             </result>
         </action>   
+        <action name="GetAttendanceAction" class="com.action.GetAttendanceAction">
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">jsonString</param>
+            </result>
+        </action>   
 	</package>
 </struts>
