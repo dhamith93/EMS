@@ -234,4 +234,28 @@ public class EmployeeManager extends Manager {
         session.close();
     }
 
+    public static void clockIn(Attendance attendance) {
+        init();
+        session.save(attendance);
+        transaction.commit();
+        session.close();
+        
+    }
+    
+    public static void clockOut(Attendance attendance) {
+        init();
+        attendance = (Attendance) session.merge(attendance);
+        session.saveOrUpdate(attendance);
+        transaction.commit();
+        session.close();        
+    }
+
+    public static Attendance getLastAttendance(String empId) {
+        init();
+        String hql = "FROM Attendance a WHERE empId = :id AND isClockedOut = 0";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", empId);
+        return (Attendance) query.getSingleResult();
+    }
+
 }

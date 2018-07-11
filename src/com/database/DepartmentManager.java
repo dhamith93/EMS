@@ -14,8 +14,8 @@ public class DepartmentManager extends Manager {
     }
     
     public static void update(Department d, String manager) {
-        init();
         d = get(d.getName());
+        init();
         Department department = (Department) session.merge(d);
         department.setManagerId(manager);
         session.saveOrUpdate(department);

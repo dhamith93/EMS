@@ -4,7 +4,7 @@ import com.database.*;
 import com.entity.*;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AddDepartmentAction extends ActionSupport {
+public class AddDepartmentAction extends ActionSupport implements LoginRequired {
     private String name;
     private String manager;
     private String status;
