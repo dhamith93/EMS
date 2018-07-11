@@ -16,25 +16,25 @@ public class ClockOutAction  extends ActionSupport implements LoginRequired {
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
         Calendar calendar = Calendar.getInstance();
         LocalDate today = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
-        String date = dateFormat.format(calendar.getTime());
-        String time = today.format(formatter);
+        String time = dateFormat.format(calendar.getTime());
+        String date = today.format(formatter);
         
         try {
-            String dateOutArr[] = date.split("/");
+            String dateOutArr[] = date.split("-");
             String timeOut = time.replace(':', '.');
             
-            Attendance attendance = EmployeeManager.getLastAttendance(empId);        
+            Attendance attendance = EmployeeManager.getLastClockedInAttendance(empId);        
             
-            String dateInArr[] = attendance.getDateIn().split("/");
+            String dateInArr[] = attendance.getDateIn().split("-");
             String timeIn = attendance.getClockIn().replace(':', '.');
 
             int dOut = Integer.parseInt(dateOutArr[1]);
             double hOut = Double.parseDouble(timeOut);        
             
             int dIn = Integer.parseInt(dateInArr[1]);
-            double hIn = Double.parseDouble(timeIn);
+            double hIn = Double.parseDouble(timeIn.substring(0, 5));
             
             int days = (dOut - dIn);
             

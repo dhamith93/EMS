@@ -20,7 +20,8 @@
 <body>
     <script>
         var approvedLeaveCount = <s:property value="%{approvedLeaveCount}"/>;
-        console.log(approvedLeaveCount);
+        var isClockedIn = <s:property value="%{isClockedIn}"/>;
+        var empId = '<s:property value="%{employee.empId}"/>';
     </script>
     <div class="container">
         <div class="row main">
@@ -51,6 +52,15 @@
                         <li id="tasks-nav" class="nav-item">
                             TASKS
                             <div id="tasks-link" class="border"></div>
+                        </li>
+                        <li id="markAttendance" class="nav-item">
+                            <s:if test="isClockedIn">
+                                CLOCK OUT
+                            </s:if>
+                            <s:else>
+                                CLOCK IN
+                            </s:else>
+                            <div id="" class="border"></div>
                         </li>
                         <li id="logout" class="nav-item">
                             LOGOUT

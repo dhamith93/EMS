@@ -250,12 +250,24 @@ public class EmployeeManager extends Manager {
         session.close();        
     }
 
-    public static Attendance getLastAttendance(String empId) {
+    public static Attendance getLastClockedInAttendance(String empId) {
         init();
-        String hql = "FROM Attendance a WHERE empId = :id AND isClockedOut = 0";
+        String hql = "FROM Attendance a WHERE a.empId = :id AND a.isClockedOut = 0";
         Query query = session.createQuery(hql);
         query.setParameter("id", empId);
         return (Attendance) query.getSingleResult();
+    }
+    
+    public static Attendance getLastAttendance(String empId) {
+        init();
+        String hql = "FROM Attendance a WHERE a.empId = :id ORDER BY isClockedOut ASC";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", empId);        
+        List<Attendance> attendanceList = query.getResultList();
+        if (attendanceList.size() == 0) {
+            return null;
+        }        
+        return attendanceList.get(0);
     }
 
 }

@@ -16,10 +16,10 @@ public class ClockInAction extends ActionSupport implements LoginRequired {
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm");
         Calendar calendar = Calendar.getInstance();
         LocalDate today = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
-        String date = dateFormat.format(calendar.getTime());
-        String time = today.format(formatter);
+        String time = dateFormat.format(calendar.getTime());
+        String date = today.format(formatter);
                 
         Attendance attendance = new Attendance();
         attendance.setEmpId(empId);

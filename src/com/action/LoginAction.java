@@ -20,6 +20,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
     private List<Task> tasks;
     private List<TaskAssignment> taskAssignments;
     private Long approvedLeaveCount;
+    private boolean isClockedIn;
     
     private Map session;
 
@@ -63,6 +64,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
                     tasks = TaskManager.getTasks(employee);
                     taskAssignments = TaskManager.getAssignments(employee);
                     approvedLeaveCount = EmployeeManager.getApprovedLeaveCount(employee);
+                    Attendance attendance = EmployeeManager.getLastAttendance(employee.getEmpId());
+                    isClockedIn = (attendance != null && attendance.getIsClockedOut() == 0);
+                    System.out.println(isClockedIn);
                     return "EMP";
                 default:
                     return ERROR;
@@ -151,5 +155,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public void setApprovedLeaveCount(Long approvedLeaveCount) {
         this.approvedLeaveCount = approvedLeaveCount;
+    }
+
+    public boolean getIsClockedIn() {
+        return isClockedIn;
+    }
+
+    public void setIsClockedIn(boolean isClockedIn) {
+        this.isClockedIn = isClockedIn;
     }
 }

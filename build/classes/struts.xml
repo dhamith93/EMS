@@ -116,6 +116,22 @@
                 <param name="root">jsonString</param>
             </result>
         </action> 
+        <action name="ClockInAction" class="com.action.ClockInAction">            
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action>
+        <action name="ClockOutAction" class="com.action.ClockOutAction">            
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action>
         <action name="SetTaskProgressAction" class="com.action.SetTaskProgressAction">
             <interceptor-ref name="newStack"/>
             <result type="json">

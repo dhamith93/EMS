@@ -114,3 +114,43 @@ $('.progress-link').click(function(e) {
 
     e.preventDefault();
 });
+
+function markAttendance() {
+    if (isClockedIn) {
+        $.ajax({
+            type: 'POST',
+            url: 'ClockOutAction.action',
+            data: { 
+                'empId': empId
+            },
+            success: function(data) {
+                let result = JSON.parse(data);
+                if (result['status'] === 'OK') {
+                   alert('Clocked out!');
+                   isClockedIn = false;
+                   document.getElementById('markAttendance').innerHTML = 'CLOCK IN';
+                } else { 
+                   alert('Encountered an error! Please check your data and try again later...');
+                }
+            }
+      });
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: 'ClockInAction.action',
+            data: { 
+                'empId': empId
+            },
+            success: function(data) {
+                let result = JSON.parse(data);
+                if (result['status'] === 'OK') {
+                   alert('Clocked In!');
+                   isClockedIn = true;
+                   document.getElementById('markAttendance').innerHTML = 'CLOCK OUT';
+                } else { 
+                   alert('Encountered an error! Please check your data and try again later...');
+                }
+            }
+      });
+    }
+}

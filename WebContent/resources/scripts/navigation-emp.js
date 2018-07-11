@@ -28,6 +28,9 @@ function navigationHandler(id) {
         case 'logout':
             window.location.replace('LogoutAction');
             break;
+        case 'markAttendance':
+            markAttendance();
+            break;
         default:
 
     }
