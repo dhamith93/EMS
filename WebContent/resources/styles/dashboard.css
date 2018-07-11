@@ -100,6 +100,18 @@ input[type=date], input[type=time] {
     background-color: rgb(90, 90, 90);
 }
 
+.logo {    
+    margin: auto;
+    margin-top: 20px;
+}
+
+.logo img {
+	display: block;
+	width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
 .content {    
     position: relative;
     height: 100%;    

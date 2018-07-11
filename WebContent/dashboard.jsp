@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="resources/styles/dashboard.css">
-    <title>Dashboard : Curo EMS</title>
+    <title>HR Portal</title>
 </head>
 <body>
 
@@ -25,10 +25,8 @@
         <div class="row main">
             <div class="side-nav">
                 <div class="logo">
-                    <img src="" alt="">
-                    <h3>Curo EMS</h3>
+                    <img src="resources/img/logo.png" />
                 </div>
-                <hr>
                 <nav>
                     <ul>
                         <li id="search-nav" class="nav-item">

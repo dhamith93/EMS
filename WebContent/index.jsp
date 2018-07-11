@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="resources/styles/index.css">
-    <title>Login : Curo EMS</title>
+    <title>Login : Flex EMS</title>
 </head>
 <body>
 
     <div class="login">
+        <img src="resources/img/logo.png" />
         <form id="login-form" action="LoginAction" method="post">
-            <h2>Curo EMS</h2>
+            <h2>Login to proceed</h2>
             <div class="text">
                 <input type="text" name="userName" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>

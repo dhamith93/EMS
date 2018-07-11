@@ -13,7 +13,7 @@ textarea, input { outline: none; }
 .login {
     width: 300px;
     margin: auto;
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 .login .text input {
@@ -42,6 +42,13 @@ textarea, input { outline: none; }
     font-family: 'Noto Sans', sans-serif;
     text-align: center;
     color: #ffffff;
+}
+
+.login img {
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: auto;
 }
 
 .login button {
