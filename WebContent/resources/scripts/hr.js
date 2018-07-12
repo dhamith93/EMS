@@ -58,6 +58,12 @@ function fillTable(data) {
             link3.innerHTML = 'Tasks';
             link3.classList.add('task-link');
             link3.id = id;
+            
+            let link4 = document.createElement('a');
+            link4.href = '#';
+            link4.innerHTML = 'Attendance';
+            link4.classList.add('attendance-link');
+            link4.id = id;
 
             let deleteBtn = document.createElement('button');
             deleteBtn.id = id;
@@ -74,6 +80,7 @@ function fillTable(data) {
             let cell6 = document.createElement('td');
             let cell7 = document.createElement('td');
             let cell8 = document.createElement('td');
+            let cell9 = document.createElement('td');
 
             cell1.appendChild(document.createTextNode(id));
             cell2.appendChild(document.createTextNode(firstName));
@@ -82,7 +89,8 @@ function fillTable(data) {
             cell5.appendChild(link);
             cell6.appendChild(link2);
             cell7.appendChild(link3);
-            cell8.appendChild(deleteBtn);
+            cell8.appendChild(link4);
+            cell9.appendChild(deleteBtn);
 
             tr.appendChild(cell1);
             tr.appendChild(cell2);
@@ -92,6 +100,7 @@ function fillTable(data) {
             tr.appendChild(cell6);
             tr.appendChild(cell7);
             tr.appendChild(cell8);
+            tr.appendChild(cell9);
             tBody.appendChild(tr);
         }
     }
@@ -184,6 +193,64 @@ function fillTasksTable(data) {
         }
     }
 }
+
+function fillAttendanceTable(data) {
+    resetTable('attendance-table');
+    if (data.length > 0) {
+        let tBody = document.getElementsByTagName("tbody").item(3);
+        for (let i = 0; i < data.length; i++) {
+            let empId = data[i]['empId'];
+            let dateFrom = data[i]['dateIn'];
+            let dateTo = data[i]['dateOut'];
+            let timeFrom = data[i]['clockIn'];
+            let timeTo = data[i]['clockOut'];
+            let hours = data[i]['hours'];
+            let ot = data[i]['ot'];
+
+            let tr = document.createElement('tr');
+            let cell1 = document.createElement('td');
+            let cell2 = document.createElement('td');
+            let cell3 = document.createElement('td');
+            let cell4 = document.createElement('td');
+            let cell5 = document.createElement('td');
+            let cell6 = document.createElement('td');
+            let cell7 = document.createElement('td');
+
+            cell1.appendChild(document.createTextNode(empId));
+            cell2.appendChild(document.createTextNode(dateFrom));
+            cell3.appendChild(document.createTextNode(dateTo));
+            cell4.appendChild(document.createTextNode(timeFrom));
+            cell5.appendChild(document.createTextNode(timeTo));
+            cell6.appendChild(document.createTextNode(hours));
+            cell7.appendChild(document.createTextNode(ot));
+
+            tr.appendChild(cell1);
+            tr.appendChild(cell2);
+            tr.appendChild(cell3);
+            tr.appendChild(cell4);
+            tr.appendChild(cell5);
+            tr.appendChild(cell6);
+            tr.appendChild(cell7);
+            tBody.appendChild(tr);
+        }
+    }
+}
+
+function getAttendance(empId, from, to) {
+    $.ajax({
+        type: 'POST',
+        url: 'GetAttendanceAction.action',
+        data: { 
+            'empId': empId,
+            'from': from,
+            'to': to
+        },
+        success: function(data) {
+            let result = JSON.parse(data);
+            fillAttendanceTable(result);            
+        }
+    });
+} 
 
 function displayEmpInfo(id) {
     let emp = employees.find(function(e) {

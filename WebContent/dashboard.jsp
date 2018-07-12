@@ -69,6 +69,7 @@
                 </div>
                 <%@ include file="includes/leaves-modal.html" %>
                 <%@ include file="includes/tasks-modal.html" %>
+                <%@ include file="includes/attendance-modal.html" %>
 
             </div>
         </div>

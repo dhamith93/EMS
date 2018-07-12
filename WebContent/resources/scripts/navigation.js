@@ -2,24 +2,28 @@ let navItems = document.getElementsByClassName('nav-item');
 let borders = document.getElementsByClassName('border');
 let tabs = document.getElementsByClassName('tab');
 let infoLinks = document.getElementsByClassName('info-link');
+let getAttendanceBtn = document.getElementById('getAttendance');
 
-document.getElementById('emp-info-close').addEventListener('click',
-        function(e) {
-            document.getElementById('emp-info-tab').style.display = 'none';
-            document.getElementById('search-tab').style.display = 'block';
-        });
+document.getElementById('emp-info-close').addEventListener('click', function(e) {
+    document.getElementById('emp-info-tab').style.display = 'none';
+    document.getElementById('search-tab').style.display = 'block';
+});
 
-document.getElementById('emp-leaves-close').addEventListener('click',
-        function(e) {
-            document.getElementById('emp-leaves-tab').style.display = 'none';
-            document.getElementById('search-tab').style.display = 'block';
-        });
+document.getElementById('emp-leaves-close').addEventListener('click', function(e) {
+    document.getElementById('emp-leaves-tab').style.display = 'none';
+    document.getElementById('search-tab').style.display = 'block';
+});
 
-document.getElementById('emp-tasks-close').addEventListener('click',
-        function(e) {
-            document.getElementById('emp-tasks-tab').style.display = 'none';
-            document.getElementById('search-tab').style.display = 'block';
-        });
+document.getElementById('emp-tasks-close').addEventListener('click', function(e) {
+    document.getElementById('emp-tasks-tab').style.display = 'none';
+    document.getElementById('search-tab').style.display = 'block';
+});
+
+document.getElementById('emp-attendance-close').addEventListener('click', function(e) {
+    document.getElementById('emp-attendance-tab').style.display = 'none';
+    document.getElementById('search-tab').style.display = 'block';
+    resetTable('attendance-table');
+});
 
 for (let i = 0; i < navItems.length; i++) {
     navItems[i].addEventListener('click', function(e) {
@@ -91,18 +95,29 @@ $(document).on('click', '.task-link', function(e) {
     e.preventDefault();
     $.ajax({
         type : 'GET',
-        url : 'GetEmployeeTasksAction.action?empId='
-                + this.id,
+        url : 'GetEmployeeTasksAction.action?empId=' + this.id,
         dataType : 'json',
         error : function() {
             console
                     .log('error getting a response from GetEmployeeTasksAction...');
         },
         success : function(data) {
-            fillTasksTable(JSON.parse(data.replace(
-                    '//', '')));
+            fillTasksTable(JSON.parse(data.replace('//', '')));
         }
     });
     document.getElementById('search-tab').style.display = 'none';
     document.getElementById('emp-tasks-tab').style.display = 'block';
+});
+
+$(document).on('click', '.attendance-link', function(e) {
+    e.preventDefault();
+    document.getElementById('search-tab').style.display = 'none';
+    document.getElementById('emp-attendance-tab').style.display = 'block';
+    getAttendanceBtn.id = this.id;
+});
+
+getAttendanceBtn.addEventListener('click', function(e) {
+    let from = document.getElementById('from').value;
+    let to = document.getElementById('to').value;
+    getAttendance(this.id, from, to);
 });
