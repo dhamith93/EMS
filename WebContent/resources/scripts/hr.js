@@ -298,12 +298,12 @@ $("#addEmpForm").submit(function(e) {
         success : function(data) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
-                alert('Employee Added!');
+                showMessage('Success', 'Employee Added!');
                 document.getElementById('addEmpForm').reset();
             } else if (result['status'] === 'passwords-no-match') {
-                alert('Passwords don\'t match!');
+                showMessage('Error', 'Passwords don\'t match!');
             } else {
-                alert('Encountered an error! Please check your data and try again later...');
+                showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
         }
     });
@@ -320,13 +320,13 @@ $("#updateEmpForm").submit(function(e) {
         success : function(data) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
-                alert('Employee updated!');
+                showMessage('Success', 'Employee updated!');
             } else if (result['status'] === 'passwords-no-match') {
-                alert('Passwords don\'t match!');
+                showMessage('Error', 'Passwords don\'t match!');
             } else if (result['status'] === 'ERROR_PASSWORD') {
-                alert('Employee updated!\nError with saving the password. Please try again.');
+                showMessage('Error', 'Employee updated!\nError with saving the password. Please try again.');
             } else {
-                alert('Encountered an error! Please check your data and try again later...');
+                showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
         }
     });
@@ -334,28 +334,37 @@ $("#updateEmpForm").submit(function(e) {
     e.preventDefault();
 });
 
+function deleteEmployee(id) {
+    $.ajax({
+        type : 'GET',
+        url : 'DeleteEmployeeAction.action?empId='+ id,
+        dataType : 'json',
+        error : function() {
+            console.log('error getting a response from DeleteEmployeeAction...');
+        },
+        success : function(data) {
+            let result = JSON.parse(data);
+            if (result['status'] === 'OK') {
+                showMessage('Success', 'Employee ' + id + ' deleted!');
+                search();
+            } else {
+                showMessage('Error', 'Encountered an error! Please check your data and try again later...');
+            }
+        }
+    });
+}
+
 $(document).on('click', '.delete-btn', function(e) {
     e.preventDefault();
     let id = this.id;
-    if (confirm('Do you want to delete employee: ' + id)) {
-        $.ajax({
-            type : 'GET',
-            url : 'DeleteEmployeeAction.action?empId='+ id,
-            dataType : 'json',
-            error : function() {
-                console.log('error getting a response from DeleteEmployeeAction...');
+    getApproval(
+            'Delete Employee', 
+            'Do you want to delete employee: ' + id + '?',
+            function() {
+                deleteEmployee(id);
             },
-            success : function(data) {
-                let result = JSON.parse(data);
-                if (result['status'] === 'OK') {
-                    alert('Employee' + id + ' deleted!');
-                    search();
-                } else {
-                    alert('Encountered an error! Please check your data and try again later...');
-                }
-            }
-        });
-    }
+            function() { }
+    );
 });
 
 $("#add-dept-form").submit(function(e) {
@@ -367,10 +376,10 @@ $("#add-dept-form").submit(function(e) {
         success : function(data) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
-                alert('Department Added!');
+                showMessage('Success', 'Department Added!');
                 document.getElementById('addEmpForm').reset();
             } else {
-                alert('Encountered an error! Please check your data and try again later...');
+                showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
         }
     });
@@ -387,9 +396,9 @@ $("#update-dept-form").submit(function(e) {
         success : function(data) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
-                alert('Department updated!');
+                showMessage('Success', 'Department updated!');
             } else {
-                alert('Encountered an error! Please check your data and try again later...');
+                showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
         }
     });

@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="resources/styles/dashboard.css">
+    <link rel="stylesheet" href="resources/styles/dialog.css">
     <title>Employee Portal</title>
 </head>
 <body>
@@ -100,8 +101,11 @@
             </div>
         </div>
     </div>    
+    
+    <%@ include file="includes/dialog.html" %>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="resources/scripts/dialog.js"></script>
     <script src="resources/scripts/emp.js"></script>
     <script src="resources/scripts/navigation-emp.js"></script>
 

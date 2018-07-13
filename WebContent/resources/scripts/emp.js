@@ -22,12 +22,12 @@ $("#reqLeaveForm").submit(function(e) {
            success: function(data) {
                let result = JSON.parse(data);
                if (result['status'] === 'OK') {
-                   alert('Leave request successful!');
+                   showMessage('Success', 'Leave request successful!');
                    document.getElementById('reqLeaveForm').reset();
                } else if (result['status'] === 'OUT_OF_LEAVES') {
-                   alert('You are out of leaves!');
+                   showMessage('Error', 'You are out of leaves!');
                } else { 
-                   alert('Encountered an error! Please check your data and try again later...');
+                   showMessage('Error', 'Encountered an error! Please check your data and try again later...');
                }
            }
          });
@@ -44,12 +44,12 @@ $("#reqShortLeaveForm").submit(function(e) {
            success: function(data) {
                let result = JSON.parse(data);
                if (result['status'] === 'OK') {
-                   alert('Leave request successful!');
+                   showMessage('Success', 'Leave request successful!');
                    document.getElementById('reqShortLeaveForm').reset();
                } else if (result['status'] === 'OUT_OF_LEAVES') {
-                   alert('You are out of leaves!');
+                   showMessage('Error', 'You are out of leaves!');
                } else { 
-                   alert('Encountered an error! Please check your data and try again later...');
+                   showMessage('Error', 'Encountered an error! Please check your data and try again later...');
                }
            }
          });
@@ -68,14 +68,14 @@ $('.confirm-link').click(function(e) {
         success: function(data) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
-               alert('Leave confirmed!');
+               showMessage('Success', 'Leave confirmed!');
                element.replaceWith('YES');
                approvedLeaveCount -= 1;
                setNotification()
             } else if (result['status'] === 'NOT_APPROVED') {
-               alert('Your leave is not yet approved.');
+               showMessage('Error', 'Your leave is not yet approved.');
             } else { 
-               alert('Encountered an error! Please check your data and try again later...');
+               showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
         }
       });
@@ -105,9 +105,9 @@ $('.progress-link').click(function(e) {
         success: function(data) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
-               alert('Progress is set!');
+               showMessage('Success', 'Progress is set!');
             } else { 
-               alert('Encountered an error! Please check your data and try again later...');
+               showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
         }
       });
@@ -135,11 +135,11 @@ function markAttendance() {
         success: function(data) {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
-               alert(message);
+               showMessage('Success', message);
                isClockedIn = false;
                document.getElementById('markAttendance').innerHTML = html;
             } else { 
-               alert('Encountered an error! Please check your data and try again later...');
+               showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
         }
     });

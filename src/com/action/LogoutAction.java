@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.database.*;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LogoutAction extends ActionSupport implements SessionAware {
@@ -20,6 +21,7 @@ public class LogoutAction extends ActionSupport implements SessionAware {
     
     public String execute() {
         session.remove("empId");
+        Manager.stop();
         return SUCCESS;
     }
 }
