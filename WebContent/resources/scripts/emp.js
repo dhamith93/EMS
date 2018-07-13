@@ -116,18 +116,14 @@ $('.progress-link').click(function(e) {
 });
 
 function markAttendance() {
-    let url;
-    let message;
-    let html;
+    let url = 'ClockInAction.action';
+    let message = 'Clocked in!';
+    let html = 'CLOCK OUT';
     
     if (isClockedIn) {
         url = 'ClockOutAction.action';
         message = 'Clocked out!';
         html = 'CLOCK IN';
-    } else {
-        url = 'ClockInAction.action';
-        message = 'Clocked in!';
-        html = 'CLOCK OUT';
     }
     
     $.ajax({
