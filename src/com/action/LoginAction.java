@@ -14,7 +14,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
     private String password;
     private String loginOption;
     private Employee employee;
-    private List<Leave> leaves;
+    private Department department;
+    private List<Employee> employeeDept;
+	private List<Leave> leaves;
     private LeavesLeft leavesLeft;
     private List<Department> departments;
     private List<Task> tasks;
@@ -56,8 +58,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
                     }
                 case "man":
                     Long deptManId = DepartmentManager.getManager(employee.getDept());
+                    department = DepartmentManager.get(employee.getDeptName());
+                    employeeDept = EmployeeManager.getEmployeeDept(employee.getDept());
                     if (deptManId == employee.getId())
-                    System.out.println(employee.getEmpId());
                         return "MAN";
                 case "emp":
                     leaves = EmployeeManager.getLeaves(employee);
@@ -164,4 +167,20 @@ public class LoginAction extends ActionSupport implements SessionAware {
     public void setIsClockedIn(boolean isClockedIn) {
         this.isClockedIn = isClockedIn;
     }
+    
+    public Department getDepartment() {
+ 		return department;
+ 	}
+
+ 	public void setDepartment(Department department) {
+ 		this.department = department;
+ 	}
+	public List<Employee> getEmployeeDept() {
+		return employeeDept;
+	}
+
+	public void setEmployeeDept(List<Employee> employeeDept) {
+		this.employeeDept = employeeDept;
+	}
+
 }

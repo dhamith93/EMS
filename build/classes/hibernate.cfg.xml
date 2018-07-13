@@ -16,19 +16,19 @@
        	
        	<!-- PRABUDDHA -->
        
-        <!-- <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/EMS</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/EMS</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>  -->
+        <property name="hibernate.connection.password">root</property>
        
         
         <!-- END PRABUDDHA -->
         
         <!-- DHAMITH -->
-         
+        <!-- 
         <property name="hibernate.connection.url">jdbc:mysql://localhost:8889/EMS</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>  
-             
+        -->     
         <!-- END DHAMITH -->
         
         

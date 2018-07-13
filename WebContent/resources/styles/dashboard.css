@@ -343,7 +343,7 @@ button:active {
     font-weight: 900;
 }
 
-.contact-info-sec, .personal-info-sec, .company-info {
+.contact-info-sec, .personal-info-sec, .company-info,  {
     height: 380px;
     float: left;
     margin: auto 50px;

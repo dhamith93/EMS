@@ -285,4 +285,14 @@ public class EmployeeManager extends Manager {
         return attendanceList;
     }
 
+	public static List<Employee> getEmployeeDept(Long deptID) {
+		init();
+		String hql = "FROM Employee e WHERE e.dept = :deptId";
+		Query query = session.createQuery(hql);
+		query.setParameter("deptId", deptID);
+		List<Employee> employeeDept = query.getResultList();
+		session.close();
+		return employeeDept;
+	}
+
 }

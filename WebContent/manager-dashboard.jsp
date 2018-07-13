@@ -57,19 +57,19 @@
                 </div>
 
                 <div id="dept-tab" class="tab">
-                    <%@ include file="includes/dept-info.html" %>  
+                     <%@ include file="includes/dept-info.html" %>  
                 </div>
 
                 <div id="tasks-tab" class="tab">
-                    <%@ include file="includes/addForm.html" %>
+                    <!--<%@ include file="includes/addForm.html" %> -->
                 </div>
 
                 <div id="leaveReq-tab" class="tab">
-                     <%@ include file="includes/addDept.html" %>
+                     <!--<%@ include file="includes/addDept.html" %> -->
                 </div>
                 
                 <div id="logout" class="tab">
-                     <%@ include file="includes/addDept.html" %>
+                     <!--<%@ include file="includes/addDept.html" %> -->
                 </div>
 
             </div>
@@ -77,7 +77,6 @@
     </div>    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="resources/scripts/hr.js"></script>
     <script src="resources/scripts/navigation-man.js"></script>
 
 </body>

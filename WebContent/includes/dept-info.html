@@ -1,69 +1,42 @@
-<div class="personal-info-sec">
-    <h3>Personal Information</h3>
-    <table class="table stripped-table emp-info-table">       
-        <tbody>
-            <tr>
-            <td class="bold-td"><strong>First Name </strong></td>
-            <td><s:property value="%{employee.firstName}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>Last Name </strong></td>
-            <td><s:property value="%{employee.lastName}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>DOB </strong></td>
-            <td><s:property value="%{employee.dob}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>Gender </strong></td>
-            <td><s:property value="%{employee.gender}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>NIC </strong></td>
-            <td><s:property value="%{employee.NIC}"/></td>
-            </tr>
-        </tbody>
-    </table>          
+<div>
+ <h2>Department Name : <s:property value="%{department.name}"/></h2>
 </div>
-<div class="contact-info-sec">
-    <h3>Contact Information</h3>
-    <table class="table stripped-table contact-info-table">
-        <tbody>
+
+<h3>Employee List</h3>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Position</th>      
+        <th scope="col">Telephone number</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        <s:iterator value="employeeDept" var="employee">
             <tr>
-            <td class="bold-td"><strong>Line 1 </strong></td>
-            <td><s:property value="%{employee.addressLine1}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>Line 2 </strong></td>
-            <td><s:property value="%{employee.addressLine2}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>City </strong></td>
-            <td><s:property value="%{employee.city}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>Telephone </strong></td>
-            <td><s:property value="%{employee.telephoneNo}"/></td>
-            </tr>
-        </tbody>
-    </table>        
-</div>
-<div class="company-info">
-    <h3>Company Information</h3>
-    <table class="table stripped-table company-info-table">       
-        <tbody>
-            <tr>
-            <td class="bold-td"><strong>Position </strong></td>
-            <td><s:property value="%{employee.position}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>Department </strong></td>
-            <td><s:property value="%{employee.deptName}"/></td>
-            </tr>
-            <tr>
-            <td class="bold-td"><strong>Joined date </strong></td>
-            <td><s:property value="%{employee.joinedDate}"/></td>
-            </tr>               
-        </tbody>
-    </table>
-</div>
+            <td>
+                <s:property value="%{empId}"/>
+            </td>
+            <td>
+                <s:property value="%{firstName}"/>
+            </td> 
+            <td>
+                <s:property value="%{lastName}"/>
+            </td> 
+            <td>
+                <s:property value="%{gender}"/>
+            </td> 
+            <td>
+                <s:property value="%{position}"/>
+            </td> 
+            <td>
+                <s:property value="%{telephoneNo}"/>
+            </td>      
+        </s:iterator>
+    
+    </tbody>
+</table>
