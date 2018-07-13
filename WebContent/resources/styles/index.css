@@ -11,7 +11,7 @@ body {
 textarea, input { outline: none; }
 
 .login {
-    width: 300px;
+    width: 320px;
     margin: auto;
     margin-top: 15%;
 }

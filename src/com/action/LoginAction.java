@@ -57,6 +57,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
                 case "man":
                     Long deptManId = DepartmentManager.getManager(employee.getDept());
                     if (deptManId == employee.getId())
+                    System.out.println(employee.getEmpId());
                         return "MAN";
                 case "emp":
                     leaves = EmployeeManager.getLeaves(employee);

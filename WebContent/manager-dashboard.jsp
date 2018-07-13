@@ -8,38 +8,77 @@
         response.sendRedirect("index.jsp");
     }
 %>
-<link rel="stylesheet" href="resources/styles/dashboard.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="resources/styles/dashboard.css">
+    <title>Manager Portal</title>
 </head>
 <body>
-	<%@ include file="includes/navbar.html" %>
-	
-	<div class="container-fluid">
-        <div class="row">
-            <div class="navigation col-lg-2">
-                <div id="dept-btn" class="tab arrow_box active">
-                    <h3>Department Info</h3>
+
+    <div class="container">
+        <div class="row main">
+            <div class="side-nav">
+                <div class="logo">
+                    <img src="resources/img/logo.png" />
                 </div>
-                <div id="tasks-btn" class="tab">
-                    <h3>Tasks</h3>
-                </div>
-                <div id="leaves-btn" class="tab">
-                    <h3>Leave Requests</h3>
-                </div>
+                <nav>
+                    <ul>
+                        <li id="managerInfo-nav" class="nav-item">
+                            MANAGER INFO   
+                            <div id="managerInfo-link" class="active border"></div>                         
+                        </li>
+                        <li id="dept-nav" class="nav-item">
+                            DEPARTMENT INFO
+                            <div id="dept-link" class="border"></div>
+                        </li>
+                        <li id="tasks-nav" class="nav-item">
+                            TASKS
+                            <div id="tasks-link" class="border"></div>
+                        </li>
+                        <li id="leaveReq-nav" class="nav-item">
+                            LEAVE REQUESTS
+                            <div id="leaveReq-nav-link" class="border"></div>
+                        </li>
+                        <li id="logout" class="nav-item">
+                            LOGOUT
+                            <div id="" class="border"></div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <div class="main col-10">
-                <div id="deptTab" class="content-area">
-                    <h1>Department Info</h1>
+
+            <div class="content">
+                <div id="managerInfo-tab" class="tab">
+                    <%@ include file="includes/emp-info.html" %>
                 </div>
-                <div id="tasksTab" class="content-area">
-                	<h1>Task Info</h1>
+
+                <div id="dept-tab" class="tab">
+                    <%@ include file="includes/dept-info.html" %>  
                 </div>
-                <div id="leavesTab" class="content-area">
-                    <h1>Leave Requests</h1>
+
+                <div id="tasks-tab" class="tab">
+                    <%@ include file="includes/addForm.html" %>
                 </div>
+
+                <div id="leaveReq-tab" class="tab">
+                     <%@ include file="includes/addDept.html" %>
+                </div>
+                
+                <div id="logout" class="tab">
+                     <%@ include file="includes/addDept.html" %>
+                </div>
+
             </div>
         </div>
-    </div>
-	
+    </div>    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="resources/scripts/hr.js"></script>
+    <script src="resources/scripts/navigation-man.js"></script>
 
 </body>
 </html>
