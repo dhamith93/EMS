@@ -74,12 +74,13 @@ textarea, input { outline: none; }
 .radio label {
     font-family: 'Noto Sans', sans-serif;
     color: #ffffff;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
 }
 
 .radio {
     margin-bottom: 25px;
+    text-align: center;
 }
 
 .radio input {

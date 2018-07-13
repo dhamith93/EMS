@@ -136,7 +136,7 @@ function markAttendance() {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
                showMessage('Success', message);
-               isClockedIn = false;
+               isClockedIn = (!isClockedIn);
                document.getElementById('markAttendance').innerHTML = html;
             } else { 
                showMessage('Error', 'Encountered an error! Please check your data and try again later...');
