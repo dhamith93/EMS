@@ -116,14 +116,18 @@ $('.progress-link').click(function(e) {
 });
 
 function markAttendance() {
-    let url = 'ClockInAction.action';
-    let message = 'Clocked in!';
-    let html = 'CLOCK OUT';
+    let url;
+    let message;
+    let html;
     
     if (isClockedIn) {
         url = 'ClockOutAction.action';
         message = 'Clocked out!';
         html = 'CLOCK IN';
+    } else {
+        url = 'ClockInAction.action';
+        message = 'Clocked in!';
+        html = 'CLOCK OUT';
     }
     
     $.ajax({
@@ -136,7 +140,7 @@ function markAttendance() {
             let result = JSON.parse(data);
             if (result['status'] === 'OK') {
                showMessage('Success', message);
-               isClockedIn = false;
+               isClockedIn = (!isClockedIn);
                document.getElementById('markAttendance').innerHTML = html;
             } else { 
                showMessage('Error', 'Encountered an error! Please check your data and try again later...');
