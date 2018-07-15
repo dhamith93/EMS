@@ -302,6 +302,10 @@ $("#addEmpForm").submit(function(e) {
                 document.getElementById('addEmpForm').reset();
             } else if (result['status'] === 'passwords-no-match') {
                 showMessage('Error', 'Passwords don\'t match!');
+            } else if (result['status'] === 'duplicate-emp-id') {
+                showMessage('Error', 'Employee ID already exists on the system!');
+            } else if (result['status'] === 'empty-fields') {
+                showMessage('Error', 'Please fill the entire form!');
             } else {
                 showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
@@ -325,6 +329,8 @@ $("#updateEmpForm").submit(function(e) {
                 showMessage('Error', 'Passwords don\'t match!');
             } else if (result['status'] === 'ERROR_PASSWORD') {
                 showMessage('Error', 'Employee updated!\nError with saving the password. Please try again.');
+            } else if (result['status'] === 'empty-fields') {
+                showMessage('Error', 'Please fill the entire form!');
             } else {
                 showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }

@@ -7,6 +7,17 @@ import org.hibernate.cfg.Configuration;
 import com.entity.*;
 
 public class EmployeeManager extends Manager {
+    public static boolean employeeExists(String empId) {
+        init();
+        String hql = "FROM Employee e WHERE e.empId = :val";
+        Query query = session.createQuery(hql);
+        query.setParameter("val", empId);
+        List<Employee> list = query.getResultList();
+        session.close();
+        return (list.size() > 0);
+    }
+    
+    
     public static void save(Employee e) {
         init();
         session.save(e);

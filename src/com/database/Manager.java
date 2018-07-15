@@ -19,5 +19,7 @@ public class Manager {
         }
     }
     
-    public static void stop() { end(); }
+    public static void stop() { 
+        end();
+    }
 }
