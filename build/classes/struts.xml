@@ -28,7 +28,6 @@
             <result name="MAN">/manager-dashboard.jsp</result>
             <result name="EMP">/employee-dashboard.jsp</result>
             <result name="error">/index.jsp</result>
-            <result name="input">/index.jsp</result>
             <interceptor-ref name="newStack"/>
         </action>
     </package>
@@ -155,6 +154,14 @@
                 <param name="noCache">true</param>
                 <param name="excludeNullProperties">true</param>
                 <param name="root">jsonString</param>
+            </result>
+        </action>
+        <action name="AddTaskAction" class="com.action.AddTaskAction">      
+            <interceptor-ref name="newStack"/>     
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
             </result>
         </action>   
 	</package>
