@@ -60,6 +60,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
                     Long deptManId = DepartmentManager.getManager(employee.getDept());
                     department = DepartmentManager.get(employee.getDeptName());
                     employeeDept = EmployeeManager.getEmployeeDept(employee.getDept());
+                    tasks = TaskManager.getTasks(employee);
+                    taskAssignments = TaskManager.getAssignments(employee);
+                    departments = DepartmentManager.getAll();
                     if (deptManId == employee.getId())
                         return "MAN";
                 case "emp":

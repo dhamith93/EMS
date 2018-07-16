@@ -61,7 +61,7 @@
                 </div>
 
                 <div id="tasks-tab" class="tab">
-                    <!--<%@ include file="includes/addForm.html" %> -->
+                    <%@ include file="includes/tasks-manager.html" %>
                 </div>
 
                 <div id="leaveReq-tab" class="tab">
