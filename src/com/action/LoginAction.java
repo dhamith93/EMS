@@ -44,43 +44,50 @@ public class LoginAction extends ActionSupport implements SessionAware {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
-            return ERROR;
+            addFieldError("error", "User '" + userName + "' does not exist!");
+            return INPUT;
+            //return ERROR;
         }
 
         if (login != null) {
             if (BCrypt.checkpw(password, login.getPassword())) {
+                
                 session.put("empId", employee.getEmpId());
+                
                 switch (loginOption) {
-                case "hr":
-                    if (employee.getDeptName().equals("HR")) {
+
+
+                    case "hr":
+                        if (employee.getDeptName().equals("HR")) {
+                            departments = DepartmentManager.getAll();
+                            return "HR";
+                        }
+                    case "man":
+                        Long deptManId = DepartmentManager.getManager(employee.getDept());
+                        department = DepartmentManager.get(employee.getDeptName());
+                        employeeDept = EmployeeManager.getEmployeeDept(employee.getDept());
+                        tasks = TaskManager.getTasks(employee);
+                        taskAssignments = TaskManager.getAssignments(employee);
                         departments = DepartmentManager.getAll();
-                        return "HR";
-                    }
-                case "man":
-                    Long deptManId = DepartmentManager.getManager(employee.getDept());
-                    department = DepartmentManager.get(employee.getDeptName());
-                    employeeDept = EmployeeManager.getEmployeeDept(employee.getDept());
-                    tasks = TaskManager.getTasks(employee);
-                    taskAssignments = TaskManager.getAssignments(employee);
-                    departments = DepartmentManager.getAll();
-                    if (deptManId == employee.getId())
-                        return "MAN";
-                case "emp":
-                    leaves = EmployeeManager.getLeaves(employee);
-                    leavesLeft = EmployeeManager.getLeavesLeft(employee);
-                    tasks = TaskManager.getTasks(employee);
-                    taskAssignments = TaskManager.getAssignments(employee);
-                    approvedLeaveCount = EmployeeManager.getApprovedLeaveCount(employee);
-                    Attendance attendance = EmployeeManager.getLastAttendance(employee.getEmpId());
-                    isClockedIn = (attendance != null && attendance.getIsClockedOut() == 0);
-                    return "EMP";
-                default:
-                    return ERROR;
+                        if (deptManId == employee.getId())
+                            return "MAN";
+                    case "emp":
+                        leaves = EmployeeManager.getLeaves(employee);
+                        leavesLeft = EmployeeManager.getLeavesLeft(employee);
+                        tasks = TaskManager.getTasks(employee);
+                        taskAssignments = TaskManager.getAssignments(employee);
+                        approvedLeaveCount = EmployeeManager.getApprovedLeaveCount(employee);
+                        Attendance attendance = EmployeeManager.getLastAttendance(employee.getEmpId());
+                        isClockedIn = (attendance != null && attendance.getIsClockedOut() == 0);
+                        return "EMP";
+                    default:                    
+                        //return ERROR;
                 }
             }
         }
 
-        return ERROR;
+        addFieldError("error", "You are not authorized to log in.");
+        return INPUT;
     }
 
     public String getUserName() {

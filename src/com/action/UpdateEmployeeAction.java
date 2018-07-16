@@ -28,49 +28,61 @@ public class UpdateEmployeeAction extends ActionSupport implements LoginRequired
     private String status;
     
     public String execute() {
-        Employee e = EmployeeManager.get(empId);
-        Employee employee = new Employee();
-        employee.setId(e.getId());
-        employee.setFirstName(firstName);
-        employee.setLastName(lastName);
-        employee.setDob(dob);
-        employee.setGender(gender);
-        employee.setNIC(NIC);
-        employee.setEmpId(empId);
-        employee.setJoinedDate(joinedDate);
-        employee.setDept(dept);
-        employee.setManagedBy(DepartmentManager.getManager(dept));
-        employee.setPosition(position);
-        employee.setSalary(salary);
-        employee.setAddressLine1(addressLine1);
-        employee.setAddressLine2(addressLine2);
-        employee.setTelephoneNo(telephoneNo);
-        employee.setCity(city);
-        try {
-            EmployeeManager.update(employee);
-            status = "{\"status\": \"OK\"}";
-        } catch (Exception ex) {
-            status = "{\"status\": \"ERROR\"}";
-        }
-        
-        if (password != null && !password.equals("")) {
-            if (password.equals(password2)) {
-                password = BCrypt.hashpw(password, BCrypt.gensalt());
-                Login login = new Login();
-                login.setEmpId(empId);
-                login.setPassword(password);
-                try {
-                    EmployeeManager.updateLoginInfo(login);
-                    status = "{\"status\": \"OK\"}";
-                } catch (Exception ex) {
-                    status = "{\"status\": \"ERROR_PASSWORD\"}";
-                }
-            } else {
-                status = "{\"status\": \"passwords-no-match\"}";
+        if (!emptyFields()) {
+            Employee e = EmployeeManager.get(empId);
+            Employee employee = new Employee();
+            employee.setId(e.getId());
+            employee.setFirstName(firstName);
+            employee.setLastName(lastName);
+            employee.setDob(dob);
+            employee.setGender(gender);
+            employee.setNIC(NIC);
+            employee.setEmpId(empId);
+            employee.setJoinedDate(joinedDate);
+            employee.setDept(dept);
+            employee.setManagedBy(DepartmentManager.getManager(dept));
+            employee.setPosition(position);
+            employee.setSalary(salary);
+            employee.setAddressLine1(addressLine1);
+            employee.setAddressLine2(addressLine2);
+            employee.setTelephoneNo(telephoneNo);
+            employee.setCity(city);
+            try {
+                EmployeeManager.update(employee);
+                status = "{\"status\": \"OK\"}";
+            } catch (Exception ex) {
+                status = "{\"status\": \"ERROR\"}";
             }
+            
+            if (password != null && !password.equals("")) {
+                if (password.equals(password2)) {
+                    password = BCrypt.hashpw(password, BCrypt.gensalt());
+                    Login login = new Login();
+                    login.setEmpId(empId);
+                    login.setPassword(password);
+                    try {
+                        EmployeeManager.updateLoginInfo(login);
+                        status = "{\"status\": \"OK\"}";
+                    } catch (Exception ex) {
+                        status = "{\"status\": \"ERROR_PASSWORD\"}";
+                    }
+                } else {
+                    status = "{\"status\": \"passwords-no-match\"}";
+                }
+            }
+        } else {
+            status = "{\"status\": \"empty-fields\"}";            
         }
         
         return SUCCESS;
+    }
+    
+    private boolean emptyFields() {
+        return (
+            firstName.isEmpty() || lastName.isEmpty() || dob.isEmpty() || gender.isEmpty() ||
+            NIC.isEmpty() || empId.isEmpty() || position.isEmpty() || dept == null ||
+            joinedDate.isEmpty() || addressLine1.isEmpty() || city.isEmpty() || telephoneNo.isEmpty()
+        );
     }
     
     

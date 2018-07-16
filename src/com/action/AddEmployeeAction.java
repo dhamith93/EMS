@@ -28,37 +28,54 @@ public class AddEmployeeAction extends ActionSupport implements LoginRequired {
     private String status;
 
     public String execute() {
-        Employee e = new Employee();
-        e.setFirstName(firstName);
-        e.setLastName(lastName);
-        e.setAddressLine1(addressLine1);
-        e.setAddressLine2(addressLine2);
-        e.setCity(city);
-        e.setTelephoneNo(telephoneNo);
-        e.setDept(dept);
-        e.setDob(dob);
-        e.setEmpId(empId);
-        e.setGender(gender);
-        e.setJoinedDate(joinedDate);
-        e.setManagedBy(DepartmentManager.getManager(dept));
-        e.setNIC(NIC);
-        e.setPosition(position);
-        e.setSalary(salary);
-
-        if (password.equals(password2)) {
-            try {
-                EmployeeManager.save(e);
-                password = BCrypt.hashpw(password, BCrypt.gensalt());
-                EmployeeManager.addLoginInfo(e, password);
-                status = "{\"status\": \"OK\"}";
-            } catch (Exception ex) {
-                status = "{\"status\": \"ERROR\"}";
+        if (!emptyFields()) {
+            if (EmployeeManager.employeeExists(empId)) {
+                status = "{\"status\": \"duplicate-emp-id\"}";
+            } else {                
+                Employee e = new Employee();
+                e.setFirstName(firstName);
+                e.setLastName(lastName);
+                e.setAddressLine1(addressLine1);
+                e.setAddressLine2(addressLine2);
+                e.setCity(city);
+                e.setTelephoneNo(telephoneNo);
+                e.setDept(dept);
+                e.setDob(dob);
+                e.setEmpId(empId);
+                e.setGender(gender);
+                e.setJoinedDate(joinedDate);
+                e.setManagedBy(DepartmentManager.getManager(dept));
+                e.setNIC(NIC);
+                e.setPosition(position);
+                e.setSalary(salary);
+                
+                if (password.equals(password2)) {
+                    try {
+                        EmployeeManager.save(e);
+                        password = BCrypt.hashpw(password, BCrypt.gensalt());
+                        EmployeeManager.addLoginInfo(e, password);
+                        status = "{\"status\": \"OK\"}";
+                    } catch (Exception ex) {
+                        status = "{\"status\": \"ERROR\"}";
+                    }
+                } else {
+                    status = "{\"status\": \"passwords-no-match\"}";
+                }
             }
         } else {
-            status = "{\"status\": \"passwords-no-match\"}";
+            status = "{\"status\": \"empty-fields\"}";            
         }
-
+        
         return SUCCESS;
+    }
+    
+    private boolean emptyFields() {
+        return (
+            firstName.isEmpty() || lastName.isEmpty() || dob.isEmpty() || gender.isEmpty() ||
+            NIC.isEmpty() || empId.isEmpty() || position.isEmpty() || dept == null ||
+            joinedDate.isEmpty() || password.isEmpty() || password2.isEmpty() ||
+            addressLine1.isEmpty() || city.isEmpty() || telephoneNo.isEmpty()
+        );
     }
 
     public String getFirstName() {

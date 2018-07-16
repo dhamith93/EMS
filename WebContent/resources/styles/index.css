@@ -87,3 +87,11 @@ textarea, input { outline: none; }
     background-color: rgb(255, 212, 69);
     cursor: pointer;
 }
+
+.errorMessage {
+	list-style: none;
+    padding: 0;
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Noto Sans', sans-serif;
+}

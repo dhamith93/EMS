@@ -9,8 +9,8 @@ public class DeleteEmployeeAction extends ActionSupport implements LoginRequired
     private String status;
     
     public String execute() {
-        Employee e = EmployeeManager.get(empId);
         try {
+            Employee e = EmployeeManager.get(empId);
             EmployeeManager.delete(e);
             status = "{\"status\": \"OK\"}";
         } catch (Exception ex) {

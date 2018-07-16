@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
         <img src="resources/img/logo.png" />
         <form id="login-form" action="LoginAction" method="post">
             <h2>Login to proceed</h2>
+            <s:fielderror name="error" />
             <div class="text">
                 <input type="text" name="userName" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
