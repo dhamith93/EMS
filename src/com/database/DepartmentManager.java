@@ -8,19 +8,32 @@ import com.entity.*;
 public class DepartmentManager extends Manager {
     
     public static void save(Department d) {
-        init();
-        session.save(d);
-        transaction.commit();
+        try {
+            init();
+            session.save(d);
+            transaction.commit();
+        } catch (Exception ex) {
+            transaction.rollback();
+            throw ex;
+        } finally {
+            session.close();
+        }        
     }
     
-    public static void update(Department d, String manager) {
-        d = get(d.getName());
-        init();
-        Department department = (Department) session.merge(d);
-        department.setManagerId(manager);
-        session.saveOrUpdate(department);
-        transaction.commit();
-        session.close();
+    public static void update(Department d, String manager) {        
+        try {
+            d = get(d.getName());
+            init();
+            Department department = (Department) session.merge(d);
+            department.setManagerId(manager);
+            session.saveOrUpdate(department);
+            transaction.commit();            
+        } catch (Exception ex) {
+            transaction.rollback();
+            throw ex;
+        } finally {
+            session.close();
+        }
     }
     
     public static List<Department> getAll() {

@@ -7,7 +7,7 @@ USE `EMS`;
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2018 at 01:41 AM
+-- Generation Time: Jul 17, 2018 at 03:12 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -41,10 +41,9 @@ CREATE TABLE `ATTENDANCE` (
 --
 
 INSERT INTO `ATTENDANCE` (`ID`, `EMP_ID`, `DATE_IN`, `CLOCK_IN`, `DATE_OUT`, `CLOCK_OUT`, `HOURS`, `OT`, `IS_CLOCKED_OUT`) VALUES
-(6, 'E555', '2018-07-11', '03:51:00', '2018-07-11', '03:53:00', '0.02', '0.00', 1),
-(7, 'E555', '2018-07-02', '03:03:03', '2018-07-02', '03:04:03', '1.00', '0.00', 1),
-(8, 'E555', '2018-07-04', '03:03:03', '2018-07-04', '03:04:03', '1.00', '0.00', 1),
-(9, 'E555', '2018-06-01', '03:03:03', '2018-06-01', '03:04:03', '1.00', '0.00', 1);
+(25, 'E556', '2018-07-01', '08:00:00', '2018-07-01', '16:14:00', '8.14', '0.14', 1),
+(26, 'E556', '2018-07-02', '08:00:00', '2018-07-02', '19:20:00', '11.20', '3.20', 1),
+(27, 'E556', '2018-07-03', '08:26:00', '2018-07-03', '16:00:00', '7.34', '0.00', 1);
 
 -- --------------------------------------------------------
 
@@ -63,11 +62,11 @@ CREATE TABLE `DEPARTMENT` (
 --
 
 INSERT INTO `DEPARTMENT` (`ID`, `NAME`, `MANAGER_ID`) VALUES
-(1, 'IT', 'E09321'),
-(2, 'HR', 'E545'),
-(3, 'SALES', 'E303'),
-(4, 'ACCOUNTING', 'E223'),
-(6, 'Marketing', 'E338');
+(8, 'HR', 'E555'),
+(10, 'IT', 'E545'),
+(11, 'SALES', 'E338'),
+(12, 'ACCOUNTING', 'E223'),
+(13, 'ADMINISTRATION', 'E762');
 
 -- --------------------------------------------------------
 
@@ -99,14 +98,12 @@ CREATE TABLE `EMPLOYEE` (
 --
 
 INSERT INTO `EMPLOYEE` (`ID`, `FIRST_NAME`, `LAST_NAME`, `DOB`, `GENDER`, `NIC`, `EMP_ID`, `SALARY`, `JOINED_DATE`, `MANAGED_BY`, `DEPARTMENT`, `POSITION`, `ADDRESS_LINE_1`, `ADDRESS_LINE_2`, `CITY`, `TELEPHONE_NO`) VALUES
-(1, 'DHAMITH', 'HEWAMULLAGE', '1993-01-01', 'male', '0123456789V', 'E338', '9999.99', '2012-01-01', 1, 1, 'DEV', '31', 'SRI ANANDARAMA MAWATHA', 'KOLONNAWA', '0778675309'),
-(2, 'JOHN', 'DOE', '1989-01-01', 'male', '0123456789V', 'E556', '99999.99', '2015-01-01', 1, 1, 'OPS', '1, CURIOSITY STREET', '', 'MARS', '0123456789'),
-(3, 'JANE', 'DOE', '1979-01-01', 'female', '0123456789V', 'E223', '99999.99', '2018-02-01', 5, 2, 'HR', '1, CURIOSITY STREET', '', 'MARS', '0123456789'),
-(4, 'MIKE', 'HUNT', '1969-01-01', 'male', '0123456789V', 'E303', '99999.99', '2017-01-01', 4, 3, '', '666, SOME STREET', 'SOME OTHER STREET', 'SWING CITY', '0123456789'),
-(5, 'ROBERT', 'SOLE', '1959-01-01', 'MALE', '0123456789V', 'E545', '99999.99', '2018-01-01', NULL, 2, NULL, '111, SOME STREET', 'SOME ANOTHER STREET', 'FUCK CITY', '0123456789'),
-(8, 'Login', 'Test', '2018-05-11', 'male', '1213', 'E555', '999999.50', '2018-06-07', 5, 2, 'Sales', '117/3, Rahula road', 'Sugathi Mawatha', 'Angoda', '+94773630792'),
-(25, 'Test', 'Name', '1980-10-28', 'male', '0123456789v', 'E441', '32563.59', '2017-09-14', 4, 3, 'Sales', '111, some place', 'some street', 'some city', '01234567890'),
-(27, 'Test', 'Person', '1990-03-03', 'female', '123467985', 'E09321', '12564321.00', '2015-02-02', 1, 1, 'DEV', '123, Some Place', 'Some street', 'Some city', '1234453');
+(8, 'Login', 'Test', '2018-05-11', 'male', '1213', 'E555', '999999.50', '2018-06-07', 8, 8, 'Sales', '117/3, Rahula road', 'Sugathi Mawatha', 'Angoda', '+94773630792'),
+(29, 'Kevin', 'Brown', '1987-05-26', 'male', '0123456789v', 'E556', '35500.50', '2018-01-01', 8, 8, 'Payroll ', '001, Some place', 'Some street', 'Some City', '0123456789'),
+(32, 'Rob', 'Walters', '1991-07-10', 'male', '0123456789v', 'E338', '25000.00', '2011-06-01', 32, 11, 'SALES', '002, Some place', 'Some street', 'Some City', '0123456789'),
+(33, 'Jane', 'Doe', '1977-10-05', 'female', '0123456789v', 'E223', '30000.00', '2009-12-11', 33, 12, 'ACCOUNTANT', '003, Some place', 'Some street', 'Some City', '0123456789'),
+(34, 'John', 'Doe', '1965-08-14', 'male', '012345678912', 'E762', '75000.00', '2007-07-12', 34, 13, 'Admin', '004, Some place', 'Some street', 'Some City', '0123456789'),
+(35, 'Mike', 'Hunt', '1985-05-01', 'male', '0123456789v', 'E545', '60000.00', '2002-06-01', 35, 10, 'DEV', '005, Some place', 'Some street', 'Some city', '0123456789');
 
 -- --------------------------------------------------------
 
@@ -133,14 +130,11 @@ CREATE TABLE `LEAVES` (
 --
 
 INSERT INTO `LEAVES` (`ID`, `EMP_ID`, `MANAGER`, `REASON`, `TYPE`, `START_ON_DATE`, `END_ON_DATE`, `START_ON_TIME`, `END_ON_TIME`, `IS_APPROVED`, `IS_CONFIRMED`) VALUES
-(4, 'E555', 5, 'test', 'short', '2018-07-06', '2018-07-06', '01:00', '02:00', 0, 0),
-(5, 'E555', 5, 'test', 'short', '2018-07-11', '2018-07-11', '01:00', '02:00', 1, 1),
-(6, 'E555', 5, 'test', 'annual', '2018-07-19', '2018-07-25', '', '', 1, 1),
-(7, 'E555', 5, 'Some reason here', 'casual', '2018-07-09', '2018-07-10', '', '', 0, 0),
-(8, 'E555', 5, 'test', 'annual', '2018-07-01', '2018-07-04', '', '', 1, 1),
-(9, 'E555', 5, 'c test', 'casual', '2018-07-01', '2018-07-04', '', '', 1, 0),
-(10, 'E555', 5, 'test', 'short', '2018-07-11', '2018-07-11', '01:00', '05:00', 0, 0),
-(11, 'E555', 5, 'test reason', 'casual', '2018-01-01', '2018-01-05', '', '', 0, 0);
+(15, 'E556', 8, 'Some reason', 'annual', '2018-07-22', '2018-07-24', '', '', 0, 0),
+(16, 'E556', 8, 'Some another reason', 'casual', '2018-07-19', '2018-07-19', '', '', 0, 0),
+(17, 'E556', 8, 'Yet another reason', 'casual', '2018-07-04', '2018-07-07', '', '', 0, 0),
+(18, 'E556', 8, 'Some reason', 'short', '2018-07-26', '2018-07-26', '12:00', '16:00', 0, 0),
+(19, 'E556', 8, 'Some another reason', 'short', '2018-07-21', '2018-07-21', '08:00', '13:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -161,9 +155,12 @@ CREATE TABLE `LEAVES_LEFT` (
 --
 
 INSERT INTO `LEAVES_LEFT` (`ID`, `EMP_ID`, `ANNUAL`, `CASUAL`, `SHORT`) VALUES
-(1, 'E555', '10', '7', '2'),
-(4, 'E441', '10', '7', '2'),
-(6, 'E09321', '10', '7', '2');
+(8, 'E555', '10', '7', '2'),
+(9, 'E556', '10', '7', '2'),
+(10, 'E338', '10', '7', '2'),
+(11, 'E223', '10', '7', '2'),
+(12, 'E762', '10', '7', '2'),
+(13, 'E545', '10', '7', '2');
 
 -- --------------------------------------------------------
 
@@ -183,10 +180,11 @@ CREATE TABLE `LOGIN` (
 
 INSERT INTO `LOGIN` (`ID`, `EMP_ID`, `PASSWORD`) VALUES
 (3, 'E555', '$2a$10$Frv43oAjOYbEeOi6DtlaSuIAqAME8YN6bjBp/bF/Q5ucILDCbUM6.'),
-(4, 'E223', '$2a$10$IqB0VrRcN0yQDkypoFoOU.HEqYOi4QEbyCqQhdGIKm.ff2SgpmUo2'),
-(5, 'E338', '$2a$10$dQ8cJrRfkZE0am.QhREnAOAPteTmhDje6PY3Tl/iMkWvzEmB2LIT.'),
-(8, 'E441', '$2a$10$4/qu2X64wx2cw0U83nB1GuN6mYVDUPqecThXV0Hb72yy8io80acDu'),
-(10, 'E09321', '$2a$10$IOE8dHsPsFHz2JWgtxMIc.3eCt9C05vEdH1gK4rKj4vSJXvv7oBDy');
+(12, 'E556', '$2a$10$OrRSAI/vYN9XbluXjPV0fO45CKfgZ4MB093w/BXmhghOuJZxPpCxm'),
+(13, 'E338', '$2a$10$h/QLptPzzrDi0ZnObPVfaO.kBrijt2mIQTnd2T1FN8wZlOv0dRfw.'),
+(14, 'E223', '$2a$10$D6HtEUtjGdbIwgLxRSb6BeSxBQeBFzScXILczd1xYFHtmeGvPnZ8e'),
+(15, 'E762', '$2a$10$j1Wf5K3C.64xwb7QvQK/1.H5pO2y7/RrB4zT16Dj/ijYhCikD0Cr2'),
+(16, 'E545', '$2a$10$Jb.5cy7e94lFAf9stgmTg.FRg07Zm9i27xflD/.xYOJZJ/f4kbWVS');
 
 -- --------------------------------------------------------
 
@@ -198,7 +196,7 @@ CREATE TABLE `TASKS` (
   `ID` int(11) NOT NULL,
   `DEPT_ID` int(11) DEFAULT NULL,
   `NAME` varchar(25) DEFAULT NULL,
-  `DESC` text,
+  `DESCRIPTION` text,
   `START_ON` date DEFAULT NULL,
   `END_ON` date DEFAULT NULL,
   `IS_COMPLETED` smallint(6) DEFAULT NULL
@@ -208,9 +206,11 @@ CREATE TABLE `TASKS` (
 -- Dumping data for table `TASKS`
 --
 
-INSERT INTO `TASKS` (`ID`, `DEPT_ID`, `NAME`, `DESC`, `START_ON`, `END_ON`, `IS_COMPLETED`) VALUES
-(1, 2, 'Test Task', 'This is a test task. ', '2018-06-30', '2018-07-21', 0),
-(2, 2, 'Test task 2', 'This is a test task', '2018-07-03', '2018-07-06', 1);
+INSERT INTO `TASKS` (`ID`, `DEPT_ID`, `NAME`, `DESCRIPTION`, `START_ON`, `END_ON`, `IS_COMPLETED`) VALUES
+(4, 8, 'Test Task', 'This is a test task for kevin', '2018-07-23', '2018-07-24', 1),
+(5, 8, 'Another Test Task', 'This is a another task for kevin', '2018-07-26', '2018-07-29', 0),
+(6, 8, 'Another Test Task', 'Another task for kevin', '2018-08-02', '2018-08-04', 0),
+(7, 8, 'Another task', 'Another task for kevin  ', '2018-08-05', '2018-08-18', 0);
 
 -- --------------------------------------------------------
 
@@ -231,7 +231,7 @@ CREATE TABLE `TASK_ASSESSMENT` (
 --
 
 INSERT INTO `TASK_ASSESSMENT` (`ID`, `TASK_ID`, `EMP_ID`, `PERFORMANCE`, `NOTES`) VALUES
-(1, 2, 'E555', 99.99, 'This is a test note');
+(13, 4, 'E556', 100, 'Good');
 
 -- --------------------------------------------------------
 
@@ -251,8 +251,10 @@ CREATE TABLE `TASK_ASSIGNMENT` (
 --
 
 INSERT INTO `TASK_ASSIGNMENT` (`ID`, `EMP_ID`, `TASK_ID`, `PROGRESS`) VALUES
-(1, 'E555', 1, '50'),
-(2, 'E555', 2, '100');
+(4, 'E556', 4, '100'),
+(5, 'E556', 5, '95'),
+(6, 'E556', 6, '10'),
+(7, 'E556', 7, '100');
 
 --
 -- Indexes for dumped tables
@@ -334,55 +336,55 @@ ALTER TABLE `TASK_ASSIGNMENT`
 -- AUTO_INCREMENT for table `ATTENDANCE`
 --
 ALTER TABLE `ATTENDANCE`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `DEPARTMENT`
 --
 ALTER TABLE `DEPARTMENT`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `EMPLOYEE`
 --
 ALTER TABLE `EMPLOYEE`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `LEAVES`
 --
 ALTER TABLE `LEAVES`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `LEAVES_LEFT`
 --
 ALTER TABLE `LEAVES_LEFT`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `LOGIN`
 --
 ALTER TABLE `LOGIN`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `TASKS`
 --
 ALTER TABLE `TASKS`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `TASK_ASSESSMENT`
 --
 ALTER TABLE `TASK_ASSESSMENT`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `TASK_ASSIGNMENT`
 --
 ALTER TABLE `TASK_ASSIGNMENT`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -445,5 +447,3 @@ ALTER TABLE `TASK_ASSESSMENT`
 ALTER TABLE `TASK_ASSIGNMENT`
   ADD CONSTRAINT `task_assignment_ibfk_1` FOREIGN KEY (`TASK_ID`) REFERENCES `TASKS` (`ID`),
   ADD CONSTRAINT `task_assignment_ibfk_2` FOREIGN KEY (`EMP_ID`) REFERENCES `EMPLOYEE` (`EMP_ID`);
-
-
