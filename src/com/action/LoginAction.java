@@ -37,7 +37,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public String execute() {
         Login login;
-
+        
         try {
             employee = EmployeeManager.get(userName);
             login = EmployeeManager.getLoginInfo(employee);
@@ -46,7 +46,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
             e.printStackTrace();
             addFieldError("error", "User '" + userName + "' does not exist!");
             return INPUT;
-            //return ERROR;
         }
 
         if (login != null) {
@@ -55,8 +54,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
                 session.put("empId", employee.getEmpId());
                 
                 switch (loginOption) {
-
-
                     case "hr":
                         if (employee.getDeptName().equals("HR")) {
                             departments = DepartmentManager.getAll();

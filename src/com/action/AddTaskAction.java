@@ -13,10 +13,8 @@ public class AddTaskAction extends  ActionSupport implements LoginRequired {
 	private String endOn;
     private int isCompleted;
     private String empId;
-    private Long taskId;
 
-	private String status;
-    
+	private String status;    
     
     public String execute() {
     	
@@ -30,21 +28,16 @@ public class AddTaskAction extends  ActionSupport implements LoginRequired {
     	
     	TaskAssignment ta = new TaskAssignment();
     	ta.setEmpId(empId);
-    	//ta.setTaskId(taskId);
-    	
     	try {
     		TaskManager.save(task, ta);
     		status = "{\"status\": \"OK\"}";
     	}
     	catch(Exception ex) {
+    	    status = "{\"status\": \"ERROR\"}";
     	    ex.printStackTrace();
-    		System.out.println(ex);
     	}
     	
-    	
-    	
-    	
-    	return status;
+    	return SUCCESS;
     }
      
 	public Long getDeptId() {
@@ -90,14 +83,6 @@ public class AddTaskAction extends  ActionSupport implements LoginRequired {
 
 	public void setEmpId(String empId) {
 		this.empId = empId;
-	}
-
-	public Long getTaskId() {
-		return taskId;
-	}
-
-	public void setTaskId(Long taskId) {
-		this.taskId = taskId;
 	}
 
 	public String getStatus() {
