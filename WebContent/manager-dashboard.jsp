@@ -61,6 +61,7 @@
                 </div>
 
                 <div id="tasks-tab" class="tab">
+                    <span id="taks-notification" class="notification"></span>
                     <%@ include file="includes/tasks-manager.html" %>
                 </div>
 
@@ -78,6 +79,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="resources/scripts/navigation-man.js"></script>
+    <script src="resources/scripts/man.js"></script>
 
 </body>
 </html>

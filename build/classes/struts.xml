@@ -156,6 +156,14 @@
                 <param name="excludeNullProperties">true</param>
                 <param name="root">jsonString</param>
             </result>
-        </action>   
+        </action>
+        <action name="AddTaskAction" class="com.action.AddTaskAction">
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">jsonString</param>
+            </result>
+        </action>    
 	</package>
 </struts>
