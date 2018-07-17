@@ -164,6 +164,14 @@
                 <param name="excludeNullProperties">true</param>
                 <param name="root">status</param>
             </result>
-        </action>    
+        </action>
+        <action name="ConfirmTaskAction" class="com.action.ConfirmTaskAction">
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action>     
 	</package>
 </struts>

@@ -41,17 +41,31 @@ $(document).on('click', '.performance-link', function(e) {
                 let performance = document.getElementById('prompt-performance').value;
                 let notes = document.getElementById('prompt-notes').value;
 
-                // add ajax codes inside this function
+                $.ajax({
+                    type: 'POST',
+                    url: 'ConfirmTaskAction.action',
+                    data: {
+                    	'empId':empId,
+                    	'taskId':taskId,
+                    	'performance':performance,
+                    	'notes':notes
+                    },
+                    success: function(data) {
+                        let result = JSON.parse(data);
+                        if (result['status'] === 'OK') {
+                            showMessage('Success', 'Task Completed');
+                        } else { 
+                            showMessage('Error', 'Encountered an error! Please check your data and try again later...');
+                        }
+                    }
+                  });
                 
-                // all the data needed for, 
-                //     1) TaskManager.markComplete(String taskId)
-                //     2) TaskManager.assess(TaskAssessment ta)
                 console.log(taskId);
                 console.log(empId);
                 console.log(performance);   
                 console.log(notes);
                 
-                // use showMessage() to display success/error message
+
             }, 
             function() { } // leave this empty! This is the cancel event
     );

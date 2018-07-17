@@ -95,11 +95,11 @@ public class TaskManager extends Manager {
         session.close();
     }
     
-    public static void markComplete(String taskId) {
+    public static void markComplete(Long taskId) {
         init();
         String hql = "UPDATE Task t SET t.isCompleted = 1 WHERE t.taskId = :id";
         Query query = session.createQuery(hql);
-        query.setParameter("id", Long.parseLong(taskId));
+        query.setParameter("id", taskId);
         query.executeUpdate();
         transaction.commit();
         session.close();
