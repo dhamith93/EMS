@@ -4,11 +4,11 @@ HDSE EAD final assignment
 **To login to the system use: username: E555 password: test**
 
 ## TODO
-- [ ] Employee
+- [x] Employee
     - [x] Addition
     - [x] Update
     - [x] Delete
-    - [ ] Add performance info
+    - [x] Add performance info
     - [x] Search
 - [x] Department
     - [x] Add
@@ -17,10 +17,10 @@ HDSE EAD final assignment
 - [ ] Leave Management
     - [x] Request
     - [ ] Approve/Disapprove
-- [ ] Department/Employee tasks
-    - [ ] Add
+- [x] Department/Employee tasks
+    - [x] Add
     - [x] Mark progress
-- [ ] Validation
+- [x] Validation
     
 ### Roles
 * HR
