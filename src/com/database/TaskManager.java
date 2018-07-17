@@ -95,6 +95,16 @@ public class TaskManager extends Manager {
         session.close();
     }
     
+    public static void markComplete(String taskId) {
+        init();
+        String hql = "UPDATE Task t SET t.isCompleted = 1 WHERE t.taskId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", Long.parseLong(taskId));
+        query.executeUpdate();
+        transaction.commit();
+        session.close();
+    }
+    
     public static List<TaskAssignment> getAssignments(Employee emp) {
         init();
         String hql = "FROM TaskAssignment t WHERE t.empId = :id";
