@@ -31,3 +31,28 @@ $("#addTask").submit(function(e) {
 
     e.preventDefault();
 });
+
+$(document).on('click', '.performance-link', function(e) {
+    e.preventDefault();
+    let taskId = this.id;
+    let empId = this.getAttribute("data-empId");
+    prompt(            
+            function() { 
+                let performance = document.getElementById('prompt-performance').value;
+                let notes = document.getElementById('prompt-notes').value;
+
+                // add ajax codes inside this function
+                
+                // all the data needed for, 
+                //     1) TaskManager.markComplete(String taskId)
+                //     2) TaskManager.assess(TaskAssessment ta)
+                console.log(taskId);
+                console.log(empId);
+                console.log(performance);   
+                console.log(notes);
+                
+                // use showMessage() to display success/error message
+            }, 
+            function() { } // leave this empty! This is the cancel event
+    );
+});

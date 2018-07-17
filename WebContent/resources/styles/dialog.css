@@ -77,3 +77,18 @@
 #msg-yes {
     display: none;
 }
+
+.message-inputs {
+	min-width: 90%;
+	margin: auto;
+}
+
+.message-inputs input, .message-inputs textarea {
+	margin: auto;
+}
+
+.message-inputs label {
+	width: 340px;
+	margin: auto;
+    display: flex;
+}

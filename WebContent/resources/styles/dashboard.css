@@ -8,7 +8,7 @@ body {
 
 textarea, input { outline: none; }
 
-input[type=text], input[type=date] , input[type=time], input[type=tel], input[type=password], input[type=number] {
+input[type=text], input[type=date] , input[type=time], input[type=tel], input[type=password], input[type=number], textarea {
     background-color: rgba(226, 226, 226, 0.322);  
     width: 320px;
     height: 15px;
@@ -23,6 +23,14 @@ input[type=text], input[type=date] , input[type=time], input[type=tel], input[ty
 
 input[type=text]:focus, input[type=text]:focus, input[type=date]:focus , input[type=time]:focus, input[type=tel]:focus, input[type=password]:focus, input[type=number]:focus  {
     border-bottom: 2px solid rgb(255, 212, 69);
+}
+
+textarea {
+    height: 150px;
+}
+
+textarea:focus {
+	border-bottom: 2px solid rgb(255, 212, 69);
 }
 
 input[type=date], input[type=time] {
