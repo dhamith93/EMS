@@ -54,18 +54,12 @@ $(document).on('click', '.performance-link', function(e) {
                         let result = JSON.parse(data);
                         if (result['status'] === 'OK') {
                             showMessage('Success', 'Task Completed');
+                            document.getElementById('complete-' + taskId).innerHTML = 'YES';
                         } else { 
                             showMessage('Error', 'Encountered an error! Please check your data and try again later...');
                         }
                     }
-                  });
-                
-                console.log(taskId);
-                console.log(empId);
-                console.log(performance);   
-                console.log(notes);
-                
-
+                  });                
             }, 
             function() { } // leave this empty! This is the cancel event
     );

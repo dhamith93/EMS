@@ -97,7 +97,7 @@ public class TaskManager extends Manager {
     
     public static void markComplete(Long taskId) {
         init();
-        String hql = "UPDATE Task t SET t.isCompleted = 1 WHERE t.taskId = :id";
+        String hql = "UPDATE Task t SET t.isCompleted = 1 WHERE t.id = :id";
         Query query = session.createQuery(hql);
         query.setParameter("id", taskId);
         query.executeUpdate();

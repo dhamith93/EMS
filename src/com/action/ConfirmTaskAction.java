@@ -22,9 +22,6 @@ public class ConfirmTaskAction extends  ActionSupport implements LoginRequired  
     	ta.setPerformance(performance);
     	ta.setNotes(notes);
     	
-    	TaskManager.assess(ta);
-    	TaskManager.markComplete(taskId);
-    	
     	try {
         	TaskManager.assess(ta);
         	TaskManager.markComplete(taskId);
