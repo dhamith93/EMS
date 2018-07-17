@@ -31,7 +31,7 @@ public class TaskManager extends Manager {
             hql = "FROM Task t WHERE t.id = :id";
             query = session.createQuery(hql);
             query.setParameter("id", taskAssignment.getTaskId());
-            tasks.add((Task) query.getSingleResult());
+            tasks.add((Task) query.getResultList().get(0));
         }
         
         session.close();
