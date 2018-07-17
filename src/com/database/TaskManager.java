@@ -12,7 +12,6 @@ public class TaskManager extends Manager {
         init();
         session.save(t);
         Long id = t.getId();
-        System.out.println(id);
         ta.setTaskId(id);
         session.save(ta);
         transaction.commit(); 

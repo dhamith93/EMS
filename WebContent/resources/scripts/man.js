@@ -4,13 +4,13 @@ $(window).on('load', function() {
 
 function setNotification() {
     let span = document.getElementById('task-notification');
-    if (approvedLeaveCount > 0) {
-        span.innerHTML = approvedLeaveCount;
-        span.style.display = 'inline-block';
-    } else {
-        span.innerHTML = '';
-        span.style.display = 'none';
-    }
+//    if (approvedLeaveCount > 0) {
+//        span.innerHTML = approvedLeaveCount;
+//        span.style.display = 'inline-block';
+//    } else {
+//        span.innerHTML = '';
+//        span.style.display = 'none';
+//    }
 }
 
 $("#addTask").submit(function(e) {
@@ -23,7 +23,6 @@ $("#addTask").submit(function(e) {
                let result = JSON.parse(data);
                if (result['status'] === 'OK') {
                    showMessage('Success', 'Task has beed added to Employee successfully!');
-                   document.getElementById('reqLeaveForm').reset();
                } else { 
                    showMessage('Error', 'Encountered an error! Please check your data and try again later...');
                }
