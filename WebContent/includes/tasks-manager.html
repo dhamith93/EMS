@@ -9,34 +9,36 @@
       <th scope="col">From</th>
       <th scope="col">To</th>
       <th scope="col">Progress</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
   
     <s:iterator value="tasks" var="task">
         <tr>
-         <td>
-             <s:property value="%{name}"/>
-         </td> 
-         <td>
-             <s:property value="%{desc}"/>
-         </td> 
-         <td>
-             <s:property value="%{startOn}"/>
-         </td>
-         <td>
-             <s:property value="%{endOn}"/>
-         </td> 
-     
+	         <td>
+	             <s:property value="%{name}"/>
+	         </td> 
+	         <td>
+	             <s:property value="%{desc}"/>
+	         </td> 
+	         <td>
+	             <s:property value="%{startOn}"/>
+	         </td>
+	         <td>
+	             <s:property value="%{endOn}"/>
+	         </td>
+	         <td>
+	             <s:property value="%{performance}"/>%
+	         </td> 
+            <s:if test="#task.performance == 100.00">
+                 <td><a href="#" id=<s:property value="%{taskId}"/> class="progress-link badge badge-primary">Mark Complete</a></td>	             
+            </s:if>
+	        <s:else>
+	             <td>NO</td>
+	        </s:else>
+        </tr>
     </s:iterator>
-    <s:iterator value="taskAssignments" var="taskAssignment">
-        <td>
-            <s:property value="%{performance}" />
-        </td>
-       
-    </s:iterator>
-    
-    </tr>
 
   </tbody>
 </table>

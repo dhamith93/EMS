@@ -71,6 +71,14 @@ public class TaskManager extends Manager {
         Query query = session.createQuery(hql);
         query.setParameter("id", dept.getId());
         List<Task> tasks = query.getResultList();
+        for (Task task : tasks) {
+            hql = "FROM TaskAssignment t WHERE t.taskId = :id";
+            query = session.createQuery(hql);
+            query.setParameter("id", task.getId());
+            TaskAssignment taskAssignemnt = (TaskAssignment) query.getResultList().get(0);
+            task.setPerformance(taskAssignemnt.getProgress());
+            System.out.println(task.getPerformance());
+        }
         
         session.close();
         return tasks;
