@@ -77,7 +77,7 @@ public class TaskManager extends Manager {
             query.setParameter("id", task.getId());
             TaskAssignment taskAssignemnt = (TaskAssignment) query.getResultList().get(0);
             task.setPerformance(taskAssignemnt.getProgress());
-            System.out.println(task.getPerformance());
+            task.setEmpId(taskAssignemnt.getEmpId());
         }
         
         session.close();

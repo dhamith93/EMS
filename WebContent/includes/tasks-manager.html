@@ -4,7 +4,7 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <!-- <th scope="col">Employee</th> -->
+      <th scope="col">Employee</th>
       <th scope="col">Task</th>
       <th scope="col">Description</th>      
       <th scope="col">From</th>
@@ -16,6 +16,9 @@
   <tbody>
     <s:iterator value="tasks" var="task">
         <tr>
+            <td>
+                 <s:property value="%{empId}"/>
+             </td> 
 	         <td>
 	             <s:property value="%{name}"/>
 	         </td> 

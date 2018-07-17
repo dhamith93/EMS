@@ -16,6 +16,7 @@ public class Task implements Serializable {
     
     private double performance; // transient property
     private String notes;
+    private String empId;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,5 +96,14 @@ public class Task implements Serializable {
     }
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Transient
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 }
