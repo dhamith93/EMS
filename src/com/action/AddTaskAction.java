@@ -30,14 +30,15 @@ public class AddTaskAction extends  ActionSupport implements LoginRequired {
     	
     	TaskAssignment ta = new TaskAssignment();
     	ta.setEmpId(empId);
-    	ta.setTaskId(taskId);
+    	//ta.setTaskId(taskId);
     	
     	try {
     		TaskManager.save(task, ta);
     		status = "{\"status\": \"OK\"}";
     	}
     	catch(Exception ex) {
-    		 System.out.println(ex);
+    	    ex.printStackTrace();
+    		System.out.println(ex);
     	}
     	
     	

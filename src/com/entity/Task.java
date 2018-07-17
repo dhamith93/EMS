@@ -46,7 +46,7 @@ public class Task implements Serializable {
     }
     
     @Basic
-    @Column(name = "DESC", nullable = true)
+    @Column(name = "DESCRIPTION", nullable = true)
     public String getDesc() {
         return desc;
     }
