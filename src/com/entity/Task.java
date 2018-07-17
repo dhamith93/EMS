@@ -13,7 +13,7 @@ public class Task implements Serializable {
     private String startOn;
 	private String endOn;
     private int isCompleted;
-    private int empId;
+
     
     private double performance; // transient property
     private String notes;
@@ -82,15 +82,6 @@ public class Task implements Serializable {
         this.isCompleted = isCompleted;
     }
     
-    @Basic
-    @Column(name = "EMP_ID", nullable = true)
-    public int getEmpId() {
-		return empId;
-	}
-
-	public void setEmpId(int empId) {
-		this.empId = empId;
-	}
 
     @Transient
     public double getPerformance() {
