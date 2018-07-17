@@ -61,7 +61,7 @@
         <label for="add-name">Employee Name</label>
         <select id="add-name" name="empId" class="select">
             <s:iterator value="employeeDept" var="employee">
-               <option value=<s:property value="%{empId}"/>><s:property value="%{firstName}"/></option>
+               <option value=<s:property value="%{empId}"/>><s:property value="%{firstName}"/>(<s:property value="%{empId}"/>)</option>
             </s:iterator>
         </select>
         <input type="hidden" name="deptId" value=<s:property value="department.id" /> />
