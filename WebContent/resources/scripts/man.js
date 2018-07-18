@@ -64,3 +64,31 @@ $(document).on('click', '.performance-link', function(e) {
             function() { } // leave this empty! This is the cancel event
     );
 });
+
+$(document).on('click', '.leave-link', function(e) {
+    e.preventDefault();
+    let leaveId = this.getAttribute("data-leaveId");
+    console.log(leaveId);
+		$.ajax({
+            type: 'POST',
+            url: 'ConfirmLeaveAction.action',
+            data: {
+            	'leaveId':leaveId,
+            	},
+            success: function(data) {
+                let result = JSON.parse(data);
+                if (result['status'] === 'OK') {
+                    showMessage('Success', 'Approved');
+                    document.getElementById(leave-confrim).innerHTML = 'APPROVED';
+                } else if (result['status'] === 'NOT_APPROVED') { 
+                    showMessage('Success', 'Disapproved');
+                    document.getElementById(leave-confrim).innerHTML = 'DISAPPROVED';
+                }else if (result['status'] === 'CANT_PARSE_DATE') { 
+                  	showMessage('Error', 'No enough leaves to approve');
+                    document.getElementById(leave-confrim).innerHTML = 'DISAPPROVED';
+                }else {
+                	showMessage('Error', 'Encountered an error! Please check your data and try again later...');
+                }
+            }
+          });                
+});
