@@ -22,6 +22,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
     private List<Task> tasks;
     private List<TaskAssignment> taskAssignments;
     private Long approvedLeaveCount;
+    private Long unapprovedLeaveCount;
     private boolean isClockedIn;
     
     private Map session;
@@ -66,6 +67,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
                         tasks = TaskManager.getTasks(department);
                         taskAssignments = TaskManager.getAssignments(employee);
                         departments = DepartmentManager.getAll();
+                        
+                        leaves = EmployeeManager.getLeavesForDept(employee);
+                        unapprovedLeaveCount = EmployeeManager.getUnapprovedLeaveCount(employee);
+                                                
                         if (deptManId == employee.getId())
                             return "MAN";
                     case "emp":
@@ -189,5 +194,13 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public void setEmployeeDept(List<Employee> employeeDept) {
 		this.employeeDept = employeeDept;
 	}
+
+    public Long getUnapprovedLeaveCount() {
+        return unapprovedLeaveCount;
+    }
+
+    public void setUnapprovedLeaveCount(Long unapprovedLeaveCount) {
+        this.unapprovedLeaveCount = unapprovedLeaveCount;
+    }
 
 }

@@ -169,6 +169,18 @@ public class EmployeeManager extends Manager {
         session.close();
         return leaves;
     }
+    
+    public static List<Leave> getLeavesForDept(Employee emp) {
+        init();
+        String hql = "FROM Leave l WHERE l.managedBy = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getId());
+
+        List<Leave> leaves = query.getResultList();
+        
+        session.close();
+        return leaves;
+    }
 
     public static Leave getLeave(String leaveId) {
         init();
@@ -207,6 +219,37 @@ public class EmployeeManager extends Manager {
         
         session.close();
         return count;
+    }
+    
+    public static Long getUnapprovedLeaveCount(Employee emp) {
+        init();
+        String hql = "SELECT COUNT(*) FROM Leave l WHERE l.managedBy = :id AND l.isApproved = 0 AND l.isConfirmed = 0";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getId());
+        Long count = (Long) query.uniqueResult();      
+        
+        session.close();
+        return count;
+    }
+    
+    public static void approveLeave(Leave leave) {
+        init();
+        String hql = "UPDATE Leave l SET l.isApproved = 1 WHERE l.id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", leave.getId());
+        query.executeUpdate();
+        transaction.commit();
+        session.close();
+    }
+    
+    public static void disapproveLeave(Leave leave) {
+        init();
+        String hql = "UPDATE Leave l SET l.isApproved = 2 WHERE l.id = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", leave.getId());
+        query.executeUpdate();
+        transaction.commit();
+        session.close();
     }
 
     public static void reduceLeaves(Employee emp, Leave leave, LeavesLeft leavesLeft, double daysReq) {
