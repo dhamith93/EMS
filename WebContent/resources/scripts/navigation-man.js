@@ -1,5 +1,4 @@
 let navItems = document.getElementsByClassName('nav-item');
-let borders = document.getElementsByClassName('border');
 let tabs = document.getElementsByClassName('tab');
 let newTaskBtn = document.getElementById('new-task-btn');
 
@@ -40,11 +39,11 @@ function navigationHandler(id) {
 }
 
 function changeTab(nav, tab) {
-    for (let i = 0; i < borders.length; i++) {
-        borders[i].classList.remove('active');
+    for (let i = 0; i < navItems.length; i++) {
+        navItems[i].classList.remove('active');
         
-        if (borders[i].id === nav) 
-            borders[i].classList.add('active');
+        if (navItems[i].id === nav)
+            navItems[i].classList.add('active-nav');
         
         if (i < tabs.length)
             tabs[i].style.display = 'none';

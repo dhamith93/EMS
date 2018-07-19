@@ -35,29 +35,23 @@
                 <nav>
                     <ul>
                         <li id="personal-nav" class="nav-item">
-                            <i class="fas fa-user-tie fa-fw"></i>YOUR INFO   
-                            <div id="personal-link" class="active border"></div>                         
+                            <i class="fas fa-user-tie fa-fw"></i>YOUR INFO                           
                         </li>
                         <li id="leaves-nav" class="nav-item">
                             <i class="fas fa-angle-double-right fa-fw"></i>LEAVES
-                            <div id="leaves-link" class="border"></div>
                         </li>
                         <li id="short-leaves-nav" class="nav-item">
                             <i class="fas fa-angle-right fa-fw"></i>SHORT LEAVES
-                            <div id="short-leaves-link" class="border"></div>
                         </li>
                         <li id="leave-details-nav" class="nav-item">
                             <i class="fab fa-wpforms fa-fw"></i>LEAVE DETAILS
                             <span id="leave-notification" class="notification"></span>
-                            <div id="leave-details-link" class="border"></div>
                         </li>
                         <li id="tasks-nav" class="nav-item">
                             <i class="fas fa-tasks fa-fw"></i>TASKS
-                            <div id="tasks-link" class="border"></div>
                         </li>
                         <li id="attendance-nav" class="nav-item">
                             <i class="fas fa-users fa-fw"></i>ATTENDANCE
-                            <div id="attendance-link" class="border"></div>
                         </li>
                         <li id="markAttendance" class="nav-item">
                             <s:if test="isClockedIn">
@@ -66,11 +60,9 @@
                             <s:else>
                                 <i class="fas fa-clock fa-fw"></i>CLOCK IN
                             </s:else>
-                            <div id="" class="border"></div>
                         </li>
                         <li id="logout" class="nav-item">
                             <i class="fas fa-sign-out-alt fa-fw"></i>LOGOUT
-                            <div id="" class="border"></div>
                         </li>
                     </ul>
                 </nav>

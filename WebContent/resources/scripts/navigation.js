@@ -1,5 +1,4 @@
 let navItems = document.getElementsByClassName('nav-item');
-let borders = document.getElementsByClassName('border');
 let tabs = document.getElementsByClassName('tab');
 let infoLinks = document.getElementsByClassName('info-link');
 let getAttendanceBtn = document.getElementById('getAttendance');
@@ -51,14 +50,12 @@ function navigationHandler(id) {
 }
 
 function changeTab(nav, tab) {
-    for (let i = 0; i < borders.length; i++) {
-        borders[i].classList.remove('active');
+    for (let i = 0; i < navItems.length; i++) {
+        navItems[i].classList.remove('active-nav');
 
-        if (borders[i].id === nav)
-            borders[i].classList.add('active');
-    }
-
-    for (let i = 0; i < tabs.length; i++) {
+        if (navItems[i].id === nav)
+            navItems[i].classList.add('active-nav');
+        
         tabs[i].style.display = 'none';
 
         if (tabs[i].id === tab)

@@ -118,12 +118,12 @@ $('.progress-link').click(function(e) {
 function markAttendance() {
     let url = 'ClockInAction.action';
     let message = 'Clocked in!';
-    let html = 'CLOCK OUT';
+    let html = '<i class="far fa-clock fa-fw"></i>CLOCK OUT';
     
     if (isClockedIn) {
         url = 'ClockOutAction.action';
         message = 'Clocked out!';
-        html = 'CLOCK IN';
+        html = '<i class="far fa-clock fa-fw"></i>CLOCK IN';
     }
     
     $.ajax({

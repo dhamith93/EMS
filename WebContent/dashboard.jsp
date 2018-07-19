@@ -32,20 +32,16 @@
                 <nav>
                     <ul>
                         <li id="search-nav" class="nav-item">
-                            <i class="fas fa-search fa-fw"></i>SEARCH   
-                            <div id="search-link" class="active border"></div>                         
+                            <i class="fas fa-search fa-fw"></i>SEARCH                         
                         </li>
                         <li id="emp-nav" class="nav-item">
                             <i class="fas fa-users fa-fw"></i>EMPLOYEE
-                            <div id="emp-link" class="border"></div>
                         </li>
                         <li id="dept-nav" class="nav-item">
                             <i class="fas fa-building fa-fw"></i>DEPARTMENT
-                            <div id="dept-link" class="border"></div>
                         </li>
                         <li id="logout" class="nav-item">
                             <i class="fas fa-sign-out-alt fa-fw"></i>LOGOUT
-                            <div id="" class="border"></div>
                         </li>
                     </ul>
                 </nav>
