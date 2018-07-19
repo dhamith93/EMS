@@ -29,7 +29,7 @@ function navigationHandler(id) {
             changeTab('tasks-link', 'tasks-tab');
             break;
         case 'leaveReq-nav':
-            changeTab('leaveReqs-link', 'leaveReq-tab');
+            changeTab('leaveReq-nav-link', 'leaveReq-tab');
             break;
         case 'logout':
             window.location.replace('LogoutAction');

@@ -11,6 +11,15 @@ function setNotification() {
         span.innerHTML = '';
         span.style.display = 'none';
     }
+    
+    span = document.getElementById('task-notification');
+    if (finishedTaskCount > 0) {
+        span.innerHTML = finishedTaskCount;
+        span.style.display = 'inline-block';
+    } else {
+        span.innerHTML = '';
+        span.style.display = 'none';
+    }
 }
 
 $("#addTask").submit(function(e) {
@@ -56,6 +65,8 @@ $(document).on('click', '.performance-link', function(e) {
                         if (result['status'] === 'OK') {
                             showMessage('Success', 'Task Completed');
                             document.getElementById('complete-' + taskId).innerHTML = 'YES';
+                            finishedTaskCount -= 1;
+                            setNotification();
                         } else { 
                             showMessage('Error', 'Encountered an error! Please check your data and try again later...');
                         }

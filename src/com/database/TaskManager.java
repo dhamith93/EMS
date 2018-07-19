@@ -84,6 +84,16 @@ public class TaskManager extends Manager {
         return tasks;
     }
     
+    public static Long getFinishedTaskCount(Department dept) {
+        init();
+        String hql = "SELECT COUNT(*) FROM Task t, TaskAssignment ta WHERE t.deptId = :id AND t.isCompleted = 0 AND ta.taskId = t.id AND ta.progress >= 100";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", dept.getId());
+        Long count = (Long) query.uniqueResult();
+        session.close();
+        return count;
+    }
+    
     public static void setProgress(String taskId, double prog) {
         init();
         String hql = "UPDATE TaskAssignment t SET t.progress = :prog WHERE t.taskId = :id";

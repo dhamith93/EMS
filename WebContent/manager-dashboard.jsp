@@ -22,7 +22,7 @@
 
     <script>
         var unapprovedLeaveCount = <s:property value="%{unapprovedLeaveCount}"/>;
-        console.log(unapprovedLeaveCount);
+        var finishedTaskCount = <s:property value="%{finishedTaskCount}"/>;
     </script>
 
     <div class="container">
@@ -43,6 +43,7 @@
                         </li>
                         <li id="tasks-nav" class="nav-item">
                             TASKS
+                            <span id="task-notification" class="notification"></span>
                             <div id="tasks-link" class="border"></div>
                         </li>
                         <li id="leaveReq-nav" class="nav-item">
