@@ -92,7 +92,7 @@
                     <%@ include file="includes/leaves-list.html" %>
                 </div>
 
-                <div id="tasks-tab" class="tab">
+                <div id="tasks-tab" class="tab tasks-tab">
                     <%@ include file="includes/task-list.html" %>
                 </div>
                 <div id="attendance-tab" class="tab">

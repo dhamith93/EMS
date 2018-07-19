@@ -385,12 +385,12 @@ button:active {
     margin-right: 260px;
 }
 
-/* #tasks-tab input {
+.tasks-tab input {
 	display: inline-block;	
     width: 70px;
     height: 100%;
     margin: auto;
-} */
+}
 
 .date-input {
 	display: flex;

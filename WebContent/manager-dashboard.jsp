@@ -20,6 +20,11 @@
 </head>
 <body>
 
+    <script>
+        var unapprovedLeaveCount = <s:property value="%{unapprovedLeaveCount}"/>;
+        console.log(unapprovedLeaveCount);
+    </script>
+
     <div class="container">
         <div class="row main">
             <div class="side-nav">
@@ -42,6 +47,7 @@
                         </li>
                         <li id="leaveReq-nav" class="nav-item">
                             LEAVE REQUESTS
+                            <span id="leave-notification" class="notification"></span>
                             <div id="leaveReq-nav-link" class="border"></div>
                         </li>
                         <li id="logout" class="nav-item">

@@ -3,14 +3,14 @@ $(window).on('load', function() {
 });
 
 function setNotification() {
-    let span = document.getElementById('task-notification');
-//    if (approvedLeaveCount > 0) {
-//        span.innerHTML = approvedLeaveCount;
-//        span.style.display = 'inline-block';
-//    } else {
-//        span.innerHTML = '';
-//        span.style.display = 'none';
-//    }
+    let span = document.getElementById('leave-notification');
+    if (unapprovedLeaveCount > 0) {
+        span.innerHTML = unapprovedLeaveCount;
+        span.style.display = 'inline-block';
+    } else {
+        span.innerHTML = '';
+        span.style.display = 'none';
+    }
 }
 
 $("#addTask").submit(function(e) {
@@ -80,6 +80,8 @@ $(document).on('click', '.leave-approve-link', function(e) {
             if (result['status'] === 'OK') {
                 showMessage('Success', 'Leave approved');
                 document.getElementById('status-'+id).innerHTML = 'APPROVED';
+                unapprovedLeaveCount -= 1;
+                setNotification();
             } else {
             	showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
@@ -101,6 +103,8 @@ $(document).on('click', '.leave-disapprove-link', function(e) {
             if (result['status'] === 'OK') {
                 showMessage('Success', 'Leave disapproved');
                 document.getElementById('status-'+id).innerHTML = 'DISAPPROVED';
+                unapprovedLeaveCount -= 1;
+                setNotification();
             } else {
                 showMessage('Error', 'Encountered an error! Please check your data and try again later...');
             }
