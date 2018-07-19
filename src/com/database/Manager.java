@@ -10,7 +10,7 @@ public class Manager {
     protected static void init() {
         sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.getCurrentSession();
-        transaction = session.beginTransaction();
+        transaction = session.getTransaction();
         if (!transaction.isActive())
             transaction.begin();
     }
