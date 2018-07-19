@@ -1,8 +1,7 @@
 package com.action;
 
-import java.util.List;
 import java.util.Map;
-
+import java.util.List;
 import org.apache.struts2.interceptor.SessionAware;
 import org.mindrot.jbcrypt.BCrypt;
 import com.entity.*;
@@ -72,7 +71,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
                         leaves = EmployeeManager.getLeavesForDept(employee);
                         unapprovedLeaveCount = EmployeeManager.getUnapprovedLeaveCount(employee);
                         finishedTaskCount = TaskManager.getFinishedTaskCount(department);
-                                                
+                        
                         if (deptManId == employee.getId())
                             return "MAN";
                     case "emp":

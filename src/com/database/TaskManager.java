@@ -84,6 +84,15 @@ public class TaskManager extends Manager {
         return tasks;
     }
     
+    public static Double getEmployeeAvgPerformance(Employee emp) {
+        init();
+        String hql = "SELECT AVG(performance) FROM TaskAssessment t WHERE t.empId = :id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id", emp.getEmpId());
+        Double performance = (Double) query.uniqueResult();
+        return performance;
+    }
+    
     public static Long getFinishedTaskCount(Department dept) {
         init();
         String hql = "SELECT COUNT(*) FROM Task t, TaskAssignment ta WHERE t.deptId = :id AND t.isCompleted = 0 AND ta.taskId = t.id AND ta.progress >= 100";
