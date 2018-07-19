@@ -16,6 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="resources/styles/dashboard.css">
     <link rel="stylesheet" href="resources/styles/dialog.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <title>Manager Portal</title>
 </head>
 <body>
@@ -34,25 +35,25 @@
                 <nav>
                     <ul>
                         <li id="managerInfo-nav" class="nav-item">
-                            MANAGER INFO   
+                            <i class="fas fa-user-tie fa-fw"></i>MANAGER INFO   
                             <div id="managerInfo-link" class="active border"></div>                         
                         </li>
                         <li id="dept-nav" class="nav-item">
-                            DEPARTMENT INFO
+                            <i class="fas fa-chalkboard-teacher fa-fw"></i>DEPARTMENT INFO
                             <div id="dept-link" class="border"></div>
                         </li>
                         <li id="tasks-nav" class="nav-item">
-                            TASKS
+                            <i class="fas fa-tasks fa-fw"></i>TASKS
                             <span id="task-notification" class="notification"></span>
                             <div id="tasks-link" class="border"></div>
                         </li>
                         <li id="leaveReq-nav" class="nav-item">
-                            LEAVE REQUESTS
+                            <i class="fab fa-wpforms fa-fw"></i>LEAVE REQUESTS
                             <span id="leave-notification" class="notification"></span>
                             <div id="leaveReq-nav-link" class="border"></div>
                         </li>
                         <li id="logout" class="nav-item">
-                            LOGOUT
+                            <i class="fas fa-sign-out-alt fa-fw"></i>LOGOUT
                             <div id="" class="border"></div>
                         </li>
                     </ul>

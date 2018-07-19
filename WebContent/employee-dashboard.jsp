@@ -16,6 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="resources/styles/dashboard.css">
     <link rel="stylesheet" href="resources/styles/dialog.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <title>Employee Portal</title>
 </head>
 <body>
@@ -34,41 +35,41 @@
                 <nav>
                     <ul>
                         <li id="personal-nav" class="nav-item">
-                            YOUR INFO   
+                            <i class="fas fa-user-tie fa-fw"></i>YOUR INFO   
                             <div id="personal-link" class="active border"></div>                         
                         </li>
                         <li id="leaves-nav" class="nav-item">
-                            LEAVES
+                            <i class="fas fa-angle-double-right fa-fw"></i>LEAVES
                             <div id="leaves-link" class="border"></div>
                         </li>
                         <li id="short-leaves-nav" class="nav-item">
-                            SHORT LEAVES
+                            <i class="fas fa-angle-right fa-fw"></i>SHORT LEAVES
                             <div id="short-leaves-link" class="border"></div>
                         </li>
                         <li id="leave-details-nav" class="nav-item">
-                            LEAVE DETAILS
+                            <i class="fab fa-wpforms fa-fw"></i>LEAVE DETAILS
                             <span id="leave-notification" class="notification"></span>
                             <div id="leave-details-link" class="border"></div>
                         </li>
                         <li id="tasks-nav" class="nav-item">
-                            TASKS
+                            <i class="fas fa-tasks fa-fw"></i>TASKS
                             <div id="tasks-link" class="border"></div>
                         </li>
                         <li id="attendance-nav" class="nav-item">
-                            ATTENDANCE
+                            <i class="fas fa-users fa-fw"></i>ATTENDANCE
                             <div id="attendance-link" class="border"></div>
                         </li>
                         <li id="markAttendance" class="nav-item">
                             <s:if test="isClockedIn">
-                                CLOCK OUT
+                                <i class="far fa-clock fa-fw"></i>CLOCK OUT
                             </s:if>
                             <s:else>
-                                CLOCK IN
+                                <i class="fas fa-clock fa-fw"></i>CLOCK IN
                             </s:else>
                             <div id="" class="border"></div>
                         </li>
                         <li id="logout" class="nav-item">
-                            LOGOUT
+                            <i class="fas fa-sign-out-alt fa-fw"></i>LOGOUT
                             <div id="" class="border"></div>
                         </li>
                     </ul>

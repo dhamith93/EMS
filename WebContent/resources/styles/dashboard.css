@@ -84,7 +84,7 @@ input[type=date], input[type=time] {
 }
 
 .side-nav h3 {
-    text-align: center;
+    text-align: left;
     color: #FFFFFF;
 }
 
@@ -99,7 +99,7 @@ input[type=date], input[type=time] {
 }
 
 .side-nav nav ul li {
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
     height: 25px;
     padding: 5px;
@@ -421,4 +421,12 @@ button:active {
 
 .addtask input {
 	width:320px;
+}
+
+.fa-chalkboard-teacher, .fa-user-tie, .fa-tasks, .fa-wpforms, .fa-sign-out-alt, .fa-users,.fa-clock, .fa-angle-double-right, .fa-angle-right, .fa-search, .fa-building{
+  color: #fff;
+  font-size:  1.2rem;
+  margin-right:6px;
+  margin-left:2px;
+
 }
