@@ -1,5 +1,5 @@
 <div>
-    <h2>Leave Requests</h2>
+    <h3>Leave Requests</h3>
 </div>
 
 <table class="table">
@@ -12,50 +12,52 @@
         <th scope="col">Time From</th>
         <th scope="col">Time To</th>
         <th scope="col">Reason</th>
-        <th scope="col">Confirm</th>
+        <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
     
         <s:iterator value="leaves" var="leave">
             <tr>
-            <td>
-                <s:property value="%{empId}"/>
-            </td>
-            <td>
-                <s:property value="%{type}"/>
-            </td>
-            <td>
-                <s:property value="%{dateFrom}"/>
-            </td>
-                        <td>
-                <s:property value="%{timeFrom}"/>
-            </td> 
-            <td>
-                <s:property value="%{timeTo}"/>
-            </td>  
-            <td>
-                <s:property value="%{dateTo}"/>
-            </td> 
-            <td>
-                <s:property value="%{reason}"/>
-            </td>
-
-	            <s:if test="#leave.isConfirmed == 1">
-	                 <s:if test="#leave.isApproved == 1">
-	                    <td>APPROVED</td>
-	                 </s:if>
-	                 <s:else>
-	                      <td>DISAPPROVE</td>         
-	                 </s:else>
-	            </s:if>
+	            <td>
+	                <s:property value="%{empId}"/>
+	            </td>
+	            <td>
+	                <s:property value="%{type}"/>
+	            </td>
+	            <td>
+	                <s:property value="%{dateFrom}"/>
+	            </td>
+                <td>
+	                <s:property value="%{timeFrom}"/>
+	            </td> 
+	            <td>
+	                <s:property value="%{timeTo}"/>
+	            </td>  
+	            <td>
+	                <s:property value="%{dateTo}"/>
+	            </td> 
+	            <td>
+	                <s:property value="%{reason}"/>
+	            </td>
+	
+	            <s:if test="#leave.isApproved == 1">
+                  <td>APPROVED</td>
+                </s:if>
+                <s:elseif test="#leave.isApproved == 2">
+                    <td>DISAPPROVED</td>         
+                </s:elseif>
 	            <s:else>
-	                <td id="leave-confrim" /><div><a href="#" id="<s:property value="%{id}"/>" data-leaveId="<s:property value="%{id}"/>" class="leave-link badge badge-primary">Approve</a></div><div><a href="#" id="<s:property value="%{id}"/>" data-leaveId="<s:property value="%{id}"/>" class="leave-link badge badge-primary">Disapprove</a></div></td>
-	            </s:else>
-
-           
-        </tr>
-        
+	                <td id="status-<s:property value="%{id}"/>">
+	                   <div>
+	                       <a href="#" id="<s:property value="%{id}"/>" class="leave-approve-link badge badge-primary">Approve</a>
+                       </div>
+                       <div>
+                           <a href="#" id="<s:property value="%{id}"/>" class="leave-disapprove-link badge badge-primary">Disapprove</a>
+                       </div>
+                    </td>
+	            </s:else>           
+            </tr>
         </s:iterator>
     
     </tbody>

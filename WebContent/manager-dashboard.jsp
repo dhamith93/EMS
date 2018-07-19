@@ -60,23 +60,17 @@
                 <div id="dept-tab" class="tab">
                      <%@ include file="includes/dept-info.html" %>  
                 </div>
-                
+
                 <div id="leaveReq-tab" class="tab">
                     <span id="leave-notification" class="notification"></span>
                      <%@ include file="includes/leave-manager.html" %> 
-                </div>
-
+                </div>               
+                
                 <div id="tasks-tab" class="tab">
                     <span id="taks-notification" class="notification"></span>
                     <%@ include file="includes/tasks-manager.html" %>
                 </div>
-
-          
                 
-                <div id="logout" class="tab">
-                     <!--<%@ include file="includes/addDept.html" %> -->
-                </div>
-
             </div>
         </div>
     </div>    

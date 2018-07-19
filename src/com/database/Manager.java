@@ -11,6 +11,8 @@ public class Manager {
         sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.getCurrentSession();
         transaction = session.beginTransaction();
+        if (!transaction.isActive())
+            transaction.begin();
     }
 
     protected static void end() {

@@ -118,7 +118,7 @@ function fillLeavesTable(data) {
             let timeFrom = data[i]['timeFrom'];
             let timeTo = data[i]['timeTo'];
             let reason = data[i]['reason'];
-            let approved = (data[i]['isApproved'] === 0) ? 'NO' : 'YES';
+            let approved = (data[i]['isApproved'] === 0) ? 'PENDING' : (data[i]['isApproved'] === 1) ? 'YES' : 'NO';
             let confirmed = (data[i]['isConfirmed'] === 0) ? 'NO' : 'YES';
 
             let tr = document.createElement('tr');

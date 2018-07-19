@@ -34,10 +34,13 @@
                 <s:property value="%{reason}"/>
             </td>
             <s:if test="#leave.isApproved == 0">
-                <td>NO</td>
+                <td>PENDING</td>
             </s:if>
+            <s:elseif test="#leave.isApproved == 1">
+                <td>YES</td>
+            </s:elseif>
             <s:else>
-            <td>YES</td>
+            <td>NO</td>
             </s:else>        
             <s:if test="#leave.isConfirmed == 0">
                 <s:if test="#leave.isApproved == 1">

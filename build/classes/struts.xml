@@ -109,6 +109,22 @@
                 <param name="root">status</param>
             </result>
         </action>
+        <action name="DisapproveLeaveAction" class="com.action.DisapproveLeaveAction">            
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action>
+        <action name="ApproveLeaveAction" class="com.action.ApproveLeaveAction">            
+            <interceptor-ref name="newStack"/>
+            <result type="json">
+                <param name="noCache">true</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="root">status</param>
+            </result>
+        </action>
         <action name="GetLeavesAction" class="com.action.GetLeavesAction">
             <interceptor-ref name="newStack"/>
             <result type="json">
