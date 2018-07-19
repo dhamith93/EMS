@@ -24,6 +24,11 @@
     padding-bottom: 5px;
     background-color: #ffffff;
     box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+    overflow:auto
+}
+
+#prompt-new-task .message {
+	margin-top: 4%;
 }
 
 .message-header h3 {
@@ -83,8 +88,13 @@
 	margin: auto;
 }
 
-.message-inputs input, .message-inputs textarea {
+.message-inputs input, .message-inputs textarea, .message-inputs select {
 	margin: auto;
+	margin-bottom: 20px;
+}
+
+.message-inputs select {
+    height: 45px;
 }
 
 .message-inputs label {

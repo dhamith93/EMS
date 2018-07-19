@@ -1,5 +1,6 @@
+<button id="new-task-btn">NEW TASK</button>
 
-<h2>Progress of Current Tasks</h2>
+<h3>Progress of Current Tasks</h3>
 
 <table class="table">
   <thead class="thead-dark">
@@ -52,34 +53,3 @@
 </table>
 
 <br>
-
-<h2>Assign Tasks to Employee</h2>
-
-<form id="addTask" action="" method="post">
-
-    <div class="addtask">
-        <label for="add-name">Employee Name</label>
-        <select id="add-name" name="empId" class="select">
-            <s:iterator value="employeeDept" var="employee">
-               <option value=<s:property value="%{empId}"/>><s:property value="%{firstName}"/>(<s:property value="%{empId}"/>)</option>
-            </s:iterator>
-        </select>
-        <input type="hidden" name="deptId" value=<s:property value="department.id" /> />
-        <label for="add-taskName">Task</label><br>
-        <input type="text" id="add-taskName" name="name" style="width:320px;"><br>
-        <label for="add-tastDisc">Discription</label><br>
-        <input type="text" id="add-tastDisc" name="desc"  style="width:320px; height:60px;"><br>
-        <label for="add-startOn">Start On</label><br>
-        <input type="date" id="add-startOn" name="startOn"  style="width:320px;"><br>
-        <label for="add-endOn">End On</label><br>
-        <input type="date" id="add-endOn" name="endOn"  style="width:320px;"><br><br>
-    
-    
-        <div class="submit">
-            <button type="submit">Add Taks</button>
-        </div>
-    </div>
-    </div>
-    <br> <br>
-</form>
-<br><br>

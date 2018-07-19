@@ -245,13 +245,13 @@ button:active {
     display: none;
 }
 
-#emp-info-tab, #emp-tab, #leaves-tab, #short-leaves-tab, #leave-details-tab, #tasks-tab, #attendance-tab, #emp-attendance-tab {
+#emp-info-tab, #emp-tab, #leaves-tab, #short-leaves-tab, #leave-details-tab, #tasks-tab, #attendance-tab, #emp-attendance-tab, #leaveReq-tab {
     display: none;
     width: 900px;
     margin: auto;
 }
 
-#leave-details-tab, #tasks-tab, #attendance-tab {
+#leave-details-tab, #tasks-tab, #attendance-tab, #leaveReq-tab {
 	width: unset;
 }
 
@@ -385,12 +385,12 @@ button:active {
     margin-right: 260px;
 }
 
-#tasks-tab input {
+/* #tasks-tab input {
 	display: inline-block;	
     width: 70px;
     height: 100%;
     margin: auto;
-}
+} */
 
 .date-input {
 	display: flex;

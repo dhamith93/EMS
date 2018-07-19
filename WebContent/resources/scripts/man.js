@@ -23,6 +23,7 @@ $("#addTask").submit(function(e) {
                let result = JSON.parse(data);
                if (result['status'] === 'OK') {
                    showMessage('Success', 'Task has beed added to Employee successfully!');
+                   closeNewTaskPrompt();
                } else { 
                    showMessage('Error', 'Encountered an error! Please check your data and try again later...');
                }

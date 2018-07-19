@@ -1,6 +1,15 @@
 let navItems = document.getElementsByClassName('nav-item');
 let borders = document.getElementsByClassName('border');
 let tabs = document.getElementsByClassName('tab');
+let newTaskBtn = document.getElementById('new-task-btn');
+
+newTaskBtn.addEventListener('click', function(e) {
+    showNewTaskPrompt();
+});
+
+$('#addTask').on('reset', function(e) {
+    closeNewTaskPrompt();
+});
 
 for (let i = 0; i < navItems.length; i++) {
     navItems[i].addEventListener('click', function(e) {
@@ -43,4 +52,12 @@ function changeTab(nav, tab) {
         if (i < tabs.length && tabs[i].id === tab)
             tabs[i].style.display = 'block';
     }
+}
+
+function showNewTaskPrompt() {
+    document.getElementById('prompt-new-task').style.display = 'flex';
+}
+
+function closeNewTaskPrompt() {
+    document.getElementById('prompt-new-task').style.display = 'none';
 }

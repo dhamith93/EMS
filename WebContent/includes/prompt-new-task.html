@@ -1,0 +1,32 @@
+<div id="prompt-new-task" class="message-outer">
+    <div class="message">
+        <div class="message-header">
+            <h3>New Task</h3>
+        </div>
+        <form id="addTask" action="" method="post">
+            <div class="message-body">
+                <div class="message-inputs">
+                    <label for="add-name">Employee Name</label>
+                    <select id="add-name" name="empId" class="select">
+                        <s:iterator value="employeeDept" var="employee">
+                           <option value=<s:property value="%{empId}"/>><s:property value="%{firstName}"/>(<s:property value="%{empId}"/>)</option>
+                        </s:iterator>
+                    </select>
+                    <input type="hidden" name="deptId" value=<s:property value="department.id" /> />
+                    <label for="add-taskName">Task</label>
+                    <input type="text" id="add-taskName" name="name">
+                    <label for="add-tastDisc">Discription</label><br>
+                    <textarea id="add-tastDisc" name="desc"></textarea>
+                    <label for="add-startOn">Start On</label>
+                    <input type="date" id="add-startOn" name="startOn">
+                    <label for="add-endOn">End On</label>
+                    <input type="date" id="add-endOn" name="endOn">
+                </div>
+            </div>
+            <div class="message-options">
+                <button type="submit" class="message-btn">ADD</button>
+                <button type="reset" class="message-btn">CANCEL</button>
+            </div>
+        </form>
+    </div>
+</div>

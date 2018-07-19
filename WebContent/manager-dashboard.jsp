@@ -61,20 +61,20 @@
                      <%@ include file="includes/dept-info.html" %>  
                 </div>
 
-                <div id="leaveReq-tab" class="tab">
-                    <span id="leave-notification" class="notification"></span>
-                     <%@ include file="includes/leave-manager.html" %> 
-                </div>               
-                
                 <div id="tasks-tab" class="tab">
                     <span id="taks-notification" class="notification"></span>
                     <%@ include file="includes/tasks-manager.html" %>
                 </div>
-                
+
+                <div id="leaveReq-tab" class="tab">
+                    <span id="leave-notification" class="notification"></span>
+                     <%@ include file="includes/leave-manager.html" %> 
+                </div>
             </div>
         </div>
     </div>    
     
+    <%@ include file="includes/prompt-new-task.html" %>
     <%@ include file="includes/dialog.html" %>
     <%@ include file="includes/prompt.html" %>
     
