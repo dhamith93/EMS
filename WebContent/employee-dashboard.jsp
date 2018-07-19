@@ -34,7 +34,7 @@
                 <hr>
                 <nav>
                     <ul>
-                        <li id="personal-nav" class="nav-item">
+                        <li id="personal-nav" class="nav-item active-nav">
                             <i class="fas fa-user-tie fa-fw"></i>YOUR INFO                           
                         </li>
                         <li id="leaves-nav" class="nav-item">

@@ -31,7 +31,7 @@
                 </div>
                 <nav>
                     <ul>
-                        <li id="search-nav" class="nav-item">
+                        <li id="search-nav" class="nav-item active-nav">
                             <i class="fas fa-search fa-fw"></i>SEARCH                         
                         </li>
                         <li id="emp-nav" class="nav-item">

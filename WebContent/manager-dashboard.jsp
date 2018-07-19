@@ -34,7 +34,7 @@
                 </div>
                 <nav>
                     <ul>
-                        <li id="managerInfo-nav" class="nav-item">
+                        <li id="managerInfo-nav" class="nav-item active-nav">
                             <i class="fas fa-user-tie fa-fw"></i>MANAGER INFO                          
                         </li>
                         <li id="dept-nav" class="nav-item">
