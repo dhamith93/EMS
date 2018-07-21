@@ -82,7 +82,7 @@ input[type=date], input[type=time] {
 }
 
 .side-nav h3 {
-    text-align: left;
+    text-align: center;
     color: #FFFFFF;
 }
 
@@ -98,7 +98,7 @@ input[type=date], input[type=time] {
     height: 50px;
     line-height: 50px;
     padding: 5px;
-    padding-left: 40px;
+    padding-left: 10px;
     cursor: pointer;
 }
 
