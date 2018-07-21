@@ -1,5 +1,6 @@
 $(window).on('load', function() {
     setNotification();
+    getPerformance();
 });
 
 function setNotification() {
@@ -20,6 +21,54 @@ function setNotification() {
         span.innerHTML = '';
         span.style.display = 'none';
     }
+}
+
+function showGraph(result) {
+	if (result) {
+	    let labels = [];
+	    let perfromance = [];
+	
+	
+	    for(const [key, value] of Object.entries(result)) {
+		    labels.push(key); 
+		    perfromance.push(value);
+	    }
+	
+	    let gpaChart = document.getElementById("myChart").getContext("2d");
+	    let lineChart = new Chart(gpaChart, {
+		    type: "line",
+		    data: {
+		        labels: labels,
+		        datasets: [{
+		            label: 'Perfromance',
+		            data: perfromance,
+		            borderColor: '#F93B23'
+		        }]
+		    },
+		    options: {
+		        
+		    }
+	    });
+	}
+}
+
+function getPerformance() {
+	$.ajax({
+	    type : 'GET',
+	    url : 'GetDepartmentPerformanceAction.action?deptId=' + deptId,
+	    dataType : 'json',
+	    error : function() {
+	        console.log('error getting a response from SearchAction...');
+	    },
+	    success : function(data) {
+	        let result =  JSON.parse(data.replace('//', ''));
+	        if (result['status']) {
+	        	console.log('error getting a response from SearchAction...');
+	        } else {
+	        	showGraph(result);	        	
+	        }
+	    }
+	});
 }
 
 $("#addTask").submit(function(e) {
