@@ -33,13 +33,13 @@ for (let i = 0; i < navItems.length; i++) {
 function navigationHandler(id) {
     switch (id) {
     case 'search-nav':
-        changeTab('search-link', 'search-tab');
+        changeTab('search-nav', 'search-tab');
         break;
     case 'emp-nav':
-        changeTab('emp-link', 'emp-tab');
+        changeTab('emp-nav', 'emp-tab');
         break;
     case 'dept-nav':
-        changeTab('dept-link', 'dept-tab');
+        changeTab('dept-nav', 'dept-tab');
         break;
     case 'logout':
         window.location.replace('LogoutAction');

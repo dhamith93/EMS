@@ -22,13 +22,13 @@ function navigationHandler(id) {
             changeTab('managerInfo-link', 'managerInfo-tab');
             break;
         case 'dept-nav':
-            changeTab('dept-link', 'dept-tab');
+            changeTab('dept-nav', 'dept-tab');
             break;
         case 'tasks-nav':
-            changeTab('tasks-link', 'tasks-tab');
+            changeTab('tasks-nav', 'tasks-tab');
             break;
         case 'leaveReq-nav':
-            changeTab('leaveReq-nav-link', 'leaveReq-tab');
+            changeTab('leaveReq-nav', 'leaveReq-tab');
             break;
         case 'logout':
             window.location.replace('LogoutAction');
@@ -40,7 +40,7 @@ function navigationHandler(id) {
 
 function changeTab(nav, tab) {
     for (let i = 0; i < navItems.length; i++) {
-        navItems[i].classList.remove('active');
+        navItems[i].classList.remove('active-nav');
         
         if (navItems[i].id === nav)
             navItems[i].classList.add('active-nav');
